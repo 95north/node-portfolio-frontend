@@ -1,6 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import './App.scss';
 // import {Provider} from 'react-redux'
 import { Route, Switch, withRouter, BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
 import routes from './scenes/routes.js'
@@ -19,7 +20,8 @@ function App() {
         <header className="App-header">
 
           <p>
-            Tori's Portfolio Landing Page
+            Tori's Portfolio Landing Page 
+            (Hello from App.js)
           </p>
           
 

@@ -1,12 +1,18 @@
+$background-color: #000000;
+$font-stack: "Open Sans", sans-serif;
+$font-size-standard: 22px;
+$font-color: goldenrod;
+
+
 .header{
     /* font-family: 'Cabin Sketch', cursive; */
     font-family: 'Permanent Marker', cursive;
-    font-size: 90px;
+    font-size: 40px;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    padding-left: 60px;
-    top: 90px;
-    padding-left: 60px;
+    padding-left: 10px;
+    top: 0px;
+    padding-left: 10px;
     /* padding-top: 80px; */
     color:#e3b36d;
 
@@ -17,5 +23,6 @@
     animation-name: example;
     animation-duration: ease 6s;
     animation-iteration-count: 10;
-
+    background-color: $background-color;
+    
 }

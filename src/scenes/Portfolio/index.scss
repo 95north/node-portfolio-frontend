@@ -4,10 +4,10 @@ $font-stack: "Open Sans", sans-serif;
 $font-size-standard: 22px;
 $font-color: goldenrod;
 
-.home{
+.portfolio{
     background-color: $background-color; 
     font-family: 'Permanent Marker', cursive;
-    font-size: 40px;
+    font-size: 12px;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     padding-left: 10px;
@@ -17,7 +17,3 @@ $font-color: goldenrod;
     color: $font-color;
 
 }
-
-
-
-

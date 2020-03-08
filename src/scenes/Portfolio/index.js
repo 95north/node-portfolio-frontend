@@ -3,22 +3,26 @@ import React, { Component } from 'react';
 
 import styles from './index.scss';
 import NavBar from  '../../componentsForGlobalUse/Header/index.js';
+import Television from '../../componentsForGlobalUse/Television';
 // import NavBar from  './././componentsForGlobalUse/Header/index.js';
  // three levels up to get to source
 
 
-class Home extends Component {
+class Portfolio extends Component {
 
     render(){
 
         return(
-            <div className="home">
+            <div>
+            <p>Portfolio Scene</p>
+            <div className="portfolio">
                 <NavBar></NavBar>
-                <p>HOME Scene</p>
+                <Television></Television>
+            </div>
             </div>
         )
     }
 
 } 
 
-export default Home; 
+export default Portfolio; 

@@ -13,7 +13,7 @@ class Header extends Component {
 
         return(
             <div className="header">
-                <p> V I C T O R I A   S I G L E R </p>
+                <p> V I C T O R I A    S I G L E R </p>
             </div>
         )
     }

@@ -1,0 +1,14 @@
+// The values measure from -- top, right, bottom, and left --edges of the image (in that order).
+// $tv-img: "../../public/TVimg.svg";
+
+.border{
+    // border:20px solid;
+    // border-image:url(border.svg);
+    // border-image-source: url(tv.svg);
+    
+    //border-image-source: $tv-img;
+    // border-image: $tv-img;
+
+
+    border-image-slice: 30 5 40 180;
+}
