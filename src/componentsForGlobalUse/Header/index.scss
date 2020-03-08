@@ -1,0 +1,21 @@
+.header{
+    /* font-family: 'Cabin Sketch', cursive; */
+    font-family: 'Permanent Marker', cursive;
+    font-size: 90px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    padding-left: 60px;
+    top: 90px;
+    padding-left: 60px;
+    /* padding-top: 80px; */
+    color:#e3b36d;
+
+
+    
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: ease 6s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: ease 6s;
+    animation-iteration-count: 10;
+
+}

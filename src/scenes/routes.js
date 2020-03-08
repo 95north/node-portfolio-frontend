@@ -6,6 +6,7 @@ import Home from './Home/index.js';
 import { About } from './About'
 import { Contact } from './Contact'
 
+
 export default[
     <Route
         key="home"
@@ -14,12 +15,17 @@ export default[
     />,
     <Route
         key="about"
-        path="/"
+        path="/about"
         component={About}
     />,
     <Route
         key="contact"
-        path="/"
+        path="/contact"
+        component={Contact}
+    />,
+    <Route
+        key="diary"
+        path="/diary"
         component={Contact}
     />
 ]
