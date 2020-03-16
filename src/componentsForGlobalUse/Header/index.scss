@@ -15,10 +15,12 @@ $tv-brown-button-panel: #6c6518;
     white-space: nowrap;
 
     background: linear-gradient(to right, 
-    $tv-brown-button-panel 9%,
-    // $tv-brown-speaker 34%, 
-    $tv-brown-frame-light 66%, 
-    $tv-brown-frame-dark 93%);  
+    $tv-brown-frame-light 1%,
+    $tv-brown-button-panel 4%,
+    $tv-brown-speaker 24%, 
+    $tv-brown-frame-light 56%, 
+    #f2b313 80%,
+    $tv-brown-frame-dark 86%);  
     
     // background: linear-gradient(to right, 
     // $tv-brown-frame-light 10%, 

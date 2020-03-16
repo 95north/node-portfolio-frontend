@@ -29,19 +29,17 @@ class NavBar extends Component {
                 <div className="nav">
                     <span onClick={this.toggleDisplayMenu}> <NavBarTvRemote></NavBarTvRemote> </span>
                     <div className={this.state.displayMenu ? "displayElement" : "hideElement"}>
-                        {/* <span> <div>I'm the Nav Bar </div> </span> */}
+                            <div className="menu-shadow">
                         <div className="menu">
-                            <span> <Link to='/'>Home</Link> </span>
-                            <span> <Link to='/about'>About</Link> </span>
-                            <span> <Link to='/contact'>Contact</Link> </span>
-                            <span> <Link to='/diary'>Today, I ..</Link> </span>
+                                <span> <Link to='/'>Home</Link> </span>
+                                <span> <Link to='/about'>About</Link> </span>
+                                <span> <Link to='/contact'>Contact</Link> </span>
+                                <span> <Link to='/diary'>Today, I ..</Link> </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-                // {this.props.user.user_id ? <Link to='/projects'>My Projects</Link> : null}
-                // {this.props.user.user_id ? <Link to='/projects'>My Projects</Link> : null}
-            
         )
     }
 

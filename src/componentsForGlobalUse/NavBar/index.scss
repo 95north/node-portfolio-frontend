@@ -1,10 +1,8 @@
 // import "../../App.scss";
 $background-color: #000000;
-// $font-stack: "Open Sans", sans-serif;
 $font-stack: "verdana";
 $font-size-standard: 22px;
 $font-color: #f2e243;  // TV speaker yellow
-
 $tv-yellow: #f2e243;  // TV speaker yellow
 $tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
 $tv-brown-frame-light: #877e23;  // TV frame top brown
@@ -13,44 +11,79 @@ $tv-brown-button-panel: #6c6518;
 
 
 .navbar-width {
+    margin-top: -9px;
     width: 100%;
     min-height: 40px;
     padding-bottom: 20px;
-        position: sticky;
+    position: sticky;
+    // background-color: $tv-brown-frame-dark; .... works here... 
 }
 
 /* Style the links inside the navigation bar */
 .nav span{
-
     float: left;
     display: block;
     text-align: center;
     // width: 70%;
     // height: 10px;
-    padding: 5px 8px;
-    margin: 5px 50px 0px 0px;
-    // text-decoration: none;
+    padding: 5px 8px ;
+    margin: 5px 40px 0px 0px;
     font-size: 17px;
     color: $font-color;
-    // background-color: #333333;
     z-index: 2;
 }
 
-/* Change the color of links on hover */
-.nav a:hover {
-    background-color: $tv-brown-frame-light;
+.nav a{
+    color: #f2b313;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.div menu {
-    width: 80%;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    background-color: #f2e243;  // TV speaker yellow
-    z-index: 3;
-    color: $font-color
+.nav a:hover {
+    background-color: $tv-brown-frame-light;
+    padding: 5px;
+}
 
+.menu {         // black box that has a "shadow" on it. 
+    padding-top: 3px;
+    // margin-left: 58px;   // OLD - amt fm edge to start box behind remote
+    margin-left: -28px;
+    width: 80%;
+    min-height: 10px;
+    background-color: $background-color;
+    z-index: 4;
+    color: $font-color;
+}
+
+.menu-shadow {
+    margin-left: 62px;
+    box-shadow:
+    1px 0px 1px 1.25px $tv-yellow,    
+    4px 0px 2px 5px $tv-brown-speaker,
+    10px 0px 0px 12.5px $tv-brown-frame-light,
+    16px 0px 0px 20.5px $tv-brown-button-panel,
+    24.5px 0 0px 24.25px $tv-brown-frame-dark,
+    21px 0px 0px 24.5px#f2b313;
+
+    // 1px 0px 1px 1px $tv-yellow,    
+    // 3px 3px 3px 2px $tv-brown-speaker,
+    // 10px 1px 2px 12px $tv-brown-frame-light,
+    // 16px 2px 2px 19px $tv-brown-button-panel,
+    // 21px 1px 3px 21px#f2b313,
+    // 24.5px 0 1px 24.5px $tv-brown-frame-dark;
+
+    // 1px 0px 2px 1px $tv-yellow,    
+    // 2px 2px 2px 2px $tv-brown-speaker,
+    // 12px 1px 2px 12px $tv-brown-frame-light,
+    // 19px 2px 2px 19px $tv-brown-button-panel,
+    // 21px 1px 4px 21px#f2b313,
+    // 23px 0 0 25px $tv-brown-frame-dark;
+
+    // 1px 0px 2px 1px $tv-yellow,    
+    // 2px 3px 4px 2px $tv-brown-speaker,
+    // 12px 1px 4px 12px $tv-brown-frame-light,
+    // 20px 1px 4px 20px $tv-brown-button-panel,
+    // 24px 0 0 24px $tv-brown-frame-dark;
 }
 
 .hideElement {
