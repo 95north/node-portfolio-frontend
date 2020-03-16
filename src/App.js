@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import './App.scss';
 // import {Provider} from 'react-redux'
@@ -10,23 +9,32 @@ import routes from './scenes/routes.js'
 function App() {
   return (
     <>
+    {/* // <div className="App-bg">  //Does nothing to make entire BG black */}
     <Router>
       <Switch>
         {routes}
       </Switch>
     </Router>
 
-      <div className="App">
-        <header className="App-header">
 
           <p>
             Tori's Portfolio Landing Page 
             (Hello from App.js)
           </p>
-          
 
+
+
+      {/* <div className="App">
+        <header className="App-header">
+          <p>
+            Tori's Portfolio Landing Page 
+            (Hello from App.js)
+          </p>
         </header>
-      </div>
+      </div> */}
+
+
+    {/* // </div> */}
     </>
   );
 }

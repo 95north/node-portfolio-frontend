@@ -3,6 +3,9 @@ $font-stack: "Open Sans", sans-serif;
 $font-size-standard: 22px;
 $font-color: goldenrod;
 
+.spacing{
+    padding-left: 20px;
+}
 
 .header{
     /* font-family: 'Cabin Sketch', cursive; */
@@ -15,7 +18,8 @@ $font-color: goldenrod;
     padding-left: 10px;
     /* padding-top: 80px; */
     color:#e3b36d;
-
+    z-index: 4; 
+    // Need z index else remote image interferes
 
     
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */

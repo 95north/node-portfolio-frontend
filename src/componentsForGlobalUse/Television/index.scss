@@ -2,6 +2,8 @@
 // $tv-img: "../../public/TVimg.svg";
 
 .border{
+    position: absolute;
+    right: 30px;
     // border:20px solid;
     // border-image:url(border.svg);
     // border-image-source: url(tv.svg);
@@ -10,5 +12,18 @@
     // border-image: $tv-img;
 
 
-    border-image-slice: 30 5 40 180;
+    // border-image-slice: 30 5 40 180;
+    
+}
+
+.screen-placement {
+    position: absolute;
+    // position: relative;
+
+    // right: 131px;   
+    left: 130px;
+    top: 69px;
+
+
+    // bottom: 137px;
 }

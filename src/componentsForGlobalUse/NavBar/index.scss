@@ -1,0 +1,54 @@
+// import "../../App.scss";
+$background-color: #000000;
+// $font-stack: "Open Sans", sans-serif;
+$font-stack: "verdana";
+$font-size-standard: 22px;
+$font-color: #f2e243;  // TV speaker yellow
+
+$tv-yellow: #f2e243;  // TV speaker yellow
+$tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
+$tv-brown-frame-light: #877e23;  // TV frame top brown
+$tv-brown-frame-dark: #59443e;  // TV frame bottom brown
+$tv-brown-button-panel: #6c6518;
+
+
+/* Style the links inside the navigation bar */
+.nav span{
+    float: left;
+    display: block;
+    text-align: center;
+    // width: 70%;
+    // height: 10px;
+    padding: 5px 8px;
+    margin: 5px 50px 0px 0px;
+    // text-decoration: none;
+    font-size: 17px;
+    color: $font-color;
+    // background-color: #333333;
+    z-index: 2;
+}
+
+/* Change the color of links on hover */
+.nav a:hover {
+    background-color: $tv-brown-frame-light;
+}
+
+.div menu {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background-color: #f2e243;  // TV speaker yellow
+    z-index: 3;
+    color: $font-color
+
+}
+
+.hideElement {
+    display: none;
+}
+
+.displayElement {
+    display: block;
+}
