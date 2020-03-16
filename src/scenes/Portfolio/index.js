@@ -15,10 +15,11 @@ class Portfolio extends Component {
 
         return(
             <div className="portfolio">
-                <p>Portfolio Scene</p>
+                {/* <p>Portfolio Scene</p> */}
                 {/* <div className="portfolio"> */}
                     <Header></Header>
                     <NavBar></NavBar>
+
                     <Television></Television>
                 {/* </div> */}
             </div>

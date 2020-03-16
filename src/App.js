@@ -9,7 +9,6 @@ import routes from './scenes/routes.js'
 function App() {
   return (
     <>
-    {/* // <div className="App-bg">  //Does nothing to make entire BG black */}
     <Router>
       <Switch>
         {routes}
@@ -17,7 +16,7 @@ function App() {
     </Router>
 
 
-          <p>
+          <p className="fonty">
             Tori's Portfolio Landing Page 
             (Hello from App.js)
           </p>
@@ -32,9 +31,6 @@ function App() {
           </p>
         </header>
       </div> */}
-
-
-    {/* // </div> */}
     </>
   );
 }

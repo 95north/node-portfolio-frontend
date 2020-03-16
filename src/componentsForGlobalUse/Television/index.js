@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import styles from './index.scss';
 import TelevisionScreen from "./TelevisionScreen";
-
+import TelevisionLeftSideTextArea from "./TelevisionLeftSideTextArea";
 
 class Television extends Component {
 
@@ -13,8 +13,9 @@ class Television extends Component {
                 // <div className="border">
                 // </div>
             <div>
-                <p>TV Global Use Component!</p>
-                    <div className="border">
+                    {/* <p>TV Global Use Component!</p> */}
+
+                    <div className="tv-positioning">
                         <img 
                             // className="border"
                             src="TVimg.svg" 
@@ -25,12 +26,13 @@ class Television extends Component {
                             >
                             {/* <p> I am inside the image tag of the HTML!!! **** </p> */}
                         </img>
-                <div className="screen-placement">
-                    <TelevisionScreen></TelevisionScreen>
-                </div>
+
+                        <div className="screen-placement">
+                            <TelevisionScreen></TelevisionScreen>
+                            
+                        </div>
                     </div>
-
-
+                    <TelevisionLeftSideTextArea></TelevisionLeftSideTextArea>
             </div>
         )
     }

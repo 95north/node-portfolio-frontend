@@ -1,14 +1,13 @@
 
-/* .App-bg {
-  background-color: #000000;
-  height: 100%;
-} */
-
 /* Reset default browser margins */
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #58FA58;
+  background-color: #333333;
+}
+
+.fonty {
+  color: #61dafb;
 }
 
 .App {

@@ -1,0 +1,20 @@
+$tv-yellow: #f2e243;  // TV speaker yellow
+$tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
+$tv-brown-frame-light: #877e23;  // TV frame top brown
+$tv-brown-frame-dark: #59443e;  // TV frame bottom brown
+$tv-brown-button-panel: #6c6518;
+
+.text-placement {
+    // position: absolute;
+    position: block;
+    left: 5px;
+    // min-width: 400px;
+    // min-height: 600px;
+    width: 300px;
+    height: 1700px;
+    background: $tv-brown-frame-dark;
+    padding-top: 3px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-left: 5px;
+}

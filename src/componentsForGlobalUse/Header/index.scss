@@ -2,31 +2,66 @@ $background-color: #000000;
 $font-stack: "Open Sans", sans-serif;
 $font-size-standard: 22px;
 $font-color: goldenrod;
+$tv-yellow: #f2e243;  // TV speaker yellow
+$tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
+$tv-brown-frame-light: #877e23;  // TV frame top brown
+$tv-brown-frame-dark: #59443e;  // TV frame bottom brown
+$tv-brown-button-panel: #6c6518;
 
-.spacing{
-    padding-left: 20px;
+
+
+.color-fade-text {
+    display: block;
+    white-space: nowrap;
+
+    background: linear-gradient(to right, 
+    $tv-brown-button-panel 9%,
+    // $tv-brown-speaker 34%, 
+    $tv-brown-frame-light 66%, 
+    $tv-brown-frame-dark 93%);  
+    
+    // background: linear-gradient(to right, 
+    // $tv-brown-frame-light 10%, 
+    // $tv-brown-speaker 65%, 
+    // $tv-brown-frame-dark 90%);  
+
+    // background: linear-gradient(to right, 
+    // $tv-brown-speaker 12%,
+    // $tv-brown-frame-light 25%, 
+    // $tv-brown-frame-dark 65%, 
+    // $tv-brown-button-panel 81%);      
+
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+
 .header{
+    letter-spacing: 10px;
     /* font-family: 'Cabin Sketch', cursive; */
     font-family: 'Permanent Marker', cursive;
     font-size: 40px;
+    // font-weight: bolder;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     padding-left: 10px;
     top: 0px;
-    padding-left: 10px;
-    /* padding-top: 80px; */
     color:#e3b36d;
     z-index: 4; 
     // Need z index else remote image interferes
-
     
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: ease 6s; /* Safari 4.0 - 8.0 */
     animation-name: example;
     animation-duration: ease 6s;
     animation-iteration-count: 10;
-    background-color: $background-color;
-    
+    background-color: $background-color;   
+}
+
+
+
+.spacing{
+    padding-left: 20px;
 }

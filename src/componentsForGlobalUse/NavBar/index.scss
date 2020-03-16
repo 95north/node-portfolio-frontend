@@ -12,8 +12,16 @@ $tv-brown-frame-dark: #59443e;  // TV frame bottom brown
 $tv-brown-button-panel: #6c6518;
 
 
+.navbar-width {
+    width: 100%;
+    min-height: 40px;
+    padding-bottom: 20px;
+        position: sticky;
+}
+
 /* Style the links inside the navigation bar */
 .nav span{
+
     float: left;
     display: block;
     text-align: center;
