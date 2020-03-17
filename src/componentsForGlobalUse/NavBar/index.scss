@@ -24,10 +24,8 @@ $tv-brown-button-panel: #6c6518;
     float: left;
     display: block;
     text-align: center;
-    // width: 70%;
-    // height: 10px;
     padding: 5px 8px ;
-    margin: 5px 40px 0px 0px;
+    margin: 5px 30px 0px 0px;
     font-size: 17px;
     color: $font-color;
     z-index: 2;
@@ -35,13 +33,18 @@ $tv-brown-button-panel: #6c6518;
 
 .nav a{
     color: #f2b313;
+    text-shadow: 4px 4px #000000, -.5px -.5px 2px #c79414;
+    // text-shadow: 4px 4px #59443e, -.5px -.5px 2px #c79414;
+    // text-shadow: 4px 4px #000000, -.5px -.5px 2px #bd8802;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .nav a:hover {
     background-color: $tv-brown-frame-light;
-    padding: 5px;
+    padding: 5px 25px 5px 25px;
+    text-shadow: 0px 0px #000000, -.5px -.5px 2px #59443e;
 }
 
 .menu {         // black box that has a "shadow" on it. 

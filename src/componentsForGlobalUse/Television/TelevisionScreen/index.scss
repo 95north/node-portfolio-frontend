@@ -1,16 +1,14 @@
 $tv-brown-button-panel: #6c6518;
 
 
-.screen-shape {
+.screen-shape-400-600 {
     border-radius: 19px;    // will also change with size !!!!!!!!  *********
     background: $tv-brown-button-panel;
     // background: #212121;
 
-
     // padding: 20px;
     // margin-left: 100px;  //needs to moe positioning part to TV itself! 
     // margin-bottom: 100px;
-    
 
     // width: 607px;        // in orig vector 
     // height: 487px;
@@ -20,8 +18,16 @@ $tv-brown-button-panel: #6c6518;
 
     // width: calc-nav-header-width(607);  // doesn't seem to work - need to compile?
     // height: calc-nav-header-width(487);
-    
 }
+
+
+.screen-shape-600-900 {
+    border-radius: 30px;    
+    background: $tv-brown-button-panel;
+    width: 456px;        
+    height: 365px;
+}
+
 
 @function calc-screen-size($img-width){
     $px-width: ($img-width * 0.5);

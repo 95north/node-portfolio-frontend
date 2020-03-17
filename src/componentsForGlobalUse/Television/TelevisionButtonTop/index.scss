@@ -1,0 +1,63 @@
+
+
+.top-button-600-900 {    // for TVimg.svg TV With Buttons image version!
+    // border-style: dotted;
+    // border-radius: 50px;    
+    width: 155px;        
+    height: 155px;
+    position: absolute;
+    display: block;
+    right: 46px;
+    top: 240px;
+}
+
+.top-button-400-600 {
+    border-style: dotted;
+    border-radius: 43px;    
+    width: 70px;        
+    height: 70px;
+    position: absolute;
+    left: 130px;
+    top: 69px;
+}
+
+
+
+.one {
+    transform: rotate(60deg);
+}
+.two {
+    transform: rotate(120deg);
+}
+.three {
+    transform: rotate(180deg);
+}
+.four{
+    transform: rotate(240deg);
+}
+.five {
+    transform: rotate(300deg);
+}
+.six {
+    transform: rotate(0deg);
+    // transition: transform .2s linear;
+}
+
+
+
+
+
+
+
+
+
+.top-button-600-900-DEADCODE {    // for TVimg.svg TV With Buttons image version!
+    border-style: dotted;
+    border-radius: 50px;    
+    width: 100px;        
+    height: 100px;
+    position: absolute;
+    // left: 195px;
+    right: 70px;
+    top: 265px;
+}
