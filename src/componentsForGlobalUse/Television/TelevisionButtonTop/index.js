@@ -70,6 +70,7 @@ class TelevisionButtonTop extends Component {
                     <div className={this.state.cssClass} >
                         <img 
                             src="TvButton1.svg" 
+                            // className="clip600"
                             alt="Round TV Button"
                             height="155"
                             width="155" 

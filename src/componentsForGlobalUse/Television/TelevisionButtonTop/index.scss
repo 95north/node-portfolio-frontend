@@ -22,25 +22,45 @@
 }
 
 
+.clip600 {   // doesn't work, makes image more off center
+    clip-path: inset(0px 0px 0px 0px);
+    // position: absolute;
+    border-style: dotted;
+    border-radius: 50px;  
+
+}
 
 .one {
     transform: rotate(60deg);
+    position: relative;
+    top: -2px;
+    right: 2px;
 }
 .two {
     transform: rotate(120deg);
+    position: relative;
+    top: -4px;
+    right: 2px;
 }
 .three {
     transform: rotate(180deg);
+    position: relative;
+    top: -4px;
+    right: 0px;
 }
 .four{
     transform: rotate(240deg);
+    position: relative;
+    top: -4px;
+    right: -2px;
 }
 .five {
     transform: rotate(300deg);
+    position: relative;
+    top: -2px;
+    right: -2px;
 }
 .six {
-    transform: rotate(0deg);
-    // transition: transform .2s linear;
 }
 
 
