@@ -9,7 +9,15 @@
     display: block;
     right: 46px;
     top: 240px;
+    cursor: pointer;
 }
+
+.top-button-600-900:hover{
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
 
 .top-button-400-600 {
     border-style: dotted;
