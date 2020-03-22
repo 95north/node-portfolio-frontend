@@ -6,19 +6,25 @@
 }
 
 .tv-positioning-600-900 {    // formerly .border
-    position: absolute;
-    right: 4px;
-    top: 76px;
+    // position: absolute;
+    // right: 4px;
+    // top: 76px;
     display: block;
+    position: relative;
+    right: 1vw;
+    top: 10vw;
+
 }
 
 .screen-placement-400-600 {
     position: absolute;
-    // position: relative;
-    // right: 131px;   
     left: 130px;
     top: 69px;
+    // position: relative;
+    // right: 131px;   
     // bottom: 137px;
+
+
 }
 
 .screen-placement-600-900 {

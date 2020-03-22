@@ -29,12 +29,15 @@ class NavBar extends Component {
                 <div className="nav">
                     <span onClick={this.toggleDisplayMenu}> <NavBarTvRemote></NavBarTvRemote> </span>
                     <div className={this.state.displayMenu ? "displayElement" : "hideElement"}>
-                            <div className="menu-shadow">
-                        <div className="menu">
-                                <span> <Link to='/'>Home</Link> </span>
-                                <span> <Link to='/about'>About</Link> </span>
-                                <span> <Link to='/contact'>Contact</Link> </span>
-                                <span> <Link to='/diary'>Today, I ..</Link> </span>
+                        <div className="menu-shadow">
+                            <div className="menu">
+                                <div className="menu-reveal-bar">
+
+                                    <span> <Link to='/'>Home</Link> </span>
+                                    <span> <Link to='/about'>About</Link> </span>
+                                    <span> <Link to='/contact'>Contact</Link> </span>
+                                    <span> <Link to='/diary'>Today, I ..</Link> </span>
+                                </div>
                             </div>
                         </div>
                     </div>

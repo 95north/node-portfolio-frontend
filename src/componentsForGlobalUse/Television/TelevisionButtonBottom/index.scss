@@ -3,18 +3,25 @@
     border-radius: 50px;    
     width: 155px;        
     height: 155px;
-    position: absolute;
-    right: 46px;
-    top: 356px;
+    // position: absolute;
+    // right: 46px;
+    // top: 356px;
     cursor: pointer;
+
+    position: relative;
+    left: 70vw;
+    top: -30vw;
+
+    // 1,440 by 900 pixels.   
+    // MacBook Pro 15-inch (Retina), 15.4, 2880 x 1800,
+    // 15-inch MacBook Pro's screen measures 2560 x 1600 pixels
+
 }
 
 .bottom-button-600-900:hover{
-    
         -webkit-transform: scale(1.05);
         -ms-transform: scale(1.05);
         transform: scale(1.05);
-
 }
 
 
