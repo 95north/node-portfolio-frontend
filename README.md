@@ -1,3 +1,36 @@
+
+## How to run this
+
+
+### 1. Node Back-end DB - MongoDB - In terminal, have one window open to node_express_site
+$ mongod
+
+Should get: 
+Now listening on url ------------ mongodb://localhost:27017/portfoliodb!
+Mongoose launches? 
+
+### 1. Node Back-end App - In terminal, have one window open to node_express_site
+$ node . 
+Should also run port for MySQL + KNEX on port 7555. 
+sudo kill -9 $(lsof -i :7555 -t)     (If need)
+
+
+### 1. Frontend - In terminal, have one window open to node_portfolio_frontend
+$ npm start   (opens to localhost:3000 is available)
+
+
+### Troubleshooting :  MongoDB (v. Community)- In terminal, have one window open to node_express_site
+> mongo   (to open mongo shell)
+> use portfoliodb    (make sure using correct DB.  DB is stored in  /data/db (root))
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

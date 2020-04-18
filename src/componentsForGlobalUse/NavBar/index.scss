@@ -15,7 +15,9 @@ $tv-brown-button-panel: #6c6518;
     width: 100%;
     min-height: 40px;
     padding-bottom: 20px;
-    // position: sticky;
+    position: sticky;
+
+
     // background-color: $tv-brown-frame-dark; .... works here... 
 }
 
@@ -31,8 +33,11 @@ $tv-brown-button-panel: #6c6518;
     z-index: 2;
 
     // position: fixed;  // nothing helped. 
-    max-height: 45px;
-    overflow: hidden;
+    // max-height: 45px;   // commented out March 23 to try to fix
+    overflow: hidden;    // same
+
+    // min-height: 40px;   // ADEDED MARCH 23
+
 }
 
 .nav a{
@@ -42,9 +47,11 @@ $tv-brown-button-panel: #6c6518;
     // text-shadow: 4px 4px #000000, -.5px -.5px 2px #bd8802;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
+    // font-family: 'VT323', cursive;
     font-weight: bold;
+    // font-size: 24px;
 
-    max-height: 45px;
+    // max-height: 45px;   //  commented out March 23
     overflow: hidden;
 }
 
@@ -52,50 +59,65 @@ $tv-brown-button-panel: #6c6518;
     background-color: $tv-brown-frame-light;
     padding: 5px 25px 5px 25px;
     text-shadow: 0px 0px #000000, -.5px -.5px 2px #59443e;
-    position: absolute;// does nothing
+    
+    //  commented out March 23
+    // position: absolute;// does nothing
     overflow: hidden;
+
 }
 
 .menu {         // black box that has a "shadow" on it. 
     top: 3px;
     padding-top: 0px; // was 3px, but shows part of shadow when animated
-    // margin-left: 58px;   // OLD - amt fm edge to start box behind remote
-    margin-left: -28px;
+    margin-left: 58px;   // OLD - amt fm edge to start box behind remote
+    // margin-left: -28px; // USE THIS ONE! !
     // width: 80%;
     min-height: 10px;
-    background-color: $background-color;
+    // background-color: $background-color;   //Mar23 turned on/off
     z-index: 4;
     color: $font-color;
+
     // position: absolute;
     // transition: width 0.3s ease-out;
     // max-width: 0;
-    // overflow: hidden;
+    overflow: hidden;
     // transition: width 0.3s ease-out;
+    // Above stuff was commented out on Mon March 23rd. Not sure why not working. 
+
+
     max-height: 45px;
     // clip-path: polygon(0px 0px, 0px 150px, 150px 0px);
     // clip-path: polygon(0 84%, 17% 100%, 17% 84%);
-    clip-path: polygon(0 66%, 33% 100%, 33% 66%);
+    // clip-path: polygon(0 66%, 33% 100%, 33% 66%);
 }
 
 .menu-reveal-bar{
-    // z-index: 6;
+    z-index: 6;
 
-    // margin-left: 28px;
-    // background-color: #333333; 
-    // position: absolute;
-    // width: 100%;
-    // height: 40px;
-    // opacity: 90%;
-    // transition: width 0.3s ease-in;
+    margin-left: 28px;
+    // background-color: #333333;   // For testing!! 
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    opacity: 90%;
+    transition: width 0.3s ease-in;
+
+
+    overflow: hidden;
+    // min-height: 30px;   /// ADDED MARCH 23
 }
 
 .menu-shadow {
     // clip-path: inset(0px 0px 0px 0px);
     // clip-path: polygon(0 84%, 17% 100%, 17% 84%);
-    clip-path: polygon(0 66%, 33% 100%, 33% 66%);
+    // clip-path: polygon(0 66%, 33% 100%, 33% 66%);
     // clip-path: polygon(0px 0px, 0px 150px, 150px 0px);
+
+
     margin-left: 62px;
+
     right: -50px;
+    // overflow: hidden;   // This messes up the alignment
     box-shadow:
     1px 0px 1px 1.25px $tv-yellow,    
     4px 0px 2px 5px $tv-brown-speaker,
@@ -105,6 +127,8 @@ $tv-brown-button-panel: #6c6518;
     21px 0px 0px 24.5px#f2b313;
 
 
+
+    // min-height: 30px;   /// ADDED MARCH 23
 
         // transition: width 0.3s ease-out;
     // max-width: 0;
@@ -137,7 +161,7 @@ $tv-brown-button-panel: #6c6518;
 }
 
 .displayElement {
-    display: block;  // does nothing? 
+    // display: block;  // does nothing? 
     // transition: width 0.3s ease-out;
 
     -webkit-animation: expandline 2s;  // Works!  But links act weird, can see R side of shadow.. 

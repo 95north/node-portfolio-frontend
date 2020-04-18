@@ -14,7 +14,7 @@ class Header extends Component {
         return(
             <div className="header">
                 <div className="color-fade-text">
-                    <span> V I C T O R I A </span>  <span className="spacing">  S I G L E R </span>
+                 <span className="half-spacing"> V I C T O R I A </span>  <span className="spacing">  S I G L E R </span>
                 </div>
             </div>
         )

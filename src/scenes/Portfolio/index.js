@@ -14,6 +14,9 @@ var Buffer = require('buffer/').Buffer  // note: the trailing slash is important
 
 const MONGO_URL = "http://localhost:7555"
 
+let backupProjectData;
+
+
 class Portfolio extends Component {
     state = {projects: null}
 
@@ -65,10 +68,11 @@ class Portfolio extends Component {
         })
         .then(projects => {
             console.log("projects is : ", projects);
-            this.setState({ projects: projects });
+            this.setState({ projects: this.processProjectData(projects) });
         });        
 
-    }
+    }   // ends componentDidMount
+
 
     // componentDidMount =()=> {         // gets only ONE project
     //     fetch(`${MONGO_URL}/p`, {     // even  one object returned comes back as readable stream 
@@ -87,11 +91,54 @@ class Portfolio extends Component {
     // }
 
 
+    processProjectData = (projectsArg) => {
+        let projects = backupProjectData;
+        let tvContentObjs = [];
+        let counter = 1;
+
+        if (this.state.projects["success"]){
+            projects = this.state.projects["projectsArray"]
+        } else if (projectsArg.length > 0) {
+            projects = projectsArg;
+        } else {
+            projects = this.backupProjectData;    // redundant bc initialized to it. 
+        }
+
+        projects.forEach(project => {
+
+            // if (project["image"]){
+            //     screenContentArray.push(project["image"])
+            // } else {
+            //     /// BACKUP IMAGE !
+            // }
+            
+            
+            let sideContentObj= {
+                header: null,       // title
+                anchor: null,       // URL to project demo
+                p: null,             // description
+                listHeader: null,
+                listItems: null,    // languages libraries
+                ListHeader2: null,
+                listItems2: null, 
+                // year? 
+            }
+            
+            
+            tvContentObjs.push(sideContentObj)
+        });
+        return tvContentObjs;
+    }
+
+
+    
+
 
 
 
 
     render(){
+        // map projects to : screen space,  left side of TV space stuff to pass down. 
 
         return(
             <div className="portfolio">
@@ -105,6 +152,53 @@ class Portfolio extends Component {
             </div>
         )
     }
+
+
+
+    backupProjectData = [
+          {
+            "languages": [
+              "React",
+              "JavaScript",
+              "HTML",
+              "CSS",
+              "Ruby",
+              "Ruby on Rails"
+            ],
+            "libraries": [
+              
+            ],
+            "_id": "5e78208b4e66d48520780b0f",
+            "name": "DIY Or Don't",
+            "description": "Research, read, & leave reviews of home improvement projects, add projects to your list, manage your toolbox and shopping list, have your shopping list texted to you.",
+            "link": "http://diy-or-dont-frontend.herokuapp.com/login",
+            "year": 2019,
+            "image": "TvStaticAnimated.gif",
+            "updated": "2020-03-23T02:35:55.215Z",
+            "__v": 0
+          },
+          {
+            "languages": [
+              "React",
+              "JavaScript",
+              "HTML",
+              "CSS",
+              "Ruby",
+              "Ruby on Rails"
+            ],
+            "libraries": [
+              "Mapbox"
+            ],
+            "_id": "5e78208b4e66d48520780b10",
+            "name": "Bodega Review App",
+            "description": "Locate the best bodega by map as rated for its coffee, cat, etc.",
+            "year": 2019,
+            "image": "TvStaticAnimated.gif",
+            "updated": "2020-03-23T02:35:55.227Z",
+            "__v": 0
+          }
+        ]
+      
 
 } 
 

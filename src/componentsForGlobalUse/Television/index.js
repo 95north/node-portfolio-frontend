@@ -60,6 +60,7 @@ class Television extends Component {
                         alt="image of television, used as frame"
                         height="600"
                         width="900" 
+                        // className="tv-clip-600-900"   Does nothing. 
                     >
                     </img>
                     <div className="screen-placement-600-900">

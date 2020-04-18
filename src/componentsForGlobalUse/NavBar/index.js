@@ -17,6 +17,7 @@ class NavBar extends Component {
     }
     
     toggleDisplayMenu = () => {
+        console.log("Remote Clicked!")
         this.setState({displayMenu: !this.state.displayMenu});
     }
 
@@ -28,19 +29,23 @@ class NavBar extends Component {
             <div className="navbar-width">
                 <div className="nav">
                     <span onClick={this.toggleDisplayMenu}> <NavBarTvRemote></NavBarTvRemote> </span>
-                    <div className={this.state.displayMenu ? "displayElement" : "hideElement"}>
+                    {/* <div className={this.state.displayMenu ? "displayElement" : "hideElement"}> */}
+                    <div className="displayElement">
+
                         <div className="menu-shadow">
                             <div className="menu">
                                 <div className="menu-reveal-bar">
 
                                     <span> <Link to='/'>Home</Link> </span>
                                     <span> <Link to='/about'>About</Link> </span>
+                                    <span> <Link to='/projects'>Portfolio</Link> </span>
+                                    <span> <Link to='/meta'>Meta</Link> </span>
                                     <span> <Link to='/contact'>Contact</Link> </span>
                                     <span> <Link to='/diary'>Today, I ..</Link> </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         )
