@@ -24,8 +24,37 @@ $ npm start   (opens to localhost:3000 is available)
 > use portfoliodb    (make sure using correct DB.  DB is stored in  /data/db (root))
 
 
+## TO DO 
+    Take screenshots of my different projects to use
+    Send images from backend through API call. 
+    Refactor TV Screen to flip through multiple images. 
+    TvScreen - refactor images to display multidimenstional array props. 
+
+    TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
+
+    Style TV Text
+    Can still scroll to the right and see nonsense. 
+    Make TV Sticky so leftside text scrolls, but TV doesnt? 
+    Refactor to flexbox view
+    
+    rename changeChannel() function 
+    rename "TvLeftSideblahh" bc when refactor to responsive design it will be on bottom.. 
+
+    Home Scene  -  value proposition.   Use tv?  What on it?  I kind of like animated gif, gives life!   NYC gif?   Oooh subway monitors photo? d
+    Responsive Design |  Varied + Comparative Front- + Back-End Framework Development | Responsive Design | Clean Code 
+    Fun and playful UI 
+## DONE 
+    take Portfolio view API call, pass down as props, slap it on TV / side text, check channel #s consistent everywhere.   ~2 hr. 
+    Fix TV Text list items to loop through each.  5 min. 
 
 
+## STYLE GUIDE 
+Function words :    
+    generate (HTML and no data is processed)
+    trigger (event-driven actions)
+    assign (CSS classes)
+    process (data)
+    toggle (a boolean)
 
 
 

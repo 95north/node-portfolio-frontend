@@ -10,17 +10,17 @@ class TelevisionScreen extends Component {
     // 261px to the right, up 137px to start of tv frame in vector
 
 
-    componentDidMount = () => {
 
         // tvScreenContents=this.props.screenContents
         // channelNumber=this.props.channelNumber
-    }
+
 
 
     returnScreenImage = () =>{
         // let pic = this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif";
         let pic
 
+        // NEED TO REFACTOR THIS TO USE IMAGE FROM MULTIDIMENSION ARRAY PROP. 
         switch (this.props.channelNumber){
             case 0 :
                 pic = "TvStaticAnimated.gif"
@@ -48,11 +48,7 @@ class TelevisionScreen extends Component {
             // <div className="screen-shape-600-900">
                     <img 
                         className = "screen-shape-600-900"
-                        // src="tv.jpg"
-                        // src={this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif" }
                         src={this.returnScreenImage()}
-
-
                         alt="Photo of an old television"
                         // height="600"
                         // width="900" 

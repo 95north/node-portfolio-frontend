@@ -47,6 +47,7 @@ class Television extends Component {
                     </div>
                 <TelevisionLeftSideTextArea
                     tvExplanatoryAsideText= {this.state.projects}
+                    channel={this.state.channel}
                 >
                 </TelevisionLeftSideTextArea>
             </div>
@@ -81,7 +82,11 @@ class Television extends Component {
                         size="600x900" 
                     />
                 </div>
-                <TelevisionLeftSideTextArea/>
+                <TelevisionLeftSideTextArea
+                    tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
+                    channelNumber={this.state.channel}
+                >
+                </TelevisionLeftSideTextArea>
             </div>
         )
     } 
