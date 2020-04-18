@@ -9,12 +9,50 @@ class TelevisionScreen extends Component {
     // TV Screen in orig 1200x800 tv is 487px high x 607px wide. 
     // 261px to the right, up 137px to start of tv frame in vector
 
+
+    componentDidMount = () => {
+
+        // tvScreenContents=this.props.screenContents
+        // channelNumber=this.props.channelNumber
+    }
+
+
+    returnScreenImage = () =>{
+        // let pic = this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif";
+        let pic
+
+        switch (this.props.channelNumber){
+            case 0 :
+                pic = "TvStaticAnimated.gif"
+                break;
+            case 1 : 
+                pic = "tv.jpg"
+                break;
+            case 2 : 
+                pic = "TvStaticBW.jpg"
+                break;
+            default: 
+                pic = "TvStaticAnimated.gif"
+        }
+        
+        
+        console.log( "pic RvSCreen is : ", pic)
+        return pic;
+    }
+
+
+
     screen600x900 = ()  => {
+        console.log("Tv SCreen this.props.channelNumber", this.props.channelNumber)
         return(
             // <div className="screen-shape-600-900">
                     <img 
                         className = "screen-shape-600-900"
-                        src="tv.jpg" 
+                        // src="tv.jpg"
+                        // src={this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif" }
+                        src={this.returnScreenImage()}
+
+
                         alt="Photo of an old television"
                         // height="600"
                         // width="900" 
@@ -33,6 +71,9 @@ class TelevisionScreen extends Component {
 
 
     render(){
+        console.log("props in TVSCreen:", this.props)
+
+
         let screen;
         switch (this.props.size){
             case "600x900":

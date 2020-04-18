@@ -18,7 +18,10 @@ let backupProjectData;
 
 
 class Portfolio extends Component {
-    state = {projects: null}
+    state = {
+        projects: null,
+        screenContents: null
+    }
 
 
 
@@ -82,7 +85,6 @@ class Portfolio extends Component {
     //     .then(resp => {
     //         console.log("resp.body instanceof ReadableStreamis : ", resp.body instanceof ReadableStream);
     //         let r = resp.json();
-    //         console.log("r is : ", r);
     //         return resp;
     //     })
     //     .then(project => {
@@ -96,7 +98,8 @@ class Portfolio extends Component {
         let tvContentObjs = [];
         let counter = 1;
 
-        if (this.state.projects["success"]){
+        // if (this.state.projects["success"]){
+        if (this.state.projects){
             projects = this.state.projects["projectsArray"]
         } else if (projectsArg.length > 0) {
             projects = projectsArg;
@@ -147,7 +150,10 @@ class Portfolio extends Component {
                     <Header></Header>
                     <NavBar></NavBar>
 
-                    <Television></Television>
+                    <Television 
+                        tvScreenContents={this.state.screenContents}
+                        tvExplanatoryAsideText= {this.state.projects}
+                    ></Television>
                 {/* </div> */}
             </div>
         )

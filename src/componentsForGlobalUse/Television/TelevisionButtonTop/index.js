@@ -16,7 +16,7 @@ class TelevisionButtonTop extends Component {
             rotationCounter: this.state.rotationCounter += 1
         });
         console.log("rotation counter: ", this.state.rotationCounter)
-        
+        this.props.changeChannel();
         this.assignCssClass();
     }
 

@@ -8,10 +8,10 @@ import TelevisionButtonTop from "./TelevisionButtonTop";
 import TelevisionButtonBottom from "./TelevisionButtonBottom";
 
 class Television extends Component {
-    state= {channel: null}
+    state= {channel: 0}
 
     changeChannel = () => {
-        this.setState({channel:null})
+        this.setState({channel: this.state.channel += 1})
     }
 
 
@@ -34,6 +34,7 @@ class Television extends Component {
                         <TelevisionScreen 
                             size="400x600"
                             channel={this.state.channel}
+                            tvScreenContents={this.state.screenContents}
                         />  
                     </div>
                     <TelevisionButtonTop 
@@ -43,8 +44,11 @@ class Television extends Component {
                     <TelevisionButtonBottom 
                         size="400x600" 
                     />
-                </div>
-                <TelevisionLeftSideTextArea/>
+                    </div>
+                <TelevisionLeftSideTextArea
+                    tvExplanatoryAsideText= {this.state.projects}
+                >
+                </TelevisionLeftSideTextArea>
             </div>
         )
     }
@@ -66,7 +70,7 @@ class Television extends Component {
                     <div className="screen-placement-600-900">
                         <TelevisionScreen 
                             size="600x900"
-                            channel={this.state.channel}
+                            channelNumber={this.state.channel}
                         />  
                     </div>
                     <TelevisionButtonTop 
