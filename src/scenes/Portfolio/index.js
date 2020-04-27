@@ -14,7 +14,7 @@ var Buffer = require('buffer/').Buffer  // note: the trailing slash is important
 
 const MONGO_URL = "http://localhost:7555"
 
-// let backupProjectData;
+// let backupProjectData;   --- MOVE THIS TO A DIFFERENT FILE & IMPORT 
 let backupProjectData = [   // hideous to have here but getting undefined on projects.lenght in processProjectData()
     {
         "languages": [
@@ -82,9 +82,19 @@ let backupProjectData = [   // hideous to have here but getting undefined on pro
 
 
 
+
+
+
+
+
+
+
+
+
+
 class Portfolio extends Component {
     state = {
-        projectDataUploadRaw: "FLORT",
+        projectDataUploadRaw: "Meaningless initial value",
         projects: null,
         screenContents: null
     }
@@ -137,7 +147,7 @@ class Portfolio extends Component {
         })
         .then(projects => {
             console.log("Portfolio Scene --- projects is : ", projects); // works. 
-            this.setState({ projectDataUploadRaw: projects.projectsArray });
+            this.setState({ projectDataUploadRaw: projects });
             // this.setState({ projects: this.processProjectData(projects) });
         });        
 
@@ -162,23 +172,26 @@ class Portfolio extends Component {
 
     processProjectData = (projectsArg) => {
         // let projects = this.state.projects; //  ? this.state.projects : backupProjectData;    // CHANGED FROM THIS TO TRY FIXING props (can't be passed down from state)
-        let projects = this.state.projectDataUploadRaw; //  ? this.state.projects : backupProjectData;
+        let projects = this.state.projectDataUploadRaw.projectsArray; //  ? this.state.projects : backupProjectData;
 
 
         let tvContentObjs = [];
-        let channelNumber;
-        let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 1); 
-        
 
-        if (this.props.channelNumber < numberOfChannels ){
-            channelNumber = this.props.channelNumber;
-        } else {
-            channelNumber = this.props.channelNumber % (numberOfChannels -1);
-        }
+
+        // let channelNumber;
+        // let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 0); 
+
+        // if (this.props.channelNumber < numberOfChannels ){
+        //     console.log("Works fine ~~~~~ ")
+        //     channelNumber = this.props.channelNumber;  // the array INDEX #. 
+        // } else {
+        //     channelNumber = (this.props.channelNumber % (numberOfChannels) )-1;   //  3 % 2 =1   & 4 % 2 =0 ......
+        //     console.log("in the else stmt in Portfolio scene Channel Numbers, props-channelNumber is : ", this.props.channelNumber)
+        // }
     
 
-        if (projects !== "FLORT") {                         // projects coming up null
-            console.log("Projects in Portfolio Scene is: ", projects);
+        if (this.state.projectDataUploadRaw !== "Meaningless initial value") {                         // projects coming up null
+            // console.log("Projects in Portfolio Scene is: ", projects);  GOOD 
             projects.forEach(project => {
                 // if (project["image"]){
                 //     screenContentArray.push(project["image"])
@@ -228,7 +241,24 @@ class Portfolio extends Component {
     }
 
 
-    
+
+
+    // generateChannelNumber = () => {
+    //     let projects = this.state.projectDataUploadRaw;
+    //     let channelNumber;
+    //     let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 0); 
+
+    //     console.log("Portfolio  ", this.props.channelNumber)
+
+    //     if (this.props.channelNumber < numberOfChannels ){
+    //         console.log("Works fine ~~~~~ ")
+    //         channelNumber = this.props.channelNumber;  // the array INDEX #. 
+    //     } else {
+    //         channelNumber = (this.props.channelNumber % (numberOfChannels) )-1;   //  3 % 2 =1   & 4 % 2 =0 ......
+    //         console.log("in the else stmt in Portfolio scene Channel Numbers, props-channelNumber is : ", this.props.channelNumber)
+    //     }
+    //     return channelNumber;
+    // }
 
 
 
@@ -237,6 +267,17 @@ class Portfolio extends Component {
     render(){
         // map projects to : screen space,  left side of TV space stuff to pass down. 
         // can't set state in render or trigger endless re-render. 
+        console.log("this.state.projectDataUploadRaw ", this.state.projectDataUploadRaw )
+
+        // let projects = this.state.projectDataUploadRaw === "Meaningless initial value" ? 0 : this.state.projectDataUploadRaw["projectsArray"];
+        let projects = this.state.projectDataUploadRaw//  === "Meaningless initial value" ? 0 : this.state.projectDataUploadRaw["projectsArray"];
+
+        // let channelNumber = this.generateChannelNumber();
+        // console.log("In Portfolio scene, Channel no is; ", channelNumber)   // NaN
+
+        let numberOfChannels = (  (projects === "Meaningless initial value" ? false : projects["projectsArray"].length)     ? projects["projectsArray"].length : 0); 
+        console.log("In Portfolio scene, numberOfChannels  is; ", numberOfChannels)   // NaN
+
 
 
         let processedProjectsData = this.processProjectData(this.state.projectDataUploadRaw)
@@ -252,6 +293,9 @@ class Portfolio extends Component {
 
                     <Television 
                         tvScreenContents={this.state.screenContents}   // CURRENTLY JUST USES DEFAULT IMAGES!!!!!  NULL IS PASSED DOWN! 
+                        // channelNumber ={channelNumber}
+                        numberOfChannels = {numberOfChannels}
+                        // ^^^ Need to pass down channel number separately bc not from state? 
                         tvExplanatoryAsideText= {processedProjectsData}
                         // tvExplanatoryAsideText= {this.state.projects}        // fixing so completed API call triggers re-render
 

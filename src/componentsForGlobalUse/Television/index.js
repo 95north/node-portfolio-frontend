@@ -10,12 +10,44 @@ import TelevisionButtonBottom from "./TelevisionButtonBottom";
 class Television extends Component {
     state= {channel: 0}
 
-    changeChannel = () => {
-        this.setState({channel: this.state.channel += 1})
+    changeChannel = (buttonRotationsCount) => {
+        // this.setState({channel: this.state.channel += 1})  // OLD
+        
+        // let nextChannel = this.generateNextChannelNumber(); 
+        // this.setState({channel: nextChannel + 1})  
+
+        this.setState({channel: this.generateNextChannelNumber(buttonRotationsCount) })  
+
+
+
+
+
+
+
+    }
+
+    generateNextChannelNumber = (buttonRotationsCount) => {
+        let numberOfChannels = this.props.numberOfChannels;
+         console.log("numberOfChannels in Television is : ", numberOfChannels)
+        let channelNumber = this.state.channel;
+
+        // console.log("Portfolio  ", this.props.channelNumber)
+
+        if (channelNumber + 1 < numberOfChannels ){
+            console.log("Works fine ~~~~~ ?  ", this.state.channel += 1)
+            channelNumber+= 1;  // the array INDEX #. 
+        } else {
+            // need to use ROTATION COUNTER, not channelNumber's modulus. 
+            channelNumber = (buttonRotationsCount % (numberOfChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
+            console.log("in the else stmt in Portfolio scene Channel Numbers, POST CALCULATION !!!  props-channelNumber is : ", channelNumber)
+        }
+        return channelNumber;
     }
 
 
-    tv400x600 = () => {
+
+    tv400x600 = () => {                     //  SMALL SCREEN, NOT USING ATM
+        console.log(" ___ ")
         return(
             <div>
                 <div className="tv-positioning-400-600">
@@ -47,7 +79,8 @@ class Television extends Component {
                     </div>
                 <TelevisionLeftSideTextArea
                     tvExplanatoryAsideText= {this.state.projects}
-                    channel={this.state.channel}
+                    channeNumber = {this.props.channelNumber}
+                    // channel={this.state.channel}   // OLD WAY USING STATE
                 >
                 </TelevisionLeftSideTextArea>
             </div>
@@ -56,6 +89,7 @@ class Television extends Component {
 
     
     tv600x900 = () => {
+        console.log(" 600 x900  this.props.channelNumber ", this.props.channelNumber)
         return(
             <div>
                 <div className="tv-positioning-600-900">
@@ -71,7 +105,9 @@ class Television extends Component {
                     <div className="screen-placement-600-900">
                         <TelevisionScreen 
                             size="600x900"
-                            channelNumber={this.state.channel}
+                            channelNumber={this.state.channel}   // OLD WAY USING STATE 
+                            // channelNumber = {this.props.channelNumber}
+
                         />  
                     </div>
                     <TelevisionButtonTop 
@@ -84,7 +120,8 @@ class Television extends Component {
                 </div>
                 <TelevisionLeftSideTextArea
                     tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
-                    channelNumber={this.state.channel}
+                    channelNumber={this.state.channel}     // OLD WAY USING STATE
+                    // channelNumber = {this.props.channelNumber}
                 >
                 </TelevisionLeftSideTextArea>
             </div>

@@ -27,7 +27,6 @@ $ npm start   (opens to localhost:3000 is available)
 ## TO DO 
     
     Send images from backend through API call. 
-    Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
     TvScreen - refactor images to display multidimenstional array props. 
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
 
@@ -50,11 +49,12 @@ $ npm start   (opens to localhost:3000 is available)
     take Portfolio view API call, pass down as props, slap it on TV / side text, check channel #s consistent everywhere.   ~2 hr. 
     Fix TV Text list items to loop through each.  5 min. 
     Take screenshots of my different projects to use
+    Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
 
 
 ## STYLE GUIDE 
 Function words :    
-    generate (HTML and no data is processed)
+    generate (returns HTML (among other things??),  and no data is processed).       rename generateChannelNumber ? 
     trigger (event-driven actions)
     assign (CSS classes)
     process (data)
