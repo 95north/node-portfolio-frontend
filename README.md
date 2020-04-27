@@ -7,7 +7,7 @@ $ mongod
 
 Should get: 
 Now listening on url ------------ mongodb://localhost:27017/portfoliodb!
-Mongoose launches? 
+Mongoose launches from node backend?  NO - must launch port via terminal 
 
 ### 1. Node Back-end App - In terminal, have one window open to node_express_site
 $ node . 
@@ -25,10 +25,11 @@ $ npm start   (opens to localhost:3000 is available)
 
 
 ## TO DO 
-    Take screenshots of my different projects to use
+    
     Send images from backend through API call. 
-    Refactor TV Screen to flip through multiple images. 
+    Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
     TvScreen - refactor images to display multidimenstional array props. 
+    Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
 
     TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
 
@@ -43,9 +44,12 @@ $ npm start   (opens to localhost:3000 is available)
     Home Scene  -  value proposition.   Use tv?  What on it?  I kind of like animated gif, gives life!   NYC gif?   Oooh subway monitors photo? d
     Responsive Design |  Varied + Comparative Front- + Back-End Framework Development | Responsive Design | Clean Code 
     Fun and playful UI 
+
+    Add magnifier to TV screen? 
 ## DONE 
     take Portfolio view API call, pass down as props, slap it on TV / side text, check channel #s consistent everywhere.   ~2 hr. 
     Fix TV Text list items to loop through each.  5 min. 
+    Take screenshots of my different projects to use
 
 
 ## STYLE GUIDE 

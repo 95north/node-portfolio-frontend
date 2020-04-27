@@ -23,9 +23,9 @@ class TelevisionLeftSideTextArea extends Component {
                     <h2> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["header"] : null} </h2>  <br/>
                     <a> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["anchor"] : null } </a>  <br/>
                     <p> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["p"] : null} </p>  <br/>
-                    <p> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listHeader"]: null} </p>  <br/>
+                    <p> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listHeader"]: null} </p>  
                     <ul> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listItems"].map(bulletpointText => (<li>{bulletpointText}</li>)) : null} </ul>  <br/>
-                    <p> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listHeader2"] : null} </p>  <br/>
+                    <p> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listHeader2"] : null} </p> 
                     <ul> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["listItems2"].map(bulletpointText => (<li>{bulletpointText}</li>)): null} </ul>  <br/>
 
                 </div>

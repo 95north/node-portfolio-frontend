@@ -28,8 +28,8 @@ let backupProjectData = [   // hideous to have here but getting undefined on pro
         "libraries": [
           "Mongoose"
         ],
-        "name": "Portfolio",
-        "description": "My personal website",
+        "name": "Portfolio - this is backup data! ",
+        "description": "My personal website -- this is backup data! ",
         "link": "None yet",
         "year": 2019,
         "image": "TvStaticAnimated.gif",
@@ -159,64 +159,67 @@ class Portfolio extends Component {
 
 
     processProjectData = (projectsArg) => {
-        let projects = this.state.projects ? this.state.projects : backupProjectData;
+        let projects = this.state.projects; //  ? this.state.projects : backupProjectData;
         let tvContentObjs = [];
         let channelNumber;
+        let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 1) 
         
-        switch(this.props.channelNumber) {          // REFACTOR THIS! 
-            case 0:
-                channelNumber = 0
-                break;
-            case 1:
-                channelNumber = 1
-                break;
-            case 2:
-                channelNumber = 2
-                break;
-            default:
-
-                channelNumber = this.props.channelNumber % (projects.length ? projects.length : 0)
-        }
-
-        // if (this.state.projects["success"]){
-        if (this.state.projects){
-            projects = this.state.projects // ["projectsArray"]
-        } else if (projectsArg.length > 0) {
-            projects = projectsArg;
+        if (this.props.channelNumber < numberOfChannels ){
+            channelNumber = this.props.channelNumber;
         } else {
-            projects = this.backupProjectData;    // redundant bc initialized to it. 
+            channelNumber = this.props.channelNumber % (numberOfChannels -1)
         }
+        
 
-        projects.forEach(project => {
-            // if (project["image"]){
-            //     screenContentArray.push(project["image"])
-            // } else {
-            //     /// BACKUP IMAGE !
-            // }
-            
-            
-            let sideContentObj= {
-                header: null,       // title
-                anchor: null,       // URL to project demo
-                p: null,             // description
-                listHeader: null,
-                listItems: null,    // languages libraries
-                ListHeader2: null,
-                listItems2: null, 
-                // year? 
-            }
 
-            sideContentObj.header= project.name;      
-            sideContentObj.anchor= project.link;       
-            sideContentObj.p= project.description;             
-            sideContentObj.listHeader= "Languages";
-            sideContentObj.listItems= project.languages;    
-            sideContentObj.listHeader2= "Libraries";
-            sideContentObj.listItems2= project.libraries; 
-            
-            tvContentObjs.push(sideContentObj)
-        });
-        return tvContentObjs;
+        // if (this.state.projects["success"]){   // NOPE, fails if loads before API call returned. 
+
+        // if (this.state.projects){
+        //     projects = this.state.projects // ["projectsArray"]
+        // } else if (projectsArg.length > 0) {
+        //     projects = projectsArg;
+
+        // if (projectsArg.length > 0) {
+        //     projects = projectsArg;
+        // } else if (this.state.projects){
+        //     projects = this.state.projects // ["projectsArray"]
+        // } else {
+        //     projects = null;  // keeos hitting this... 
+            // projects = this.backupProjectData;    // redundant bc initialized to it. 
+        // }
+
+        if (projects) {                         // projects coming up null
+            projects.forEach(project => {
+                // if (project["image"]){
+                //     screenContentArray.push(project["image"])
+                // } else {
+                //     /// BACKUP IMAGE !
+                // }
+                
+                
+                let sideContentObj= {
+                    header: null,       // title
+                    anchor: null,       // URL to project demo
+                    p: null,             // description
+                    listHeader: null,
+                    listItems: null,    // languages libraries
+                    ListHeader2: null,
+                    listItems2: null, 
+                    // year? 
+                }
+
+                sideContentObj.header= project.name;      
+                sideContentObj.anchor= project.link;       
+                sideContentObj.p= project.description;             
+                sideContentObj.listHeader= "Languages";
+                sideContentObj.listItems= project.languages;    
+                sideContentObj.listHeader2= "Libraries";
+                sideContentObj.listItems2= project.libraries; 
+                
+                tvContentObjs.push(sideContentObj)
+            });
+            return tvContentObjs;
+        }
     }
 
 
@@ -260,8 +263,8 @@ class Portfolio extends Component {
             "libraries": [
               "Mongoose"
             ],
-            "name": "Portfolio",
-            "description": "My personal website",
+            "name": "Portfolio - this is the backupProjectData",
+            "description": "My personal website - this is the backupProjectDat !!!!  ",
             "link": "None yet",
             "year": 2019,
             "image": "TvStaticAnimated.gif",
