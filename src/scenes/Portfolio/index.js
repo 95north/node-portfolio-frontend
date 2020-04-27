@@ -84,6 +84,7 @@ let backupProjectData = [   // hideous to have here but getting undefined on pro
 
 class Portfolio extends Component {
     state = {
+        projectDataUploadRaw: "FLORT",
         projects: null,
         screenContents: null
     }
@@ -135,8 +136,9 @@ class Portfolio extends Component {
             return resp.json();
         })
         .then(projects => {
-            console.log("Portfolio Scene --- projects is : ", projects);
-            this.setState({ projects: this.processProjectData(projects) });
+            console.log("Portfolio Scene --- projects is : ", projects); // works. 
+            this.setState({ projectDataUploadRaw: projects.projectsArray });
+            // this.setState({ projects: this.processProjectData(projects) });
         });        
 
     }   // ends componentDidMount
@@ -159,36 +161,24 @@ class Portfolio extends Component {
 
 
     processProjectData = (projectsArg) => {
-        let projects = this.state.projects; //  ? this.state.projects : backupProjectData;
+        // let projects = this.state.projects; //  ? this.state.projects : backupProjectData;    // CHANGED FROM THIS TO TRY FIXING props (can't be passed down from state)
+        let projects = this.state.projectDataUploadRaw; //  ? this.state.projects : backupProjectData;
+
+
         let tvContentObjs = [];
         let channelNumber;
-        let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 1) 
+        let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 1); 
         
+
         if (this.props.channelNumber < numberOfChannels ){
             channelNumber = this.props.channelNumber;
         } else {
-            channelNumber = this.props.channelNumber % (numberOfChannels -1)
+            channelNumber = this.props.channelNumber % (numberOfChannels -1);
         }
-        
+    
 
-
-        // if (this.state.projects["success"]){   // NOPE, fails if loads before API call returned. 
-
-        // if (this.state.projects){
-        //     projects = this.state.projects // ["projectsArray"]
-        // } else if (projectsArg.length > 0) {
-        //     projects = projectsArg;
-
-        // if (projectsArg.length > 0) {
-        //     projects = projectsArg;
-        // } else if (this.state.projects){
-        //     projects = this.state.projects // ["projectsArray"]
-        // } else {
-        //     projects = null;  // keeos hitting this... 
-            // projects = this.backupProjectData;    // redundant bc initialized to it. 
-        // }
-
-        if (projects) {                         // projects coming up null
+        if (projects !== "FLORT") {                         // projects coming up null
+            console.log("Projects in Portfolio Scene is: ", projects);
             projects.forEach(project => {
                 // if (project["image"]){
                 //     screenContentArray.push(project["image"])
@@ -219,6 +209,21 @@ class Portfolio extends Component {
                 tvContentObjs.push(sideContentObj)
             });
             return tvContentObjs;
+        } else {
+            console.log("I hit the ELSE in Portfolio scene processProjectData")
+            let backupTvContentObjs = [
+                {
+                    header: "I failed",       // title
+                    anchor: "failure",       // URL to project demo
+                    p: "bad API",             // description
+                    listHeader: "API in :",
+                    listItems: ["Portfolio scene"],    // languages libraries
+                    ListHeader2: "But :",
+                    listItems2: ["why?"], 
+                }
+            ]
+            return backupTvContentObjs
+
         }
     }
 
@@ -231,8 +236,33 @@ class Portfolio extends Component {
 
     render(){
         // map projects to : screen space,  left side of TV space stuff to pass down. 
+        // can't set state in render or trigger endless re-render. 
+
+
+        let processedProjectsData = this.processProjectData(this.state.projectDataUploadRaw)
+
+
 
         return(
+            <div className="portfolio">
+                {/* <p>Portfolio Scene</p> */}
+                {/* <div className="portfolio"> */}
+                    <Header></Header>
+                    <NavBar></NavBar>
+
+                    <Television 
+                        tvScreenContents={this.state.screenContents}   // CURRENTLY JUST USES DEFAULT IMAGES!!!!!  NULL IS PASSED DOWN! 
+                        tvExplanatoryAsideText= {processedProjectsData}
+                        // tvExplanatoryAsideText= {this.state.projects}        // fixing so completed API call triggers re-render
+
+                    ></Television>
+                {/* </div> */}
+            </div>
+        )
+
+
+
+        return(                                     // passes down state as props. 
             <div className="portfolio">
                 {/* <p>Portfolio Scene</p> */}
                 {/* <div className="portfolio"> */}
