@@ -49,7 +49,7 @@ let backupProjectData = [   // hideous to have here but getting undefined on pro
           "fake entry"
         ],
         "_id": "5e78208b4e66d48520780b0f",
-        "name": "DIY Or Don't",
+        "name": "DIY Or Don't - Project at array index 1",
         "description": "Research, read, & leave reviews of home improvement projects, add projects to your list, manage your toolbox and shopping list, have your shopping list texted to you.",
         "link": "http://diy-or-dont-frontend.herokuapp.com/login",
         "year": 2019,
@@ -173,25 +173,13 @@ class Portfolio extends Component {
     processProjectData = (projectsArg) => {
         // let projects = this.state.projects; //  ? this.state.projects : backupProjectData;    // CHANGED FROM THIS TO TRY FIXING props (can't be passed down from state)
         let projects = this.state.projectDataUploadRaw.projectsArray; //  ? this.state.projects : backupProjectData;
-
-
         let tvContentObjs = [];
+        let tvScreenContentImages = [];
 
-
-        // let channelNumber;
-        // let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 0); 
-
-        // if (this.props.channelNumber < numberOfChannels ){
-        //     console.log("Works fine ~~~~~ ")
-        //     channelNumber = this.props.channelNumber;  // the array INDEX #. 
-        // } else {
-        //     channelNumber = (this.props.channelNumber % (numberOfChannels) )-1;   //  3 % 2 =1   & 4 % 2 =0 ......
-        //     console.log("in the else stmt in Portfolio scene Channel Numbers, props-channelNumber is : ", this.props.channelNumber)
-        // }
     
 
         if (this.state.projectDataUploadRaw !== "Meaningless initial value") {                         // projects coming up null
-            // console.log("Projects in Portfolio Scene is: ", projects);  GOOD 
+            console.log("Projects in Portfolio Scene is: ", projects);  //GOOD 
             projects.forEach(project => {
                 // if (project["image"]){
                 //     screenContentArray.push(project["image"])
@@ -220,8 +208,9 @@ class Portfolio extends Component {
                 sideContentObj.listItems2= project.libraries; 
                 
                 tvContentObjs.push(sideContentObj)
+                tvScreenContentImages.push(project.images)
             });
-            return tvContentObjs;
+            return ({"tvContentObjs" : tvContentObjs, "tvScreenContentImages" : tvScreenContentImages});
         } else {
             console.log("I hit the ELSE in Portfolio scene processProjectData")
             let backupTvContentObjs = [
@@ -235,7 +224,7 @@ class Portfolio extends Component {
                     listItems2: ["why?"], 
                 }
             ]
-            return backupTvContentObjs
+            return ({"tvContentObjs" : backupTvContentObjs, "tvScreenContentImages" : ["TvStaticAnimated.gif"]});
 
         }
     }
@@ -243,44 +232,17 @@ class Portfolio extends Component {
 
 
 
-    // generateChannelNumber = () => {
-    //     let projects = this.state.projectDataUploadRaw;
-    //     let channelNumber;
-    //     let numberOfChannels = (  (projects === null ? false : projects.length) ? projects.length : 0); 
-
-    //     console.log("Portfolio  ", this.props.channelNumber)
-
-    //     if (this.props.channelNumber < numberOfChannels ){
-    //         console.log("Works fine ~~~~~ ")
-    //         channelNumber = this.props.channelNumber;  // the array INDEX #. 
-    //     } else {
-    //         channelNumber = (this.props.channelNumber % (numberOfChannels) )-1;   //  3 % 2 =1   & 4 % 2 =0 ......
-    //         console.log("in the else stmt in Portfolio scene Channel Numbers, props-channelNumber is : ", this.props.channelNumber)
-    //     }
-    //     return channelNumber;
-    // }
-
-
-
 
 
     render(){
         // map projects to : screen space,  left side of TV space stuff to pass down. 
-        // can't set state in render or trigger endless re-render. 
-        console.log("this.state.projectDataUploadRaw ", this.state.projectDataUploadRaw )
 
-        // let projects = this.state.projectDataUploadRaw === "Meaningless initial value" ? 0 : this.state.projectDataUploadRaw["projectsArray"];
-        let projects = this.state.projectDataUploadRaw//  === "Meaningless initial value" ? 0 : this.state.projectDataUploadRaw["projectsArray"];
-
-        // let channelNumber = this.generateChannelNumber();
-        // console.log("In Portfolio scene, Channel no is; ", channelNumber)   // NaN
-
+        let projects = this.state.projectDataUploadRaw
         let numberOfChannels = (  (projects === "Meaningless initial value" ? false : projects["projectsArray"].length)     ? projects["projectsArray"].length : 0); 
         console.log("In Portfolio scene, numberOfChannels  is; ", numberOfChannels)   // NaN
-
-
-
-        let processedProjectsData = this.processProjectData(this.state.projectDataUploadRaw)
+        let splitData = this.processProjectData(this.state.projectDataUploadRaw)
+        let processedProjectsData = splitData["tvContentObjs"];
+        let tvScreenImagesArrayOfArrays = splitData["tvScreenContentImages"];
 
 
 
@@ -298,7 +260,7 @@ class Portfolio extends Component {
                         // ^^^ Need to pass down channel number separately bc not from state? 
                         tvExplanatoryAsideText= {processedProjectsData}
                         // tvExplanatoryAsideText= {this.state.projects}        // fixing so completed API call triggers re-render
-
+                        tvScreenImagesArrayOfArrays = {tvScreenImagesArrayOfArrays}
                     ></Television>
                 {/* </div> */}
             </div>

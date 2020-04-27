@@ -21,6 +21,7 @@ class TelevisionButtonBottom extends Component {
         });
         console.log("rotation counter: ", this.state.rotationCounter)
         
+        this.props.rotateBottomButtonChangeChannel(this.state.rotationCounter);
         this.assignCssClass();
     }
 

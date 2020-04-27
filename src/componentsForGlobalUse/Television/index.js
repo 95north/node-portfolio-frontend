@@ -8,7 +8,10 @@ import TelevisionButtonTop from "./TelevisionButtonTop";
 import TelevisionButtonBottom from "./TelevisionButtonBottom";
 
 class Television extends Component {
-    state= {channel: 0}
+    state= {
+        channel: 0,
+        bottomButtonChannel : 0
+    }
 
     changeChannel = (buttonRotationsCount) => {
         // this.setState({channel: this.state.channel += 1})  // OLD
@@ -17,32 +20,50 @@ class Television extends Component {
         // this.setState({channel: nextChannel + 1})  
 
         this.setState({channel: this.generateNextChannelNumber(buttonRotationsCount) })  
-
-
-
-
-
-
-
     }
 
     generateNextChannelNumber = (buttonRotationsCount) => {
         let numberOfChannels = this.props.numberOfChannels;
-         console.log("numberOfChannels in Television is : ", numberOfChannels)
+        //  console.log("numberOf top uChannels in Television is : ", numberOfChannels)
         let channelNumber = this.state.channel;
 
         // console.log("Portfolio  ", this.props.channelNumber)
 
         if (channelNumber + 1 < numberOfChannels ){
-            console.log("Works fine ~~~~~ ?  ", this.state.channel += 1)
+            // console.log("Works fine ~~~~~ ?  ", this.state.channel += 1)
             channelNumber+= 1;  // the array INDEX #. 
         } else {
             // need to use ROTATION COUNTER, not channelNumber's modulus. 
             channelNumber = (buttonRotationsCount % (numberOfChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
-            console.log("in the else stmt in Portfolio scene Channel Numbers, POST CALCULATION !!!  props-channelNumber is : ", channelNumber)
         }
+        console.log("else stmt in Portfolio scene Channel Numbers, POST CALCULATION !! channelNumber is : ", channelNumber)
         return channelNumber;
     }
+
+
+    rotateBottomButtonChangeChannel = (buttonRotationsCount) => {  // image # to display for given project
+        let numberOfBottomButtonChannels =  this.props.tvScreenImagesArrayOfArrays[this.state.channel].length;        // ie. # of images for ea. project. 
+        console.log("numberOfImages in Television is : ", numberOfBottomButtonChannels)
+        let bottomButtonChannelNumber = this.state.bottomButtonChannel;
+
+        // console.log("Portfolio  ", this.props.bottomButtonChannelNumber)
+
+        if (bottomButtonChannelNumber + 1 < numberOfBottomButtonChannels ){
+           console.log("Works fine ~~~~~ ?  ", this.state.bottomButtonChannel += 1)
+           bottomButtonChannelNumber+= 1;  // the array INDEX #. 
+        } else {
+           // need to use ROTATION COUNTER, not bottomButtonChannelNumber's modulus. 
+           bottomButtonChannelNumber = (buttonRotationsCount % (numberOfBottomButtonChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
+           console.log("Portfolio scene Channel Numbers, POST CALCULATION !!! props-bottomButtonChanelNumber is : ", bottomButtonChannelNumber)
+        }
+        // return bottomButtonChannelNumber;
+        this.setState({bottomButtonChannel: bottomButtonChannelNumber})  
+    }
+
+
+
+
+
 
 
 
@@ -66,7 +87,9 @@ class Television extends Component {
                         <TelevisionScreen 
                             size="400x600"
                             channel={this.state.channel}
-                            tvScreenContents={this.state.screenContents}
+                            // tvScreenContents={this.state.screenContents}
+                            tvScreenContents={this.props.tvScreenImagesArrayOfArrays}
+
                         />  
                     </div>
                     <TelevisionButtonTop 
@@ -88,7 +111,7 @@ class Television extends Component {
     }
 
     
-    tv600x900 = () => {
+    tv600x900 = () => {                         // HARD CODED TO USE ATM 
         console.log(" 600 x900  this.props.channelNumber ", this.props.channelNumber)
         return(
             <div>
@@ -106,6 +129,8 @@ class Television extends Component {
                         <TelevisionScreen 
                             size="600x900"
                             channelNumber={this.state.channel}   // OLD WAY USING STATE 
+                            bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
+                            tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
                             // channelNumber = {this.props.channelNumber}
 
                         />  
@@ -116,9 +141,10 @@ class Television extends Component {
                     />
                     <TelevisionButtonBottom 
                         size="600x900" 
+                        rotateBottomButtonChangeChannel = {this.rotateBottomButtonChangeChannel}
                     />
                 </div>
-                <TelevisionLeftSideTextArea
+                <TelevisionLeftSideTextArea                 
                     tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
                     channelNumber={this.state.channel}     // OLD WAY USING STATE
                     // channelNumber = {this.props.channelNumber}

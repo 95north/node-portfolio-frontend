@@ -24,9 +24,12 @@ $ npm start   (opens to localhost:3000 is available)
 > use portfoliodb    (make sure using correct DB.  DB is stored in  /data/db (root))
 
 
-## TO DO 
-    
-    Send images from backend through API call. 
+## TO DO  
+    left off:   var bitmap = fs.readFileSync(pic);  --- converting Buffer to png if possible... 
+    check that fs. & binary on backend actually render expected image types.  Are imports working? Need to bundle them in terminal? 
+    Is imageBin.bin  Base64? 
+
+    DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
     TvScreen - refactor images to display multidimenstional array props. 
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
 
@@ -43,6 +46,8 @@ $ npm start   (opens to localhost:3000 is available)
     Home Scene  -  value proposition.   Use tv?  What on it?  I kind of like animated gif, gives life!   NYC gif?   Oooh subway monitors photo? d
     Responsive Design |  Varied + Comparative Front- + Back-End Framework Development | Responsive Design | Clean Code 
     Fun and playful UI 
+
+    "TelevisionAccompanyingText" component - change to
 
     Add magnifier to TV screen? 
 ## DONE 
