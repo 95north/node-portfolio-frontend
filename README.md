@@ -26,37 +26,53 @@ $ npm start   (opens to localhost:3000 is available)
 
 ## TO DO  
     
+    left off:  Tv's Css, making it responsive. 
+        .tv-positioning-600-900 {       // Mac Pro : 2880 W x 1800 H
+             // WHERE LEFT OFF WORKING ON RESPONSIVE.  ADDED THIS, CHANGED POSITION TO RELATIVE. 
+        left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
+        position: relative; 
 
 
-    Reset buttom button to 0 when top button pressed. (worked on May 4, might work? )
-
-    TvScreen - refactor images to display multidimenstional array props. 
+ 
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
+
+    ### ERRORS 
     On front end images, TvScreen - let buff = new Buffer(pic, 'binary');    gets error, 
-    ...maybe bc front-end saved images aren't in buffer format?   Or, a race condition?
+    ...maybe bc front-end saved images aren't in buffer format? NO  Or, a race condition?
+    ...maybe if in image (5) of one project and click into a project with only 3 images?? 
     Press Tv Buttons before loading done - get "header"   undefined   error
 
-    TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
-
-    Click TV buttons before loading complete get error? 
-    Style TV Text
-    Can still scroll to the right and see nonsense. 
-    Make TV Sticky so leftside text scrolls, but TV doesnt? 
-    Refactor to flexbox view
     
-    rename changeChannel() function 
-    rename "TvLeftSideblahh" bc when refactor to responsive design it will be on bottom.. 
 
-    Home Scene  -  value proposition.   Use tv?  What on it?  I kind of like animated gif, gives life!   NYC gif?   Oooh subway monitors photo? d
-    Responsive Design |  Varied + Comparative Front- + Back-End Framework Development | Responsive Design | Clean Code 
-    Fun and playful UI 
 
-    "TelevisionAccompanyingText" component - change to
+    ### PROJECTS 
+    
+    ####### VIEW RELATED 
+    Refactor to flexbox view
+    Make TV Sticky so leftside text scrolls, but TV doesnt? 
+    Can still scroll to the right and see nonsense. 
+    Fix Remote Beam Fade-In. 
 
+    Style TV Text
+    Home Scene  -  value proposition.   Use tv?  What on it?  I kind of like animated gif,      gives life!   NYC gif?   Oooh subway monitors photo? d
+        Responsive Design |  Varied + Comparative Front- + Back-End Framework Development | Responsive Design | Clean Code 
+        Fun and playful UI 
     Add magnifier to TV screen? 
     Lazy loading? 
+    Add login + form  for me to submit to "Today, I"? 
+    Add form to add new project? 
     Jest tests? 
     CI/CD? 
+    Add screen tint / filter to TV? 
+
+
+    ### CLEAN UP
+    Fix order of Yoga Sequencer Pics
+    rename changeChannel() function 
+    rename "TvLeftSideblahh" bc when refactor to responsive design it will be on bottom.. 
+    "TelevisionAccompanyingText" component - change TelevisionLeftSideArea to
+
+
 
 
 ## DONE 
@@ -66,9 +82,10 @@ $ npm start   (opens to localhost:3000 is available)
     Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
     DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
     Diy or Dont (1st project in seed data), only backup image ever displays. FIXED
+    Reset buttom button to 0 when top button pressed. (worked on May 4, might work? )
+    TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
 
-
-
+    ### NOTES FROM DONE TASKS
     left off:   var bitmap = fs.readFileSync(pic);  --- converting Buffer to png if possible... 
     Try playing in Mongo shell and investing what is saved. 
     check that fs. & binary on backend actually render expected image types.  Are imports working? Need to bundle them in terminal? 

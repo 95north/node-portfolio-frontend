@@ -1,29 +1,80 @@
 
-.tv-positioning-400-600 {    // formerly .border
-    position: absolute;
-    right: 30px;
-    display: block;
-}
-
 
 .tv-clip-600-900 {
-    clip-path: inset(30px 0px 20px 100px);  // amt to shave fm top, right, bottom, left. 
+    clip-path: inset(30px 0px 20px 100px);  // amt to shave fm top, right, bottom, left.
+    // what is original picture size?  
+}
+@media screen and (max-width: 800px) {  // breakpoint works!  It overrides default. 
+    .tv-clip-600-900 {
+        clip-path: inset(5% 0% 3.333% 11.111%);  // amt to shave fm top, right, bottom, left.
+       // changing clip path appears to do nothing. 
+        // clip-path: inset(20% 0% 3.333% 11.111%);  // tried clippig more to see if image width an issue on L side
+
+    }
 }
 
-.tv-positioning-600-900 {    // formerly .border
-    position: absolute;
-    right: 4px;
-    top: 76px;
-    display: block;
-    margin-top: 15px;
-    // clip-path: inset(30px 0px 20px 100px);  // amt to shave fm top, right, bottom, left. 
 
-    // responsive design attempt
+.tv-positioning-600-900 {    // formerly .border  it's the outer class (screen placement is inner). 
+    position: absolute;
+    display: block;
+    right: 4px;  // Sets the right margin edge for a positioned box
+    top: 76px;
+    margin-top: 15px;
+
+    // responsive design attempt -old 
     // position: relative;
     // right: 1vw;
     // top: 15vw;
-
 }
+@media screen and (max-width: 800px) {  // breakpoint works!  It overrides default. 
+    .tv-positioning-600-900 {    // formerly .border     // Mac Pro : 2880 W x 1800 H
+        // position: absolute;
+        // max-width: 45%;  //  Setting max width - messes up screen , buttons alignment. Screen stuck to far right
+
+        right: 0.1388%;  // 4px / 2880
+        top: 4.222%; // 76px /1800
+        margin-top: 0.8333%; // 15 px / 1800
+        // margin-left: -20%; // WHERE LEFT OFF WORKING ON RESPONSIVE.  ADDED THIS, CHANGED POSITION TO RELATIVE. 
+        left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
+
+        position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
+        // it's RELATIVE to the VIEWPORT
+        // float: left;   // Adding float right & removing position: absolute - seems to do nothing 
+
+        // Originally had: 
+        // position: absolute;
+        // display: block;
+    }
+}
+
+
+
+
+.screen-placement-600-900 {
+    position: absolute;  // positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+    left: 195px;
+    top: 103px;
+}
+@media screen and (max-width: 800px) {  
+    .screen-placement-600-900 {
+        display: block;
+        position: absolute;
+        // float: right;  // Adding float right & removing position: absolute - seems to do nothing 
+        left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+
+        top: 3.576;  // 103px  / 2880
+        // left: 195px;  // 195px / 2880
+        // top: 103px;  // 103px  / 2880
+    }
+  }
+
+
+
+
+
+
+
+// DEADCODE I THINK? 
 
 .screen-placement-400-600 {
     position: absolute;
@@ -32,17 +83,10 @@
     // position: relative;
     // right: 131px;   
     // bottom: 137px;
-
-
 }
 
-.screen-placement-600-900 {
+.tv-positioning-400-600 {    // formerly .border
     position: absolute;
-    left: 195px;
-    top: 103px;
+    right: 30px;
+    display: block;
 }
-
-
-
-
-

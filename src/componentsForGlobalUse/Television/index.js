@@ -21,6 +21,8 @@ class Television extends Component {
 
         this.setState({
             channel: this.generateNextChannelNumber(buttonRotationsCount),
+            bottomButtonChannel : 0    // reset to 0. 
+
             // bottomButtonChannel : 0    // Crashes TelevisionLeftSideTextArea: 
             // ... 23 |             <h2> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["header"] : null} 
         })  
@@ -140,6 +142,7 @@ class Television extends Component {
 
                             bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
                             tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
+                            // imageArray here comes from props.. 
                             // channelNumber = {this.props.channelNumber}
 
                         />  
