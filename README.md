@@ -25,23 +25,18 @@ $ npm start   (opens to localhost:3000 is available)
 
 
 ## TO DO  
-    left off:   var bitmap = fs.readFileSync(pic);  --- converting Buffer to png if possible... 
 
-    Try playing in Mongo shell and investing what is saved. 
-    check that fs. & binary on backend actually render expected image types.  Are imports working? Need to bundle them in terminal? 
-    Is imageBin.bin  Base64? 
-    Look into  
-        browserify-fs  (installed),  
-        Jimp ,  
-        GridFS ?? 
-        Blob to base64, using built-in FileReader :   https://javascript.info/blob
 
     DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
     TvScreen - refactor images to display multidimenstional array props. 
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
+    On front end images, TvScreen - let buff = new Buffer(pic, 'binary');    gets error, 
+    ...maybe bc front-end saved images aren't in buffer format?   Or, a race condition?
+
 
     TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
 
+    Click TV buttons before loading complete get error? 
     Style TV Text
     Can still scroll to the right and see nonsense. 
     Make TV Sticky so leftside text scrolls, but TV doesnt? 
@@ -57,12 +52,29 @@ $ npm start   (opens to localhost:3000 is available)
     "TelevisionAccompanyingText" component - change to
 
     Add magnifier to TV screen? 
+    Lazy loading? 
+    Jest tests? 
+    CI/CD? 
+
+
 ## DONE 
     take Portfolio view API call, pass down as props, slap it on TV / side text, check channel #s consistent everywhere.   ~2 hr. 
     Fix TV Text list items to loop through each.  5 min. 
     Take screenshots of my different projects to use
     Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
 
+
+
+
+    left off:   var bitmap = fs.readFileSync(pic);  --- converting Buffer to png if possible... 
+    Try playing in Mongo shell and investing what is saved. 
+    check that fs. & binary on backend actually render expected image types.  Are imports working? Need to bundle them in terminal? 
+    Is imageBin.bin  Base64? 
+    Look into  
+        browserify-fs  (installed),  
+        Jimp ,  
+        GridFS ??  (esp for storing files larger than 16 MB, the BSON max doc size)
+        Blob to base64, using built-in FileReader :   https://javascript.info/blob   -- WORKED! 
 
 ## STYLE GUIDE 
 Function words :    

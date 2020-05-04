@@ -21,12 +21,26 @@ $tv-brown-button-panel: #6c6518;
 }
 
 
-.screen-shape-600-900 {
+.screen-shape-600-900 {    //  for the image on the screen
     border-radius: 30px;    
     background: $tv-brown-button-panel;
-    width: 456px;        
+    width: 456px;      // max  vs  not does nothing to back-end imgs.  
+    // ...It changes front-end default image (tv fuzz) to become too small to fill screen..
     height: 365px;
+
+    // object-fit: cover;     // This + NO  img.screen-shape..   - get full size image
+    // object-fit: scale-down;      // nope, doesnt' work, img full size
+
 }
+
+img.screen-shape-600-900 {    // no longer affects subcomponents now that specified class for img
+    max-width: 456px;
+    max-height: 365px;
+    // object-fit: cover;      // nope, doesnt' work, img full size
+    // object-fit: contain;      // nope, doesnt' work, img full size
+    // object-fit: scale-down;      // nope, doesnt' work, img full size
+
+  }
 
 
 @function calc-screen-size($img-width){

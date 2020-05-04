@@ -47,8 +47,20 @@ class TelevisionScreen extends Component {
                 />
             )
         } else {
+            // https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
+            // let buff = new Buffer(data, 'base64');
+            // let text = buff.toString('ascii');
+            // let buff = new Buffer(data, 'base64');
+            // fs.writeFileSync('stack-abuse-logo-out.png', buff);
+
+                let buff = new Buffer(pic, 'binary');
+                console.log("TvScreen - buff is: ", buff)           // Uint8Array(1429265) [137, 80, ... 
+                // myArray  = your data in a UInt8Array  ( = buff )
+                var blob = new Blob([buff], {'type': 'image/png'});
+                var url = URL.createObjectURL(blob); //possibly `webkitURL` or another vendor prefix for old browsers.
 
 
+            // stuff that didn't work
 
             // let decodedBSONBinary = // something using const Binary  - MongoDB library
             // var bitmap = fs.readFileSync(file);
@@ -60,29 +72,14 @@ class TelevisionScreen extends Component {
 
             // let decodedPic = new Blob(blobParts, options);  -- DIDN'T FINISH TRYING THIS OPTION
 
-            // https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
-            // let buff = new Buffer(data, 'base64');
-            // let text = buff.toString('ascii');
-            // let buff = new Buffer(data, 'base64');
-            // fs.writeFileSync('stack-abuse-logo-out.png', buff);
 
-            let buff = new Buffer(pic, 'binary');
-            console.log("TvScreen - buff is: ", buff)           // Uint8Array(1429265) [137, 80, ... 
             // let decodedPic = fs.writeFileSync('output.png', buff);    // fs is only for server side, you can't use on frontend!!! 
             // but get:  'fs' is not defined error... 
-
 
             // https://javascript.info/blob
             // A data url has the form data:[<mediatype>][;base64],<data>. We can use such urls everywhere, on par with “regular” urls.
             // eg:   <img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
             // The browser will decode the string and show the image: 
-
-              // myArray  = your data in a UInt8Array  ( = buff )
-            var blob = new Blob([buff], {'type': 'image/png'});
-            var url = URL.createObjectURL(blob); //possibly `webkitURL` or another vendor prefix for old browsers.
-
-
-
             
 
             // https://openbase.io/js/browserify-fs
@@ -94,6 +91,13 @@ class TelevisionScreen extends Component {
 
 
             return(
+                <img 
+                    src={url}
+                    className = "screen-shape-600-900"
+                /> 
+
+                // stuff that didn't work
+
                 // <img 
                 //     className = "screen-shape-600-900"
                 //     src={URL.createObjectURL(pic)} 
@@ -103,9 +107,6 @@ class TelevisionScreen extends Component {
                 // <img src={`data:image/png;base64,${pic}`} />
 
                 // <img src="data:image/png;base64,{pic}" />   // Doesn't seem to work. 
-
-
-                <img src={url} /> 
 
                 // <img src="decodedPic" /> 
                 // <img src={"data:image/png;base64," + buff} />
@@ -148,7 +149,7 @@ class TelevisionScreen extends Component {
 
 
     screen600x900 = ()  => {
-        console.log("Tv SCreen this.props.channelNumber", this.props.channelNumber)
+        console.log("Tv SCreen - this.props.channelNumber", this.props.channelNumber)
         let pic = this.returnScreenImage()
 
         return pic;
