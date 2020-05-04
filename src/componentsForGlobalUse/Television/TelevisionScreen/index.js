@@ -35,7 +35,7 @@ class TelevisionScreen extends Component {
         
         let tvScreenImagesArray = this.props.tvScreenImagesArray;
         // console.log("tvScreenImagesArray[this.props.bottomButtonChannel]", tvScreenImagesArray[this.props.bottomButtonChannel])
-        let pic = (this.props.channelNumber) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image"
+        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
         console.log("Type of pic is: ", typeof pic)
 
         if ( pic === "backup image"){
@@ -195,10 +195,7 @@ class TelevisionScreen extends Component {
         )
     }    
 
-
-    render(){
-        // console.log("props in TVSCreen:", this.props)
-
+    returnScreenSizeForDisplayBreakpoint = () => {
         let screen;
         switch (this.props.size){
             case "600x900":
@@ -210,6 +207,29 @@ class TelevisionScreen extends Component {
         }
         
         return screen;
+
+    }
+
+
+    render(){
+        // console.log("props in TVSCreen:", this.props)
+
+        // let screen;
+        // switch (this.props.size){
+        //     case "600x900":
+        //         screen = this.screen600x900();
+        //         break;
+        //     case "400x600": 
+        //         screen = this.screen400x600();
+        //         break;
+        // }
+        
+        let screen = this.returnScreenSizeForDisplayBreakpoint();
+        // returnScreenSizeForDisplayBreakpoint  CALLS screen600x900  
+        // CALLS  returnScreenImage  RETURNS backupImage if channel # false (undefined)
+        // channel No comes from props, and when props change, this should re-run
+        //  are Channel No 
+        return screen
     }
 
 } 

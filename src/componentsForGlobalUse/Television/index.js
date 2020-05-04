@@ -19,13 +19,17 @@ class Television extends Component {
         // let nextChannel = this.generateNextChannelNumber(); 
         // this.setState({channel: nextChannel + 1})  
 
-        this.setState({channel: this.generateNextChannelNumber(buttonRotationsCount) })  
+        this.setState({
+            channel: this.generateNextChannelNumber(buttonRotationsCount),
+            // bottomButtonChannel : 0    // Crashes TelevisionLeftSideTextArea: 
+            // ... 23 |             <h2> {this.props.tvExplanatoryAsideText ? this.props.tvExplanatoryAsideText[this.props.channelNumber]["header"] : null} 
+        })  
     }
 
     generateNextChannelNumber = (buttonRotationsCount) => {
         let numberOfChannels = this.props.numberOfChannels;
         //  console.log("numberOf top uChannels in Television is : ", numberOfChannels)
-        let channelNumber = this.state.channel;
+        let channelNumber = this.state.channel;  // why state? 
 
         // console.log("Portfolio  ", this.props.channelNumber)
 
@@ -49,7 +53,7 @@ class Television extends Component {
         // console.log("Portfolio  ", this.props.bottomButtonChannelNumber)
 
         if (bottomButtonChannelNumber + 1 < numberOfBottomButtonChannels ){
-           console.log("Works fine ~~~~~ ?  ", this.state.bottomButtonChannel += 1)
+           console.log("Works fine ~~~~~ bottom button channel is ?  ", this.state.bottomButtonChannel += 1)
            bottomButtonChannelNumber+= 1;  // the array INDEX #. 
         } else {
            // need to use ROTATION COUNTER, not bottomButtonChannelNumber's modulus. 
@@ -112,7 +116,9 @@ class Television extends Component {
 
     
     tv600x900 = () => {                         // HARD CODED TO USE ATM 
-        console.log(" 600 x900  this.props.channelNumber ", this.props.channelNumber)
+        console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
+        console.log("Tv Component  this.state.channel ", this.state.channel)
+
         return(
             <div>
                 <div className="tv-positioning-600-900">
@@ -128,7 +134,10 @@ class Television extends Component {
                     <div className="screen-placement-600-900">
                         <TelevisionScreen 
                             size="600x900"
-                            channelNumber={this.state.channel}   // OLD WAY USING STATE 
+
+                            channelNumber={this.state.channel}   // OLD WAY USING STATE
+                            // state only set on channel on buttonClick, but  
+
                             bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
                             tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
                             // channelNumber = {this.props.channelNumber}

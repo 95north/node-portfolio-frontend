@@ -25,14 +25,16 @@ $ npm start   (opens to localhost:3000 is available)
 
 
 ## TO DO  
+    
 
 
-    DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
+    Reset buttom button to 0 when top button pressed. (worked on May 4, might work? )
+
     TvScreen - refactor images to display multidimenstional array props. 
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
     On front end images, TvScreen - let buff = new Buffer(pic, 'binary');    gets error, 
     ...maybe bc front-end saved images aren't in buffer format?   Or, a race condition?
-
+    Press Tv Buttons before loading done - get "header"   undefined   error
 
     TelevisionLeftSideTextArea - Once gets thru all Projects fm props array, it crashes.  Make more robust! 
 
@@ -62,7 +64,8 @@ $ npm start   (opens to localhost:3000 is available)
     Fix TV Text list items to loop through each.  5 min. 
     Take screenshots of my different projects to use
     Refactor TV Screen to flip through multiple images.  - fix API call in Porfolio Scene Index. 
-
+    DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
+    Diy or Dont (1st project in seed data), only backup image ever displays. FIXED
 
 
 
@@ -75,6 +78,42 @@ $ npm start   (opens to localhost:3000 is available)
         Jimp ,  
         GridFS ??  (esp for storing files larger than 16 MB, the BSON max doc size)
         Blob to base64, using built-in FileReader :   https://javascript.info/blob   -- WORKED! 
+
+    Diy or Dont (1st project in seed data), only backup image ever displays. FIXED 
+        Backup image on front-end : in TvScreen based on 
+
+        What needs to re-render?  TvScreen image to Diy-Or-Dont images after API
+        ...call complete.   Portfolio makes the API call.  
+        Does Portfolio setState on channel #?  No, sets state on ~rawDataDownload~
+        is channel# check triggered when rawDataDownload processed? 
+        in Portfolio, Tv does not pass down channelNumber
+
+
+        Portfolio does API call, ? passes state (data, img arrays) to Tv. 
+        TVScreen - this.props.channelNumber is undefined for project 0, so backup img.
+        channelNumber={this.state.channel}   Tv's tv600x900() -
+        is this.state.channel real?  
+        Tv Component  this.props.channelNumber  undefined  -- also when press bottom button (but not top)
+        Are we passing channelNumber prop correctly fm Portfolio to Tv? 
+        Portfolio calcs data and image arrays, passes them down to Tv
+
+        channelNumber arises in component Tv, where state initially sets it to 0 : 
+        channelNumber={this.state.channel}  ( from Tv's tv600x900(, returned HTML ) 
+        Tv's channel State - changes when?? 
+        If initially 0, when overrode and it became undefined?   
+        Tv:  screenImagesArrayofArrays - get once w initial API call 
+        tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}  
+
+            ??? Do I set state with partial data is no channelNumber? 
+        channelNumber is updated in generateChannelNo() funcs which are triggered
+        ...by tvButtonClick event. 
+
+
+        In Tv, channel state initially set to 0: channel: 0,  not undefined. 
+        Tv passes to TvScreen prop channelNumber={this.state.channel} 
+
+
+
 
 ## STYLE GUIDE 
 Function words :    
