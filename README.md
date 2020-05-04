@@ -26,8 +26,15 @@ $ npm start   (opens to localhost:3000 is available)
 
 ## TO DO  
     left off:   var bitmap = fs.readFileSync(pic);  --- converting Buffer to png if possible... 
+
+    Try playing in Mongo shell and investing what is saved. 
     check that fs. & binary on backend actually render expected image types.  Are imports working? Need to bundle them in terminal? 
     Is imageBin.bin  Base64? 
+    Look into  
+        browserify-fs  (installed),  
+        Jimp ,  
+        GridFS ?? 
+        Blob to base64, using built-in FileReader :   https://javascript.info/blob
 
     DONE pending testing- Send images from backend through API call  - DONE - they are string format. 
     TvScreen - refactor images to display multidimenstional array props. 
