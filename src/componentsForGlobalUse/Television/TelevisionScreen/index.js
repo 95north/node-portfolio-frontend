@@ -94,6 +94,7 @@ class TelevisionScreen extends Component {
                 <img 
                     src={url}
                     className = "screen-shape-600-900"
+                    // height = "150px"
                 /> 
 
                 // stuff that didn't work

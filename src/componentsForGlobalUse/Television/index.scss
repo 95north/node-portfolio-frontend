@@ -1,6 +1,6 @@
 
 
-.tv-clip-600-900 {
+.tv-clip-600-900 {   // NOT USED???!!! 
     clip-path: inset(30px 0px 20px 100px);  // amt to shave fm top, right, bottom, left.
     // what is original picture size?  
 }
@@ -13,29 +13,49 @@
     }
 }
 
-
-.tv-positioning-600-900 {    // formerly .border  it's the outer class (screen placement is inner). 
+// ***** The main formatting used on the TV: 
+        // checked WxH of 2 screenshots to make sure *Tv* Ascpect rato preserved on resizing.. 
+        // 928x602,   1564x1016  = 1.5415, 1.539   --- OK
+.tv-positioning-600-900 {    //it's the outer class (screen placement is inner). 
     position: absolute;
     display: block;
-    right: 4px;  // Sets the right margin edge for a positioned box
+    // right: 4px;  // Sets the right margin edge for a positioned box
     top: 76px;
     margin-top: 15px;
+    right: 0.1388%;  // 4px / 2880
+    margin-left: -15%;
+    // top: 4.222%; // 76px /1800
+    // margin-top: 0.8333%; // 15 px / 1800
 
     // responsive design attempt -old 
     // position: relative;
     // right: 1vw;
     // top: 15vw;
 }
+
+img{  // REQUIRED to resize Tv itself... 
+    max-width: 100%;
+    height: auto;
+}
+
+// img.tv-positioning-600-900  {  // screen resizes, 
+    //tv stays full size. 
+//     max-width: 100%;
+//     height: auto;
+// }
+
+
 @media screen and (max-width: 800px) {  // breakpoint works!  It overrides default. 
-    .tv-positioning-600-900 {    // formerly .border     // Mac Pro : 2880 W x 1800 H
+    .tv-positioning-600-900 {     // Mac Pro : 2880 W x 1800 H
         // position: absolute;
         // max-width: 45%;  //  Setting max width - messes up screen , buttons alignment. Screen stuck to far right
 
-        right: 0.1388%;  // 4px / 2880
-        top: 4.222%; // 76px /1800
-        margin-top: 0.8333%; // 15 px / 1800
+        // right: 0.1388%;  // 4px / 2880
+        // top: 4.222%; // 76px /1800
+        // margin-top: 0.8333%; // 15 px / 1800
         // margin-left: -20%; // WHERE LEFT OFF WORKING ON RESPONSIVE.  ADDED THIS, CHANGED POSITION TO RELATIVE. 
-        left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
+        // left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
+        // left: 2%; //% - weird bc as make screen narrower, Left padding gets wider. 
 
         position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
         // it's RELATIVE to the VIEWPORT
@@ -44,6 +64,12 @@
         // Originally had: 
         // position: absolute;
         // display: block;
+    }
+    img.tv-positioning-600-900  {  // screen resizes, tv stays full size. 
+        // DOESNT APPEAR TO DO ANYTHING! 
+        // max-width: 100%;
+        // height: 100%;
+        // height: auto;
     }
 }
 
@@ -57,12 +83,18 @@
 }
 @media screen and (max-width: 800px) {  
     .screen-placement-600-900 {
-        display: block;
-        position: absolute;
+        // display: block;
+        position: absolute;  // to its parent, tv-positioning! 
+
+        // position: absolute;
+
         // float: right;  // Adding float right & removing position: absolute - seems to do nothing 
         left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
-
-        top: 3.576;  // 103px  / 2880
+        // top: 5.722%;  // 103px  / 1800   NOPE. 
+        top: 16.8%;  // WORKS  
+        // height: 100px; // DOES NOTHING, WEIRD. 
+        // width: 100%;  //  15.833% = 456 / 2880 -- Works better without this! Height still off though? 
+        
         // left: 195px;  // 195px / 2880
         // top: 103px;  // 103px  / 2880
     }

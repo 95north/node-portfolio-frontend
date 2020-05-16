@@ -32,6 +32,13 @@ $ npm start   (opens to localhost:3000 is available)
         left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
         position: relative; 
 
+        May 15: What do I know about responsive design?    
+        
+
+        To Do: 
+            -- make tv & screen resize dynamically - 
+                buttons will line up with this happens?
+
 
  
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length

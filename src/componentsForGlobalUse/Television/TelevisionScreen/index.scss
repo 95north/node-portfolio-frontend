@@ -21,6 +21,7 @@ $tv-brown-button-panel: #6c6518;
 }
 
 
+// ***** Main formatting being used: 
 .screen-shape-600-900 {    //  for the image on the screen
     border-radius: 30px;    
     background: $tv-brown-button-panel;
@@ -33,14 +34,59 @@ $tv-brown-button-panel: #6c6518;
 
 }
 
-img.screen-shape-600-900 {    // no longer affects subcomponents now that specified class for img
-    max-width: 456px;
-    max-height: 365px;
-    // object-fit: cover;      // nope, doesnt' work, img full size
-    // object-fit: contain;      // nope, doesnt' work, img full size
-    // object-fit: scale-down;      // nope, doesnt' work, img full size
+// breakpoint override. -- Overriding part works! 
+@media screen and (max-width: 800px) {  // breakpoint works!  It overrides default. 
+    .screen-shape-600-900 {    //  for the image on the screen
+        border-radius: 7.5%; // old 30px / 600;    
+        // height: 100px; // must define height in Px to override width
+        height: 46.08vw;
 
-  }
+        width: 64.7%;
+        // height: calc-screen-width(viewportwidth);
+        // ***** LEFT OFF HERE !!!! ^^^^  
+
+        // max-width: 64.7%;
+        // height: 59.333%;  // = 356/600;  DOES NOTHING, Width overrides.  This alone does control height.
+        // max-width: 15.833%;  //= 456 / 2880 (the old max-width).  Is not wide relevant to the screen! 
+        // width: 64.7%;  //= 456 / 900 (the old max-width).  Is wide relevant to parent, not the screen! 
+        // height: auto;  // will be 600x900 height w/o - no longer true. 
+        // height: 120%; // doesn't affect anything..
+        // height: 10%; +  width: auto;  - screen almost as wide as view, img VERY long
+        
+
+        // checked WxH of 2 screenshots to make sure *Tv* Ascpect rato preserved on resizing.. 
+        // 928x602,   1564x1016  = 1.5415, 1.539   --- OK
+        position: relative;
+        // display: block;
+        // margin-top: -10%  // 
+        // margin-top: 15%; // pushes screen down on tv a LOT 
+        // margin-bottom: 35%; // does not seem to be relative to Tv...
+
+    }
+    
+}
+
+@function calc-screen-width($viewport-width){
+    $screen-responsive-width: ($viewport-width * 0.647);
+    @return ($screen-responsive-width)
+}
+
+
+
+// img.screen-shape-600-900 {    // no longer affects subcomponents now that specified class for img
+//     // max-width: 456px;
+//     // max-height: 365px;
+//     // object-fit: cover;      // nope, doesnt' work, img full size
+//     // object-fit: contain;      // nope, doesnt' work, img full size
+//     // object-fit: scale-down;      // nope, doesnt' work, img full size
+//         // max-width: 24.255%;  //= 456 / 1880 (the old max-width).  Makes screen tiny ~1".
+//         // max-width: 75%;  // 456 tvScreen W / 900 tv img width, bc it must resize with tv?  
+//         // // **** Max-width here: is relative to tv-screenhole size. 
+//         // // am I passing down any info from TV on width? 
+//         // height: auto;
+    
+//   }
+
 
 
 @function calc-screen-size($img-width){
