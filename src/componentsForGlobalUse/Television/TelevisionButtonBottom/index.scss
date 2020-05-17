@@ -74,6 +74,53 @@
 
 
 
+@media screen and (max-width: 800px) {  
+    .bottom-button-600-900 {    // for TVimg.svg TV With Buttons image version! 
+        width: 20.1vw;// 155px / 2880px wide;  
+        height: 20.1vw;// 155px / 2880px wide;  
+        position: absolute;
+        right: 4.8%;  // 46px / 2880 ;
+        top: 58.1%; // 13.3%; // 240px / 1800 ;
+        cursor: pointer;
+    }
+    .one {
+        transform: rotate(60deg);
+        position: relative;
+        top: -2px;
+        right: 2px;
+    }
+    .two {
+        transform: rotate(120deg);
+        position: relative;
+        top: -4px;
+        right: 2px;
+    }
+    .three {
+        transform: rotate(180deg);
+        position: relative;
+        top: -4px;
+        right: 0px;
+    }
+    .four{
+        transform: rotate(240deg);
+        position: relative;
+        top: -4px;
+        right: -2px;
+    }
+    .five {
+        transform: rotate(300deg);
+        position: relative;
+        top: -2px;
+        right: -2px;
+    }
+    .six {
+    }
+
+  }
+
+
+
+
 
 
 .bottom-button-600-900-DEADCODE {    // for TVimg.svg TV With Buttons image version! 
