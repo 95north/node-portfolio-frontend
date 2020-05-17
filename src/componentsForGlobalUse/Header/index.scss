@@ -1,6 +1,6 @@
 $background-color: #000000;
 $font-stack: "Open Sans", sans-serif;
-$font-size-standard: 22px;
+$font-size-standard: 0.764vw; //22px;
 $font-color: goldenrod;
 $tv-yellow: #f2e243;  // TV speaker yellow
 $tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
@@ -41,16 +41,16 @@ $tv-brown-button-panel: #6c6518;
 
 
 .header{
+    // letter-spacing: 2.0vw; //  == non-responsive 10px;
+    // letter-spacing: 0.9vw; //  == non-responsive 10px;
+    // font-size: 7vw; // == non-responsive 50px;
     letter-spacing: 10px;
-    // font-family: 'Cabin Sketch', cursive; 
-    // font-family: 'Modak', cursive;
-    font-family: 'VT323', cursive;
-
     font-size: 50px;
+    font-family: 'VT323', cursive;
     font-weight: bolder;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    padding-left: 10px;
+    padding-left: 2.4vw; //10px;
     top: 0px;
     color:#e3b36d;
     z-index: 4; 
@@ -64,12 +64,31 @@ $tv-brown-button-panel: #6c6518;
     background-color: $background-color;   
 }
 
-
+@media screen and (max-width: 800px) {  
+    .header{
+        font-size: 6.3vw; // == non-responsive 50px;
+        letter-spacing: 0.65vw;
+        font-family: 'VT323', cursive;
+        font-weight: bolder;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        padding-left: 2.4vw; //10px;
+        top: 0px;
+        color:#e3b36d;
+        z-index: 4; 
+        -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: ease 6s; /* Safari 4.0 - 8.0 */
+        animation-name: example;
+        animation-duration: ease 6s;
+        animation-iteration-count: 10;
+        background-color: $background-color;   
+    }
+}
 
 .spacing{
-    padding-left: 20px;
+    padding-left: 4.0vw; // 20px;
 }
 
 .half-spacing{
-    padding-left: 10px;
+    padding-left: 2.4vw; //  10px;
 }
