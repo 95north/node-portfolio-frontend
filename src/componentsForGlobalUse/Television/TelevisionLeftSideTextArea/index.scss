@@ -4,6 +4,9 @@ $tv-brown-frame-light: #877e23;  // TV frame top brown
 $tv-brown-frame-dark: #59443e;  // TV frame bottom brown
 $tv-brown-button-panel: #6c6518;
 
+h2{
+    margin-top: 2px;
+}
 
 .text-placement-responsive {   // DEFAULT:  Words to Left of TV,
     // TV Size & Placement STATIC. 
@@ -20,17 +23,17 @@ $tv-brown-button-panel: #6c6518;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media screen and (max-width: 1000px) and (min-width: 622px)  { 
+@media screen and (max-width: 788px) and (min-width: 622px)  { 
 // @media screen and (max-width: 2472px) and (min-width: 1245px) {  // 13" Macbook = 2560 x 1600 px. 
     .text-placement-responsive {    //  for the image on the screen
         position: block;
         width: 24vw;
         height: 1700px;
         background: #000000;
-        padding-top: 3px;
-        margin-top: 10px;
-        margin-left: 10px;
-        padding-left: 12px;
+        padding-top: 1px;
+        margin-top: 0.75%;
+        margin-left: 0.75%;
+        padding-left: 0.85%;
         font-family: Arial, Helvetica, sans-serif;
     }
 }
@@ -39,13 +42,21 @@ $tv-brown-button-panel: #6c6518;
 // @media screen and (max-width: 1244px) {  // DONE 
     .text-placement-responsive{
         position: block;
-        width: 24vw;
+        width: 90vw;
         height: 1700px;
         background: #000000;
-        padding-top: 3px;
-        margin-top: 10px;
+        // padding-top: 30px;
+        padding-top: 0px;
+        margin-top: -40px;
         margin-left: 10px;
         padding-left: 12px;
+        margin-right: 10px;
+        padding-right: 12px;
+        // Tried to refactor ^^4 to responsive, it affectd screen placement
+        // padding-top: 1.0%;
+        // margin-top: 2.0%;
+        // margin-left: 2.0%;
+        // padding-left: 2.2%;
         font-family: Arial, Helvetica, sans-serif;
     }
 }

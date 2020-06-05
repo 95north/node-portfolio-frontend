@@ -170,7 +170,7 @@ class Television extends Component {
         console.log("Tv Component  this.state.channel ", this.state.channel)
 
         return(
-            <div>
+            <>
                 <div className="tv-positioning-600-900">
                     <img 
                         // src="TVimg.svg" 
@@ -210,7 +210,7 @@ class Television extends Component {
                     // channelNumber = {this.props.channelNumber}
                 >
                 </TelevisionLeftSideTextArea>
-            </div>
+            </>
         )
     } 
 
