@@ -66,6 +66,11 @@ $ npm start   (opens to localhost:3000 is available)
  
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
 
+    Where are the screen images being resized? 
+
+
+
+
     ### ERRORS 
     On front end images, TvScreen - let buff = new Buffer(pic, 'binary');    gets error, 
     ...maybe bc front-end saved images aren't in buffer format? NO  Or, a race condition?
@@ -94,9 +99,16 @@ $ npm start   (opens to localhost:3000 is available)
     Jest tests? 
     CI/CD? 
     Add screen tint / filter to TV? 
+    Loading image for TV Screen
+
+    LEFT OFF June 5: 
+        Tv Screen's: 
+            (max-width: 2472px) and (min-width: 1245px)  {  
+            .screen-placement-responsive {
+        isn't aligned.  Fixing text box first before fine tune this. 
 
 
-    ### CLEAN UP
+    ###  ###  ### CLEAN UP
     Fix order of Yoga Sequencer Pics
     rename changeChannel() function 
     rename "TvLeftSideblahh" bc when refactor to responsive design it will be on bottom.. 

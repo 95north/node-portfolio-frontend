@@ -95,7 +95,26 @@ class TelevisionButtonBottom extends Component {
         )
     }   
 
+    bottomButtonResponsive = ()  => {
 
+        return(
+            <div 
+                className="bottom-button-responsive"
+                onClick = {this.triggerRotation}
+            >
+                <div className="rotate">  
+                    <div className={this.state.cssClass} >
+                        <img 
+                            src="TvButton2.svg" 
+                            alt="Round TV Button"
+                            height="155"
+                            width="155" 
+                        />
+                    </div>
+                </div>
+            </div>
+        )
+    }  
 
 
 
@@ -109,7 +128,9 @@ class TelevisionButtonBottom extends Component {
         let bottomButton;
         switch (this.props.size){
             case "600x900":
-                bottomButton = this.bottomButton600x900();
+                // bottomButton = this.bottomButton600x900();  // FOR OLD 1 BREAKPT @ 800px
+                bottomButton = this.bottomButtonResponsive();
+
                 break;
             case "400x600": 
                 bottomButton = this.bottomButton400x600();

@@ -115,15 +115,32 @@ class TelevisionScreen extends Component {
                 // https://stackoverflow.com/questions/25869017/how-to-convert-binary-data-and-mime-to-image-in-javascript
             )
         }
-
-
-
-        
         console.log( "pic RvSCreen is : ", pic)
-
-
         return pic;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     returnScreenImageBackUpImages = () =>{
@@ -196,6 +213,12 @@ class TelevisionScreen extends Component {
         )
     }    
 
+
+
+
+
+
+
     returnScreenSizeForDisplayBreakpoint = () => {
         let screen;
         switch (this.props.size){
@@ -212,25 +235,57 @@ class TelevisionScreen extends Component {
     }
 
 
+
+
+
+
+    returnResponsiveScreenImage = () =>{
+        console.log("TvSCreen this.props", this.props)
+        let tvScreenImagesArray = this.props.tvScreenImagesArray;
+        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
+        console.log("Type of pic is: ", typeof pic)
+
+        if ( pic === "backup image"){
+            return (
+                <img 
+                    className = "screen-responsive"
+                    src="TvStaticAnimated.gif"
+                    alt="Photo of an old television"
+                />
+            )
+        } else {
+                let buff = new Buffer(pic, 'binary');
+                console.log("TvScreen - buff is: ", buff)           // Uint8Array(1429265) [137, 80, ... 
+                var blob = new Blob([buff], {'type': 'image/png'});
+                var url = URL.createObjectURL(blob); //possibly `webkitURL` or another vendor prefix for old browsers.
+            return(
+                <img 
+                    src={url}
+                    className = "screen-responsive"
+                /> 
+            )
+        }
+    }
+
+
+
+
     render(){
         // console.log("props in TVSCreen:", this.props)
 
-        // let screen;
-        // switch (this.props.size){
-        //     case "600x900":
-        //         screen = this.screen600x900();
-        //         break;
-        //     case "400x600": 
-        //         screen = this.screen400x600();
-        //         break;
-        // }
-        
-        let screen = this.returnScreenSizeForDisplayBreakpoint();
+        // Was used for 1 breakpoint @ 800px : 
+        // let screen = this.returnScreenSizeForDisplayBreakpoint();
+        // return screen
+
+        let responsiveScreen = this.returnResponsiveScreenImage();
+        return responsiveScreen
+
+
         // returnScreenSizeForDisplayBreakpoint  CALLS screen600x900  
         // CALLS  returnScreenImage  RETURNS backupImage if channel # false (undefined)
         // channel No comes from props, and when props change, this should re-run
         //  are Channel No 
-        return screen
+
     }
 
 } 

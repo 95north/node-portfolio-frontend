@@ -8,7 +8,7 @@ img{  // REQUIRED to resize Tv itself...
 }
 
 
-// DEFAULT - LAPTOP-Y
+// DEFAULT - LAPTOP-Y   - TV STATIC SIZE,  TEXT BLURB SHRINKS
 .tv-responsiveness {    //it's the outer class (screen placement is inner). 
     position: absolute;
     display: block;
@@ -17,17 +17,20 @@ img{  // REQUIRED to resize Tv itself...
     right: 0.1388%; 
     margin-left: -15%;
 }
-// MAX 2472 - TABLET-Y
-@media screen and (max-width: 2472px) {  // breakpoint works!  It overrides default. 
+// MAX 2472 - TABLET-Y 
+@media screen and (max-width: 1000px) and (min-width: 622px)  { 
+// @media screen and (max-width: 2472px) and (min-width: 1245px) {  // breakpoint works!  It overrides default. 
     .tv-responsiveness {     // Mac Pro : 2880 W x 1800 H
         // (left) text width shrinks to fill space next to dynamic tv 
         // tv shrinks 
         position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
         // it's RELATIVE to the VIEWPORT
+        display: block;
     }
 }
 // MAX 1244 - CELLPHONEY
-@media screen and (max-width: 1244px) { 
+// @media screen and (max-width: 1244px) { 
+@media screen and (max-width: 621px) {  
     .tv-responsiveness { 
         position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
     }
@@ -36,22 +39,32 @@ img{  // REQUIRED to resize Tv itself...
 
 
 .screen-placement-responsive {   // DEFAULT, aka LAPTOP-Y
-    position: absolute;  // positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+    // position: relative;  // positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+    position: absolute; 
     left: 195px;
     top: 103px;
 }
-@media screen and (max-width: 2472px) {  
+@media screen and (max-width: 800px) and (min-width: 622px)  { 
+// Wider than 1000px, still has green border!  Screen stops lining up
+// Green border disappears at 1250px.  
+// Green border appears at 748px width.. 
+// Max-width here may not refer to viewport, but TV Width?
+// @media screen and (max-width: 2472px) and (min-width: 1245px)  {  
     .screen-placement-responsive {
         position: absolute;  // to its parent, tv-positioning! 
-        left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
-        top: 16.8%;  // WORKS  
+        // margin-left: 65.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+        // left: 65.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+        left: 21.0%;
+        top: 16.11%;  //
+        border: 5px solid greenyellow;
     }
 }
-@media screen and (max-width: 1244px) {  
+@media screen and (max-width: 621px) {  
     .screen-placement-responsive {
         position: absolute;  // to its parent, tv-positioning! 
-        left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+        left: 21.45%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
         top: 16.8%;  // WORKS  
+        border: 5px solid orange;
     }
 }
 

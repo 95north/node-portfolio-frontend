@@ -1,3 +1,167 @@
+.bottom-button-responsive{    // for TVimg.svg TV With Buttons image version! 
+    border-radius: 50px;    
+    width: 155px;        
+    height: 155px;
+    position: absolute;
+    right: 46px;
+    top: 356px;
+    cursor: pointer;
+}
+
+.bottom-button-responsive:hover{
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+}
+
+.one {
+    transform: rotate(60deg);
+    position: relative;
+    top: -2px;
+    right: 2px;
+}
+.two {
+    transform: rotate(120deg);
+    position: relative;
+    top: -4px;
+    right: 2px;
+}
+.three {
+    transform: rotate(180deg);
+    position: relative;
+    top: -5px;  // Different fm Top Button's, everything else the same. 
+    right: 0px;
+}
+.four{
+    transform: rotate(240deg);
+    position: relative;
+    top: -4px;
+    right: -2px;
+}
+.five {
+    transform: rotate(300deg);
+    position: relative;
+    top: -2px;
+    right: -2px;
+}
+.six {
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) and (min-width: 622px)  { 
+// @media screen and (max-width: 2472px) and (min-width: 1245px) {  
+    .bottom-button-responsive {    // for TVimg.svg TV With Buttons image version! 
+        width: 20.1vw;// 155px / 2880px wide;  
+        height: 20.1vw;// 155px / 2880px wide;  
+        position: absolute;
+        right: 4.8%;  // 46px / 2880 ;
+        top: 58.1%; // 13.3%; // 240px / 1800 ;
+        cursor: pointer;
+    }
+    .one {
+        transform: rotate(60deg);
+        position: relative;
+        top: -2px;
+        right: 2px;
+    }
+    .two {
+        transform: rotate(120deg);
+        position: relative;
+        top: -4px;
+        right: 2px;
+    }
+    .three {
+        transform: rotate(180deg);
+        position: relative;
+        top: -4px;
+        right: 0px;
+    }
+    .four{
+        transform: rotate(240deg);
+        position: relative;
+        top: -4px;
+        right: -2px;
+    }
+    .five {
+        transform: rotate(300deg);
+        position: relative;
+        top: -2px;
+        right: -2px;
+    }
+    .six {
+    }
+  }
+
+
+
+  @media screen and (max-width: 621px) { 
+//   @media screen and (max-width: 1244px) {  
+    .bottom-button-responsive {    // for TVimg.svg TV With Buttons image version! 
+        width: 20.1vw;// 155px / 2880px wide;  
+        height: 20.1vw;// 155px / 2880px wide;  
+        position: absolute;
+        right: 4.8%;  // 46px / 2880 ;
+        top: 58.1%; // 13.3%; // 240px / 1800 ;
+        cursor: pointer;
+    }
+    .one {
+        transform: rotate(60deg);
+        position: relative;
+        top: -2px;
+        right: 2px;
+    }
+    .two {
+        transform: rotate(120deg);
+        position: relative;
+        top: -4px;
+        right: 2px;
+    }
+    .three {
+        transform: rotate(180deg);
+        position: relative;
+        top: -4px;
+        right: 0px;
+    }
+    .four{
+        transform: rotate(240deg);
+        position: relative;
+        top: -4px;
+        right: -2px;
+    }
+    .five {
+        transform: rotate(300deg);
+        position: relative;
+        top: -2px;
+        right: -2px;
+    }
+    .six {
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CSS FOR BEFORE 2 BREAKPOINTS / 3 VIEWS REFACTOR June 5
+
 .bottom-button-600-900{    // for TVimg.svg TV With Buttons image version! 
     // border-style: dotted;
     border-radius: 50px;    
@@ -117,6 +281,18 @@
     }
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
