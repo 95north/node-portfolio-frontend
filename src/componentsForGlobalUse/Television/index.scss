@@ -1,5 +1,80 @@
 
 
+
+// ***** The main formatting used on the TV: 
+img{  // REQUIRED to resize Tv itself... 
+    max-width: 100%;
+    height: auto;
+}
+
+
+// DEFAULT - LAPTOP-Y
+.tv-responsiveness {    //it's the outer class (screen placement is inner). 
+    position: absolute;
+    display: block;
+    top: 76px;
+    margin-top: 15px;
+    right: 0.1388%; 
+    margin-left: -15%;
+}
+// MAX 2472 - TABLET-Y
+@media screen and (max-width: 2472px) {  // breakpoint works!  It overrides default. 
+    .tv-responsiveness {     // Mac Pro : 2880 W x 1800 H
+        // (left) text width shrinks to fill space next to dynamic tv 
+        // tv shrinks 
+        position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
+        // it's RELATIVE to the VIEWPORT
+    }
+}
+// MAX 1244 - CELLPHONEY
+@media screen and (max-width: 1244px) { 
+    .tv-responsiveness { 
+        position: relative;   // relative vs. absolute + block - Word blurbs moves under tv, can read it!  
+    }
+}
+
+
+
+.screen-placement-responsive {   // DEFAULT, aka LAPTOP-Y
+    position: absolute;  // positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+    left: 195px;
+    top: 103px;
+}
+@media screen and (max-width: 2472px) {  
+    .screen-placement-responsive {
+        position: absolute;  // to its parent, tv-positioning! 
+        left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+        top: 16.8%;  // WORKS  
+    }
+}
+@media screen and (max-width: 1244px) {  
+    .screen-placement-responsive {
+        position: absolute;  // to its parent, tv-positioning! 
+        left: 21.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
+        top: 16.8%;  // WORKS  
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ORIGINAL BEFORE June 5 Refactor to 3 views / 2 breakpoints. 
+
 .tv-clip-600-900 {   // NOT USED???!!! 
     clip-path: inset(30px 0px 20px 100px);  // amt to shave fm top, right, bottom, left.
     // what is original picture size?  
@@ -99,6 +174,13 @@ img{  // REQUIRED to resize Tv itself...
         // top: 103px;  // 103px  / 2880
     }
   }
+
+
+
+
+
+
+
 
 
 

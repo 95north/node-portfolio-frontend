@@ -116,6 +116,54 @@ class Television extends Component {
         )
     }
 
+
+
+
+
+
+
+    tvResponsive = () => {
+        console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
+        console.log("Tv Component  this.state.channel ", this.state.channel)
+
+        return(
+            <div>
+                <div className="tv-responsiveness">
+                    <img 
+                        src="TvWithoutButtons.svg" 
+                        alt="image of television, used as frame"
+                        height="600"
+                        width="900" 
+                    >
+                    </img>
+                    <div className="screen-placement-responsive">
+                        <TelevisionScreen 
+                            size="600x900" 
+                            channelNumber={this.state.channel}   // OLD WAY USING STATE
+                            bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
+                            tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
+                        />  
+                    </div>
+                    <TelevisionButtonTop 
+                        size="600x900" 
+                        changeChannel={this.changeChannel}
+                    />
+                    <TelevisionButtonBottom 
+                        size="600x900" 
+                        rotateBottomButtonChangeChannel = {this.rotateBottomButtonChangeChannel}
+                    />
+                </div>
+                <TelevisionLeftSideTextArea                 
+                    tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
+                    channelNumber={this.state.channel}     // OLD WAY USING STATE
+                >
+                </TelevisionLeftSideTextArea>
+            </div>
+        )
+
+    }
+
+
     
     tv600x900 = () => {                         // HARD CODED TO USE ATM 
         console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
@@ -168,10 +216,13 @@ class Television extends Component {
 
 
     render(){
-        let tv600x900px = this.tv600x900();
+        // let tv600x900px = this.tv600x900();         // for 1 breakpoint @ 800px view. 
+        let tvResponsive = this.tvResponsive();         // for 2 breakpoint, 3 tier view. 
+
 
         return(
-            tv600x900px
+            // tv600x900px
+            tvResponsive
         );
     }
 

@@ -27,7 +27,7 @@ $ npm start   (opens to localhost:3000 is available)
 ## TO DO  
     
     left off:  Tv's Css, making it responsive. 
-        .tv-positioning-600-900 {       // Mac Pro : 2880 W x 1800 H
+         .tv-positioning-600-900 {       // Mac Pro : 2880 W x 1800 H
              // WHERE LEFT OFF WORKING ON RESPONSIVE.  ADDED THIS, CHANGED POSITION TO RELATIVE. 
         left: -20%; //% - weird bc as make screen narrower, Left padding gets wider. 
         position: relative; 
@@ -39,6 +39,29 @@ $ npm start   (opens to localhost:3000 is available)
             -- make tv & screen resize dynamically - 
                 buttons will line up with this happens?
 
+    Add another breakpoint. 
+        #1 - Default -                  // Full size laptop
+            full size screen,  
+            info on left, 
+            **** text width shrinks to fill space next to 800px static tv 
+        #2 - Below 2472 -               // Tablety 
+            screen below 2472x506 (& > 1244x802)
+            (left) text width shrinks to fill space next to dynamic tv 
+            tv shrinks 
+        #3 - Below 1244                 // Cell phone
+            screen < 1244 x 802    -  
+            text goes below, 
+            both text and tv shrink simply to fill screen 
+
+
+        Current breakpoint is 800 
+        Above 800 - tv width static, text width static. 
+        Below 800 - tv width dynamic, 
+        I imagine breakpoints lumped together looks smoother? 
+        Also easier to manage than diff breakpoints for every design choice. 
+
+        To Do: 2 breakpoint refactor cleanup items: 
+            1.  TV comp. JS - rename "size" prop passed down.
 
  
     Fix TelevisionLeftSideTextArea/index.js:23 - so button loops through array length
