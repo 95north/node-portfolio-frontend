@@ -13,13 +13,16 @@ h2{
     // position: absolute;
     position: block;
 
-    width: 22vw;
+    width: 20vw;
     height: 1700px;
     background: #000000;
     padding-top: 3px;
     margin-top: 10px;
     margin-left: 10px;
     padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 10px;
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -35,6 +38,7 @@ h2{
         margin-left: 0.75%;
         padding-left: 0.85%;
         font-family: Arial, Helvetica, sans-serif;
+        z-index: 5;
     }
 }
 

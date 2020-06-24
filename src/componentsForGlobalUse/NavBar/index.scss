@@ -26,9 +26,17 @@ $tv-brown-button-panel: #6c6518;
     float: left;
     display: block;
     text-align: center;
+    // non-responsive: 
     padding: 5px 8px ;
     margin: 5px 30px 0px 0px;
+    // margin: 5px 3px 0px 0px;
+
     font-size: 17px;
+
+    // padding: 1.05vw 0.8vw;
+    // margin: 0.5vw 2.0vw 0vw 0vw;
+    // font-size: 3.0vw;
+
     color: $font-color;
     z-index: 2;
 
@@ -39,6 +47,8 @@ $tv-brown-button-panel: #6c6518;
     // min-height: 40px;   // ADEDED MARCH 23
 
 }
+
+
 
 .nav a{
     color: #f2b313;
@@ -97,15 +107,19 @@ $tv-brown-button-panel: #6c6518;
     margin-left: 28px;
     // background-color: #333333;   // For testing!! 
     position: absolute;
-    width: 100%;
+    // width: 100%;   means 100% of the content width..
+    max-width: 90vw;
     height: 40px;
     opacity: 90%;
     transition: width 0.3s ease-in;
-
+    white-space: nowrap;
 
     overflow: hidden;
     // min-height: 30px;   /// ADDED MARCH 23
 }
+
+
+
 
 .menu-shadow {
     // clip-path: inset(0px 0px 0px 0px);
@@ -114,9 +128,11 @@ $tv-brown-button-panel: #6c6518;
     // clip-path: polygon(0px 0px, 0px 150px, 150px 0px);
 
 
-    margin-left: 62px;
-
-    right: -50px;
+    margin-left: 62px; // to keep it aligned away from 
+    // screen edge. Is necessary. Does not fix overflow problem. 
+    
+    // margin-right: -100px;  creates a black bar through box. 
+    // right: -50px;
     // overflow: hidden;   // This messes up the alignment
     box-shadow:
     1px 0px 1px 1.25px $tv-yellow,    
@@ -127,12 +143,16 @@ $tv-brown-button-panel: #6c6518;
     21px 0px 0px 24.5px#f2b313;
 
 
+    // overflow: hidden; Does not fix can scroll further right than should 
 
     // min-height: 30px;   /// ADDED MARCH 23
 
         // transition: width 0.3s ease-out;
-    // max-width: 0;
-    // overflow: hidden;
+    // clip: rect(20x, 160px, 20px, 60px);
+    // max-width: 50px;
+    // padding-right: -30px;
+    margin-right: 5px;  // On large screen sizes, this stopped scrolling right too far! 
+
     // transition: width 0.3s ease-out;
 
     // 1px 0px 1px 1px $tv-yellow,    
@@ -172,6 +192,58 @@ $tv-brown-button-panel: #6c6518;
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
 }
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 621px) { //and (min-width: 622px)  { 
+    .nav span{
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 1.05vw 0.8vw; // pushes TV down. 
+        margin: 0.5vw 1.5vw 0vw 0vw; // 0.5 moves TV, remote, font down!!
+        font-size: 3.7vw; //3.0vw;
+        z-index: 2;
+        overflow: hidden;    // same
+    }
+    .menu-reveal-bar{
+        z-index: 6;
+        margin-left: 1.0vw; // LEFT OFF HERE 
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        opacity: 90%;
+        transition: width 0.3s ease-in;
+        overflow: hidden;
+    }
+    .nav a{
+        color: #f2b313;
+        text-shadow: 4px 4px #000000, -.5px -.5px 2px #c79414;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        min-height: 12px;   //  commented out March 23
+        overflow: hidden;
+        // white-space: nowrap;
+    }
+    .nav a:hover {
+        background-color: $tv-brown-frame-light;
+        padding: 5px 25px 5px 25px;
+        text-shadow: 0px 0px #000000, -0.01vw -0.01vw 0.25vw #59443e;
+        overflow: hidden;
+    
+    }
+
+}
+
+
 
 
 @keyframes expandline{
