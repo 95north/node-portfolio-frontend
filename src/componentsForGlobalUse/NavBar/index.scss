@@ -11,8 +11,10 @@ $tv-brown-button-panel: #6c6518;
 
 
 .navbar-width {
-    margin-top: -9px;
-    width: 100%;
+    margin-top: -10px;
+    margin-left: -20px; // pushes remote and EVERYTHING LEFT!!! 
+    width: 102%;
+    overflow: hidden;
     min-height: 40px;
     padding-bottom: 20px;
     position: sticky;
@@ -21,7 +23,7 @@ $tv-brown-button-panel: #6c6518;
     // background-color: $tv-brown-frame-dark; .... works here... 
 }
 
-/* Style the links inside the navigation bar */
+/*   Style the links inside the navigation bar */
 .nav span{
     float: left;
     display: block;
@@ -79,16 +81,15 @@ $tv-brown-button-panel: #6c6518;
 .menu {         // black box that has a "shadow" on it. 
     top: 3px;
     padding-top: 0px; // was 3px, but shows part of shadow when animated
-    margin-left: 58px;   // OLD - amt fm edge to start box behind remote
+    margin-left: 2vw;   // OLD - amt fm edge to start box behind remote
+    // ^^ space before Home link. 
+    
     // margin-left: -28px; // USE THIS ONE! !
     // width: 80%;
     min-height: 10px;
-    // background-color: $background-color;   //Mar23 turned on/off
     z-index: 4;
     color: $font-color;
-
     // position: absolute;
-    // transition: width 0.3s ease-out;
     // max-width: 0;
     overflow: hidden;
     // transition: width 0.3s ease-out;
@@ -104,7 +105,7 @@ $tv-brown-button-panel: #6c6518;
 .menu-reveal-bar{
     z-index: 6;
 
-    margin-left: 28px;
+    margin-left: 2px;
     // background-color: #333333;   // For testing!! 
     position: absolute;
     // width: 100%;   means 100% of the content width..
@@ -151,7 +152,7 @@ $tv-brown-button-panel: #6c6518;
     // clip: rect(20x, 160px, 20px, 60px);
     // max-width: 50px;
     // padding-right: -30px;
-    margin-right: 5px;  // On large screen sizes, this stopped scrolling right too far! 
+    margin-right: 10px;  // On large screen sizes, this stopped scrolling right too far! 
 
     // transition: width 0.3s ease-out;
 
@@ -203,13 +204,29 @@ $tv-brown-button-panel: #6c6518;
 
 
 @media screen and (max-width: 621px) { //and (min-width: 622px)  { 
+        
+    .navbar-width {
+        // margin-left: 3px;
+        // ABOVE: Changes for new test remote. 
+        margin-left: -10px; // pushes remote and EVERYTHING LEFT!!! 
+
+        margin-top: -9.9px;
+        width: 102%;
+        overflow: hidden;
+        min-height: 40px;
+        padding-bottom: 20px;
+        position: sticky;
+    }
     .nav span{
-        float: left;
-        display: block;
+        // float: left;
+        // display: block;
+        // text-align: bottom;
         text-align: center;
-        padding: 1.05vw 0.8vw; // pushes TV down. 
-        margin: 0.5vw 1.5vw 0vw 0vw; // 0.5 moves TV, remote, font down!!
-        font-size: 3.7vw; //3.0vw;
+
+        word-wrap: false;
+        // padding: 1.05vw 0.8vw; // pushes TV down. 
+        margin: 1.0vw 0.35vw 0vw 0vw; // 0.5 moves TV, remote, font down!!
+        font-size: 3.4vw; //3.0vw;
         z-index: 2;
         overflow: hidden;    // same
     }
@@ -223,6 +240,18 @@ $tv-brown-button-panel: #6c6518;
         transition: width 0.3s ease-in;
         overflow: hidden;
     }
+    .menu-shadow {    
+        margin-left: 62px; // to keep it aligned away from 
+        box-shadow:
+        1px 0px 1px 1.25px $tv-yellow,    
+        4px 0px 2px 5px $tv-brown-speaker,
+        10px 0px 0px 12.5px $tv-brown-frame-light,
+        16px 0px 0px 20.5px $tv-brown-button-panel,
+        24.5px 0 0px 24.25px $tv-brown-frame-dark,
+        21px 0px 0px 24.5px#f2b313;
+        margin-right: 5px;  // On large screen sizes, this stopped scrolling right too far! 
+    }
+    
     .nav a{
         color: #f2b313;
         text-shadow: 4px 4px #000000, -.5px -.5px 2px #c79414;
@@ -230,8 +259,11 @@ $tv-brown-button-panel: #6c6518;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
         min-height: 12px;   //  commented out March 23
+        // max-height: 15px;
         overflow: hidden;
         // white-space: nowrap;
+        // margin-left: -10px;
+        // padding-left: -20px;
     }
     .nav a:hover {
         background-color: $tv-brown-frame-light;

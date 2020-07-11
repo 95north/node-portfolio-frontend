@@ -16,7 +16,9 @@ class NavBarTvRemote extends Component {
                 {/* <div className="border"> */}
                 <div>
                     <img 
-                        src="remote.svg" 
+                        src="remote180x220.svg" 
+                        // src="remote.svg" 
+
                         alt="image of tv remote"
                         height="120"
                         width="120" 

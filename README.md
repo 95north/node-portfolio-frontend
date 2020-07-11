@@ -37,8 +37,11 @@ $ npm start   (opens to localhost:3000 is available)
 
 ## TO DO  
 
-        June 24: 
-            worked on nav bar font left align, started w sm breakpoint
+
+        LEFT OFF June 24: 
+            Created new remote that takes up whole SVG space. 
+            Still can't get HOME link closer to remote on sm size. - DONE- it's margin-left in .menu
+
         LEFT OFF June 5: 
         need to fix tv screen and buttons in middle tier alignment. 
        
@@ -51,6 +54,9 @@ $ npm start   (opens to localhost:3000 is available)
     
     ####### VIEW RELATED 
     Refactor to flexbox view - don't need?
+    Font on NavBar - make so doesn't wrap
+    Font on NavBar - instead of vertically centered, do 
+        consistent space up from bottom of bar? 
     Make TV Sticky so leftside text scrolls, but TV doesnt? 
     Can still scroll to the right and see nonsense. 
         --The width is constant!  About 70% of 150px. 
@@ -97,6 +103,7 @@ $ npm start   (opens to localhost:3000 is available)
 
 
 ## DONE 
+    get HOME link closer to remote - it's margin-left in .menu (July 10)
     take Portfolio view API call, pass down as props, slap it on TV / side text, check channel #s consistent everywhere.   ~2 hr. 
     Fix TV Text list items to loop through each.  5 min. 
     Take screenshots of my different projects to use

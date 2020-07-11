@@ -25,6 +25,7 @@ class NavBar extends Component {
     render(){
 
         return(
+            <>
 
             <div className="navbar-width">
                 <div className="nav">
@@ -33,6 +34,7 @@ class NavBar extends Component {
                     <div className="displayElement">
 
                         <div className="menu-shadow">
+
                             <div className="menu">
                                 <div className="menu-reveal-bar">
 
@@ -48,6 +50,7 @@ class NavBar extends Component {
                     </div>  
                 </div>
             </div>
+            </>
         )
     }
 

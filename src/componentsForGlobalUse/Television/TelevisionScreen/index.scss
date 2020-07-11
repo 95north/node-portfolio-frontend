@@ -18,7 +18,7 @@ $tv-brown-button-panel: #6c6518;
         height: 31.58vw;  // Height as % would be overriden by width. 
         width: 65.05%;
         // position: absolute;  // any position option ruins this working! 
-        margin-right: 10.0vw;
+        margin-right: 10.0vw;  // Deleting this did not fix 
         position: relative;
 
     }
