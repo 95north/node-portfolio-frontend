@@ -29,9 +29,10 @@ img{  // REQUIRED to resize Tv itself...
         // left: 1.0%;
         
         // margin-left: 2px; -- this makes screen image too high! Hmm
-        top: 80px;
-        left: 33vw;
-        width: 78vw;
+        top: 79px;
+        left: 32.9vw; // changes entire TV positioning
+        width: 78vw; // changing this does not change screen image size. 
+        // height: 95vw;  // changing this does not change screen image size.
     }
 }
 // MAX 1244 - CELLPHONEY
@@ -63,16 +64,16 @@ img{  // REQUIRED to resize Tv itself...
         position: absolute;  // to its parent, tv-positioning! 
         // margin-left: 65.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
         // left: 65.75%;  // 195px / 2880   // NOT the 6% calculated... why??? 
-        left: 21.45%;
-        top: 16.11%;  //only affect screen placement.
-        border: 5px solid greenyellow;
+        left: 21.50%;
+        top: 16.90%;  //only affect screen placement.
+        // border: 5px solid greenyellow;
     }
 }
 @media screen and (max-width: 621px) {  
     .screen-placement-responsive {
         position: absolute;  // to its parent, tv-positioning! 
-        left: 21.45%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
-        top: 16.11%;  // WORKS  
+        left: 21.12%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
+        top: 15.64%;  // WORKS  
         border: 5px solid orange;
     }
 }

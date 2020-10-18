@@ -54,6 +54,8 @@ $ npm start   (opens to localhost:3000 is available)
     
     ####### VIEW RELATED 
     Refactor to flexbox view - don't need?
+    Font on NavBar - .menu add breakpoints for margin-left
+        for responsive link spacing from remote? 
     Font on NavBar - make so doesn't wrap
     Font on NavBar - instead of vertically centered, do 
         consistent space up from bottom of bar? 
