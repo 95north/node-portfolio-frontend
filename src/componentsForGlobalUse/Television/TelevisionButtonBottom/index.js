@@ -95,7 +95,7 @@ class TelevisionButtonBottom extends Component {
         )
     }   
 
-    bottomButtonResponsive = ()  => {
+    bottomButtonResponsive = ()  => {   // initially  = top(bottom)Button600x900
 
         return(
             <div 

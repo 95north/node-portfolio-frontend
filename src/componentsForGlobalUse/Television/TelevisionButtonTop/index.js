@@ -61,10 +61,11 @@ class TelevisionButtonTop extends Component {
     topButtonResponsive = ()  => {   // initially  = topButton600x900 
         return(
             <div 
-                className="top-button-600-900"
+                className="top-button-responsive"
                 onClick = {this.triggerRotation}
             >
- 
+                <div className="rotate">
+
                     <div className={this.state.cssClass} >
                         <img 
                             src="TvButton1.svg" 
@@ -72,43 +73,44 @@ class TelevisionButtonTop extends Component {
                             alt="Round TV Button"
                             height="155"
                             width="155" 
-                        />
+                            />
                     </div>
+                </div>
 
             </div>
         )
     }    
 
-    topButton600x900 = ()  => {
-        return(
-            <div 
-                className="top-button-600-900"
-                onClick = {this.triggerRotation}
-            >
+    // topButton600x900 = ()  => {
+    //     return(
+    //         <div 
+    //             className="top-button-600-900"
+    //             onClick = {this.triggerRotation}
+    //         >
  
-                    <div className={this.state.cssClass} >
-                        <img 
-                            src="TvButton1.svg" 
-                            // className="clip600"
-                            alt="Round TV Button"
-                            height="155"
-                            width="155" 
-                        />
-                    </div>
+    //                 <div className={this.state.cssClass} >
+    //                     <img 
+    //                         src="TvButton1.svg" 
+    //                         // className="clip600"
+    //                         alt="Round TV Button"
+    //                         height="155"
+    //                         width="155" 
+    //                     />
+    //                 </div>
 
-            </div>
-        )
-    }    
+    //         </div>
+    //     )
+    // }    
 
-    topButton400x600 = ()  => {
-        return(
-            <div 
-                className="top-button-400-600"
-                onClick = {this.triggerRotation}
-            >
-            </div>
-        )
-    }    
+    // topButton400x600 = ()  => {
+    //     return(
+    //         <div 
+    //             className="top-button-400-600"
+    //             onClick = {this.triggerRotation}
+    //         >
+    //         </div>
+    //     )
+    // }    
 
 
     render(){

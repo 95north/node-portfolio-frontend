@@ -1,53 +1,59 @@
-.bottom-button-responsive{    // for TVimg.svg TV With Buttons image version! 
-    border-radius: 50px;    
-    width: 155px;        
-    height: 155px;
-    position: absolute;
-    right: 46px;
-    top: 356px;
-    cursor: pointer;
-}
 
 .bottom-button-responsive:hover{
-        -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        transform: scale(1.05);
-}
-
-.one {
-    transform: rotate(60deg);
-    position: relative;
-    top: -2px;
-    right: 2px;
-}
-.two {
-    transform: rotate(120deg);
-    position: relative;
-    top: -4px;
-    right: 2px;
-}
-.three {
-    transform: rotate(180deg);
-    position: relative;
-    top: -5px;  // Different fm Top Button's, everything else the same. 
-    right: 0px;
-}
-.four{
-    transform: rotate(240deg);
-    position: relative;
-    top: -4px;
-    right: -2px;
-}
-.five {
-    transform: rotate(300deg);
-    position: relative;
-    top: -2px;
-    right: -2px;
-}
-.six {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 
+@media screen and (min-width: 1001px)  { 
+    .bottom-button-responsive{    // for TVimg.svg TV With Buttons image version! 
+        // ^^ This is for the default large laptop screen size, smaller sizes are in breakpoints below. 
+        // REACTOR???? to max size breakpoint?
+        border-radius: 50px;    
+        width: 155px;        
+        height: 155px;
+        position: absolute;
+        right: 46px;
+        top: 356px;
+        cursor: pointer;
+    }
+
+
+    .one {
+        transform: rotate(60deg);
+        position: relative;
+        top: -2px;
+        right: 2px;
+    }
+    .two {
+        transform: rotate(120deg);
+        position: relative;
+        top: -4px;
+        right: 2px;
+    }
+    .three {
+        transform: rotate(180deg);
+        position: relative;
+        top: -5px;  // Different fm Top Button's, everything else the same. 
+        right: 0px;
+    }
+    .four{
+        transform: rotate(240deg);
+        position: relative;
+        top: -4px;
+        right: -2px;
+    }
+    .five {
+        transform: rotate(300deg);
+        position: relative;
+        top: -2px;
+        right: -2px;
+    }
+    .six {
+    }
+
+}
 
 
 
