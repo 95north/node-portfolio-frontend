@@ -58,9 +58,28 @@ class TelevisionButtonTop extends Component {
           }
     }
 
+    topButtonResponsive = ()  => {   // initially  = topButton600x900 
+        return(
+            <div 
+                className="top-button-600-900"
+                onClick = {this.triggerRotation}
+            >
+ 
+                    <div className={this.state.cssClass} >
+                        <img 
+                            src="TvButton1.svg" 
+                            // className="clip600"
+                            alt="Round TV Button"
+                            height="155"
+                            width="155" 
+                        />
+                    </div>
+
+            </div>
+        )
+    }    
 
     topButton600x900 = ()  => {
-
         return(
             <div 
                 className="top-button-600-900"
@@ -93,21 +112,23 @@ class TelevisionButtonTop extends Component {
 
 
     render(){
-        let topButton;
-        switch (this.props.size){
-            case "600x900":
-                topButton = this.topButton600x900();
-                break;
-            case "400x600": 
-                topButton = this.topButton400x600();
-                break;
-            default:
-                topButton = this.topButton400x600();
-        }
+        let topButton = this.topButtonResponsive();
+        return topButton;
+        // let topButton;
+        // switch (this.props.size){
+        //     case "600x900":
+        //         topButton = this.topButton600x900();
+        //         break;
+        //     case "400x600": 
+        //         topButton = this.topButton400x600();
+        //         break;
+        //     default:
+        //         topButton = this.topButton400x600();
+        // }
         
-        return(
-            topButton
-        )
+        // return(
+        //     topButton
+        // )
     }
 
 } 

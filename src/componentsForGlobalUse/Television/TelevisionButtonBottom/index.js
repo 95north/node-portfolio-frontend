@@ -125,24 +125,25 @@ class TelevisionButtonBottom extends Component {
 
 
     render(){
-        let bottomButton;
-        switch (this.props.size){
-            case "600x900":
-                // bottomButton = this.bottomButton600x900();  // FOR OLD 1 BREAKPT @ 800px
-                bottomButton = this.bottomButtonResponsive();
+        let bottomButton = this.bottomButtonResponsive();
+        return bottomButton;
+    //    switch (this.props.size){
+    //         case "600x900":
+    //             // bottomButton = this.bottomButton600x900();  // FOR OLD 1 BREAKPT @ 800px
+    //             bottomButton = this.bottomButtonResponsive();
 
-                break;
-            case "400x600": 
-                bottomButton = this.bottomButton400x600();
-                break;
-        }
+    //             break;
+    //         case "400x600": 
+    //             bottomButton = this.bottomButton400x600();
+    //             break;
+    //     }
         
-        return(
-            bottomButton
-        )
+    //     return(
+    //         bottomButton
+    //     )
+    //    }
+
     }
-
-
 } 
 
 export default TelevisionButtonBottom; 

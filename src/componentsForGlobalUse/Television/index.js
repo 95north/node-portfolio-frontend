@@ -145,11 +145,11 @@ class Television extends Component {
                         />  
                     </div>
                     <TelevisionButtonTop 
-                        size="600x900" 
+                        size="hardcoded" 
                         changeChannel={this.changeChannel}
                     />
                     <TelevisionButtonBottom 
-                        size="600x900" 
+                        size="hardcoded"   // was"600x900" 
                         rotateBottomButtonChangeChannel = {this.rotateBottomButtonChangeChannel}
                     />
                 </div>
