@@ -6,7 +6,7 @@
 }
 
 
-@media screen and (min-width: 1001px)  { 
+@media screen and (min-width: 1000px)  { 
     .bottom-button-responsive{    // for TVimg.svg TV With Buttons image version! 
         // ^^ This is for the default large laptop screen size, smaller sizes are in breakpoints below. 
         // REACTOR???? to max size breakpoint?
@@ -57,14 +57,14 @@
 
 
 
-@media screen and (max-width: 1000px) and (min-width: 622px)  { 
+@media screen and (max-width: 1000px) and (min-width: 621px)  { 
 // @media screen and (max-width: 2472px) and (min-width: 1245px) {  
     .bottom-button-responsive {    // for TVimg.svg TV With Buttons image version! 
-        width: 20.1vw;// 155px / 2880px wide;  
-        height: 20.1vw;// 155px / 2880px wide;  
+        width: 16.1vw;// 155px / 2880px wide;  
+        height: 16.1vw;// 155px / 2880px wide;  
         position: absolute;
-        right: 4.8%;  // 46px / 2880 ;
-        top: 58.1%; // 13.3%; // 240px / 1800 ;
+        right: 3.3%;  // 46px / 2880 ;
+        top: 55.1%; // 13.3%; // 240px / 1800 ;
         cursor: pointer;
     }
     .one {
@@ -168,149 +168,86 @@
 
 // CSS FOR BEFORE 2 BREAKPOINTS / 3 VIEWS REFACTOR June 5
 
-.bottom-button-600-900{    // for TVimg.svg TV With Buttons image version! 
-    // border-style: dotted;
-    border-radius: 50px;    
-    width: 155px;        
-    height: 155px;
-    position: absolute;
-    right: 46px;
-    top: 356px;
-    cursor: pointer;
-
-    // Playing with responsive design. 
-    // position: relative;
-    // left: 70vw;
-    // top: -30vw;
-
-    // 1,440 by 900 pixels.   
-    // MacBook Pro 15-inch (Retina), 15.4, 2880 x 1800,
-    // 15-inch MacBook Pro's screen measures 2560 x 1600 pixels
-
-}
-
-.bottom-button-600-900:hover{
-        -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        transform: scale(1.05);
-}
-
-
-.bottom-button-400-600 {
-    border-style: dotted;
-    border-radius: 43px;    
-    width: 70px;        
-    height: 70px;
-    position: absolute;
-    left: 130px;
-    top: 69px;
-}
-
-
-.one {
-    transform: rotate(60deg);
-    position: relative;
-    top: -2px;
-    right: 2px;
-}
-.two {
-    transform: rotate(120deg);
-    position: relative;
-    top: -4px;
-    right: 2px;
-}
-.three {
-    transform: rotate(180deg);
-    position: relative;
-    top: -5px;  // Different fm Top Button's, everything else the same. 
-    right: 0px;
-}
-.four{
-    transform: rotate(240deg);
-    position: relative;
-    top: -4px;
-    right: -2px;
-}
-.five {
-    transform: rotate(300deg);
-    position: relative;
-    top: -2px;
-    right: -2px;
-}
-.six {
-}
+// .bottom-button-600-900{    // for TVimg.svg TV With Buttons image version! 
+//     // border-style: dotted;
+//     border-radius: 50px;    
+//     width: 155px;        
+//     height: 155px;
+//     position: absolute;
+//     right: 46px;
+//     top: 356px;
+//     cursor: pointer;
+//     // 1,440 by 900 pixels.   
+//     // MacBook Pro 15-inch (Retina), 15.4, 2880 x 1800,
+//     // 15-inch MacBook Pro's screen measures 2560 x 1600 pixels
+// }
 
 
 
-
-
-@media screen and (max-width: 800px) {  
-    .bottom-button-600-900 {    // for TVimg.svg TV With Buttons image version! 
-        width: 20.1vw;// 155px / 2880px wide;  
-        height: 20.1vw;// 155px / 2880px wide;  
-        position: absolute;
-        right: 4.8%;  // 46px / 2880 ;
-        top: 58.1%; // 13.3%; // 240px / 1800 ;
-        cursor: pointer;
-    }
-    .one {
-        transform: rotate(60deg);
-        position: relative;
-        top: -2px;
-        right: 2px;
-    }
-    .two {
-        transform: rotate(120deg);
-        position: relative;
-        top: -4px;
-        right: 2px;
-    }
-    .three {
-        transform: rotate(180deg);
-        position: relative;
-        top: -4px;
-        right: 0px;
-    }
-    .four{
-        transform: rotate(240deg);
-        position: relative;
-        top: -4px;
-        right: -2px;
-    }
-    .five {
-        transform: rotate(300deg);
-        position: relative;
-        top: -2px;
-        right: -2px;
-    }
-    .six {
-    }
-
-  }
+// .bottom-button-400-600 {
+//     border-style: dotted;
+//     border-radius: 43px;    
+//     width: 70px;        
+//     height: 70px;
+//     position: absolute;
+//     left: 130px;
+//     top: 69px;
+// }
 
 
 
+// @media screen and (max-width: 800px) {  
+//     .bottom-button-600-900 {    // for TVimg.svg TV With Buttons image version! 
+//         width: 20.1vw;// 155px / 2880px wide;  
+//         height: 20.1vw;// 155px / 2880px wide;  
+//         position: absolute;
+//         right: 4.8%;  // 46px / 2880 ;
+//         top: 58.1%; // 13.3%; // 240px / 1800 ;
+//         cursor: pointer;
+//     }
+//     .one {
+//         transform: rotate(60deg);
+//         position: relative;
+//         top: -2px;
+//         right: 2px;
+//     }
+//     .two {
+//         transform: rotate(120deg);
+//         position: relative;
+//         top: -4px;
+//         right: 2px;
+//     }
+//     .three {
+//         transform: rotate(180deg);
+//         position: relative;
+//         top: -4px;
+//         right: 0px;
+//     }
+//     .four{
+//         transform: rotate(240deg);
+//         position: relative;
+//         top: -4px;
+//         right: -2px;
+//     }
+//     .five {
+//         transform: rotate(300deg);
+//         position: relative;
+//         top: -2px;
+//         right: -2px;
+//     }
+//     .six {
+//     }
+
+//   }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-.bottom-button-600-900-DEADCODE {    // for TVimg.svg TV With Buttons image version! 
-    // border-style: dotted;
-    border-radius: 50px;    
-    width: 100px;        
-    height: 100px;
-    position: absolute;
-    right: 70px;
-    top: 376px;
-}
+// .bottom-button-600-900-DEADCODE {    // for TVimg.svg TV With Buttons image version! 
+//     // border-style: dotted;
+//     border-radius: 50px;    
+//     width: 100px;        
+//     height: 100px;
+//     position: absolute;
+//     right: 70px;
+//     top: 376px;
+// }
