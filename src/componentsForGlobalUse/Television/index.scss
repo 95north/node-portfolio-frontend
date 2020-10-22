@@ -69,15 +69,23 @@ img{  // REQUIRED to resize Tv itself...
         // border: 5px solid greenyellow;
     }
 }
-@media screen and (max-width: 621px) {  
+@media screen and (max-width: 622px) and (min-width: 450px) {  
     .screen-placement-responsive {
         position: absolute;  // to its parent, tv-positioning! 
-        left: 21.12%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
-        top: 15.64%;  // WORKS  
+        left: 21.0%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
+        top: 15.49%;  // WORKS  
         border: 5px solid orange;
     }
 }
 
+@media screen and (max-width: 450px) {  
+    .screen-placement-responsive {
+        position: absolute;  // to its parent, tv-positioning! 
+        left: 20.6%;  // was 16.45% // 195px / 2880   // NOT the 6% calculated... why??? 
+        top: 15.19%;  // WORKS  
+        border: 5px solid orange;
+    }
+}
 
 
 

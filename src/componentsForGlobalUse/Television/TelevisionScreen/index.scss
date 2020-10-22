@@ -13,7 +13,7 @@ $tv-brown-button-panel: #6c6518;
 }
 @media screen and (max-width: 1000px) and (min-width: 622px)  { 
 // @media screen and (max-width: 2472px) and (min-width: 1245px) {  // 13" Macbook = 2560 x 1600 px. 
-    .screen-responsive {    //  for the image on the screen
+    .screen-responsive {    
         border-radius: 7.5%;   
         height: 31.67vw;  // Height as % would be overriden by width. 
         width: 64.87%;
@@ -23,19 +23,35 @@ $tv-brown-button-panel: #6c6518;
 
     }
 }
-@media screen and (max-width: 621px) {  // DONE 
-    .screen-responsive {    //  for the image on the screen
+@media screen and (max-width: 621px) and (min-width: 450px) { 
+// @media screen and (max-width: 621px) {  // DONE 
+    .screen-responsive {    
         border-radius: 7.5%;    
-        height: 45.9vw;  // Height as % would be overriden by width. 
-        width: 65.20%; // 64.95%;
+        height: 46.0vw; //45.2vw;  // Height as % would be overriden by width. 
+        width: 65.17%; //65.20%; // 64.95%;  % is relative to parent element. 
+        
+        // width: 15rem; // height: 12rem;  // Also Static sizing.
+        
+        // height: 29.4ch; // Static sizing. 
+
+        // height: 19.0fr; //  img stretched down, top L aligns, width expands to R edge of window. 
+        // width: 15.20fr;
+
+        // width: 55vw;  // + h: 120.2%  >> wont stretch image out of 17x9 etc
         position: relative;
     }
 }
 
+@media screen and (max-width: 450px) {  
+    .screen-responsive {    
+        border-radius: 7.5%;    
+        height: 45.2vw; //45.2vw;  // Height as % would be overriden by width. 
+        width: 65.25%; //65.20%; // 64.95%;  % is relative to parent element. 
 
+        position: relative;
+    }
 
-
-
+}
 
 
 
