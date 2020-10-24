@@ -133,7 +133,7 @@ class Portfolio extends Component {
                     header: "Loading",         // title
                     image: "backup image", //"TvStaticAnimated.gif",
                     anchor: null,          // URL to project demo
-                    p: null,              // description.   was "bad API", 
+                    p: "While there are many solutions to make this load faster, I prefer the experientiality of this loading screen.",              // description.   was "bad API", 
                     listHeader: null,
                     listItems: null,            // languages libraries .  ["Portfolio scene"], as list on 
                     ListHeader2: null,

@@ -10,11 +10,11 @@ import Portfolio from './Portfolio'
 
 export default[
 
-    <Route
-        key="about"
-        path="/about"
-        component={About}
-    />,
+    // <Route
+    //     key="about"
+    //     path="/about"
+    //     component={About}
+    // />,
     <Route
         key="contact"
         path="/contact"

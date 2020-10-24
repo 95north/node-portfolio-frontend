@@ -38,8 +38,8 @@ class NavBar extends Component {
                             <div className="menu">
                                 <div className="menu-reveal-bar">
 
-                                    <span> <Link to='/'>Home</Link> </span>
-                                    <span> <Link to='/about'>About</Link> </span>
+                                    <span> <Link to='/'>About</Link> </span>
+                                    {/* <span> <Link to='/about'>About</Link> </span> */}
                                     <span> <Link to='/projects'>Portfolio</Link> </span>
                                     <span> <Link to='/meta'>Meta</Link> </span>
                                     <span> <Link to='/contact'>Contact</Link> </span>

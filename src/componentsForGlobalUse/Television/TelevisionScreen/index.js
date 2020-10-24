@@ -18,29 +18,17 @@ class TelevisionScreen extends Component {
         // channelNumber=this.props.channelNumber
 
 
-
-
-
     returnResponsiveScreenImage = () =>{
         console.log("TvSCreen this.props", this.props)
         let tvScreenImagesArray = this.props.tvScreenImagesArray;
-        // let pic = (this.props.channelNumber !==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
-        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
-        // let loadingImgFlag = this.props.tvScreenImagesArray[0] == "backup Image"        
+        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!!                
 
-
-        
-        console.log("Type of pic is: ", typeof pic)
-
-        // if ( pic === "backup image"){
-        if (this.props.tvScreenImagesArray == "backup image" ){
-
-            console.log("backup image~~~ !!!")
+        if (this.props.tvScreenImagesArray == "backup image"){     // Or use  typeof <<< == "string"? This prob faster.
             return (
                 <img 
                     className = "screen-responsive"
-                    src={loadingImg} // "TvStaticAnimated.gif"
-                    alt="Photo of an old television"
+                    src={loadingImg} 
+                    alt="Animated TV Static"
                 />
             )
         } else {
@@ -59,20 +47,12 @@ class TelevisionScreen extends Component {
 
 
     render(){
-        // console.log("props in TVSCreen:", this.props)
-
-        // Was used for 1 breakpoint @ 800px : 
-        // let screen = this.returnScreenSizeForDisplayBreakpoint();
-        // return screen
-
         let responsiveScreen = this.returnResponsiveScreenImage();
         return responsiveScreen
-
-
-        // returnScreenSizeForDisplayBreakpoint  CALLS screen600x900  
-        // CALLS  returnScreenImage  RETURNS backupImage if channel # false (undefined)
-        // channel No comes from props, and when props change, this should re-run
-        //  are Channel No 
+        
+        
+        // Was used for 1 breakpoint @ 800px : 
+        // return this.returnScreenSizeForDisplayBreakpoint();  // CALLS screen600x900 
     }
 
 

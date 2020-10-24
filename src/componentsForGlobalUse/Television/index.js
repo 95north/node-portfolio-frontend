@@ -52,7 +52,6 @@ class Television extends Component {
            // need to use ROTATION COUNTER, not bottomButtonChannelNumber's modulus. 
            bottomButtonChannelNumber = (buttonRotationsCount % (numberOfBottomButtonChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
         }
-        // return bottomButtonChannelNumber;
         this.setState({bottomButtonChannel: bottomButtonChannelNumber})  
     }
 
