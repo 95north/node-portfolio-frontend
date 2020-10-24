@@ -43,7 +43,7 @@ class NavBar extends Component {
                                     <span> <Link to='/projects'>Portfolio</Link> </span>
                                     <span> <Link to='/meta'>Meta</Link> </span>
                                     <span> <Link to='/contact'>Contact</Link> </span>
-                                    <span> <Link to='/diary'>Today, I ..</Link> </span>
+                                    {/* <span> <Link to='/diary'>Today, I ..</Link> </span> */}
                                 </div>
                             </div>
                         </div>

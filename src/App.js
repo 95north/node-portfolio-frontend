@@ -16,10 +16,10 @@ function App() {
     </Router>
 
 
-          <p className="fonty">
+          {/* <p className="fonty">
             Tori's Portfolio Landing Page 
             (Hello from App.js)
-          </p>
+          </p> */}
 
 
 
