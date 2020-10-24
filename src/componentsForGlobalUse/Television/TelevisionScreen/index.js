@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import styles from './index.scss';
 import fs from 'browserify-fs';
 // var fs = require('browserify-fs');
-// import cloneDeep from 'lodash/cloneDeep';
-// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-
+import loadingImg from './Images/TvStaticAnimated.gif';
 
 // import fs from 'fs';  // fs is only for server side, you can't use on frontend!!! 
 // var fs = require('fs'); // 
@@ -16,16 +14,184 @@ import fs from 'browserify-fs';
 class TelevisionScreen extends Component {
     // TV Screen in orig 1200x800 tv is 487px high x 607px wide. 
     // 261px to the right, up 137px to start of tv frame in vector
-
-
-
         // tvScreenContents=this.props.screenContents
         // channelNumber=this.props.channelNumber
 
 
 
 
-    returnScreenImage = () =>{
+
+    returnResponsiveScreenImage = () =>{
+        console.log("TvSCreen this.props", this.props)
+        let tvScreenImagesArray = this.props.tvScreenImagesArray;
+        // let pic = (this.props.channelNumber !==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
+        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
+        // let loadingImgFlag = this.props.tvScreenImagesArray[0] == "backup Image"        
+
+
+        
+        console.log("Type of pic is: ", typeof pic)
+
+        // if ( pic === "backup image"){
+        if (this.props.tvScreenImagesArray == "backup image" ){
+
+            console.log("backup image~~~ !!!")
+            return (
+                <img 
+                    className = "screen-responsive"
+                    src={loadingImg} // "TvStaticAnimated.gif"
+                    alt="Photo of an old television"
+                />
+            )
+        } else {
+                let buff = new Buffer(pic, 'binary');
+                console.log("TvScreen - buff is: ", buff)           // Uint8Array(1429265) [137, 80, ... 
+                var blob = new Blob([buff], {'type': 'image/png'});
+                var url = URL.createObjectURL(blob); //possibly `webkitURL` or another vendor prefix for old browsers.
+            return(
+                <img 
+                    src={url}
+                    className = "screen-responsive"
+                /> 
+            )
+        }
+    }
+
+
+    render(){
+        // console.log("props in TVSCreen:", this.props)
+
+        // Was used for 1 breakpoint @ 800px : 
+        // let screen = this.returnScreenSizeForDisplayBreakpoint();
+        // return screen
+
+        let responsiveScreen = this.returnResponsiveScreenImage();
+        return responsiveScreen
+
+
+        // returnScreenSizeForDisplayBreakpoint  CALLS screen600x900  
+        // CALLS  returnScreenImage  RETURNS backupImage if channel # false (undefined)
+        // channel No comes from props, and when props change, this should re-run
+        //  are Channel No 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DEADCODE
+
+    returnScreenImageBackUpImages = () =>{
+        // let pic = this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif";
+        let pic
+
+        // NEED TO REFACTOR THIS TO USE IMAGE FROM MULTIDIMENSION ARRAY PROP. 
+        switch (this.props.channelNumber){
+            case 0 :
+                pic = "TvStaticAnimated.gif"
+                break;
+            case 1 : 
+                pic = "tv.jpg"
+                break;
+            case 2 : 
+                pic = "TvStaticBW.jpg"
+                break;
+            default: 
+                pic = "TvStaticAnimated.gif"
+        }
+        console.log( "pic RvSCreen is BACKUP pic -- : ", pic)
+        return pic;
+    }
+
+
+    screen600x900 = ()  => {
+        console.log("Tv SCreen - this.props.channelNumber", this.props.channelNumber)
+        let pic = this.returnScreenImage()
+        return pic;
+
+        // return(
+        //     // <div className="screen-shape-600-900">
+        //             <img 
+        //                 className = "screen-shape-600-900"
+        //                 src={this.returnScreenImage()}
+        //                 alt="Photo of an old television"
+        //                 // height="600"
+        //                 // width="900" 
+        //             >
+        //             </img>
+        //     // </div>
+        // )
+    }   
+
+
+    oldScreen600x900 = ()  => {
+        return(
+            // <div className="screen-shape-600-900">
+                    <img 
+                        className = "screen-shape-600-900"
+                        src={this.returnScreenImage()}
+                        alt="Photo of an old television"
+                        // height="600"
+                        // width="900" 
+                    >
+                    </img>
+            // </div>
+        )
+    }    
+
+    screen400x600 = ()  => {
+        return(
+            <div className="screen-shape-400-600">
+            </div>
+        )
+    }    
+
+
+    returnScreenSizeForDisplayBreakpoint = () => {
+        let screen;
+        switch (this.props.size){
+            case "600x900":
+                screen = this.screen600x900();
+                break;
+            case "400x600": 
+                screen = this.screen400x600();
+                break;
+        }
+        return screen;
+    }
+
+
+
+
+
+
+
+
+
+    // **************DEADCODE:  MongoDB de-Blobbing woe log 
+    DEADCODE_MongoDB_deBlobbing_woe_log_formerly_returnScreenImage = () =>{
         // parallel style of TelevisionAccompanyingText where all projects are passed down, not just relevant one?  
         // https://stackoverflow.com/questions/42395034/how-to-display-binary-data-as-image-in-react
 
@@ -37,20 +203,23 @@ class TelevisionScreen extends Component {
         // console.log("tvScreenImagesArray[this.props.bottomButtonChannel]", tvScreenImagesArray[this.props.bottomButtonChannel])
         let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
         console.log("Type of pic is: ", typeof pic)
+        console.log("pic === backup image ??: ", pic)  
 
         if ( pic === "backup image"){
+            console.log("Hit pic === backup image if  --else")
             return (
                 <img 
                     className = "screen-shape-600-900"
-                    src="TvStaticAnimated.gif"
-                    alt="Photo of an old television"
+                    src="./Images/tv.jpg"              
+                    // src='./Images/TvStaticAnimated.gif'              
+
+                    // src={loadingImg}               
+                    alt="Animated TV Static"
                 />
             )
         } else {
-            // https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
             // let buff = new Buffer(data, 'base64');
             // let text = buff.toString('ascii');
-            // let buff = new Buffer(data, 'base64');
             // fs.writeFileSync('stack-abuse-logo-out.png', buff);
 
                 let buff = new Buffer(pic, 'binary');
@@ -106,12 +275,9 @@ class TelevisionScreen extends Component {
                 // />
 
                 // <img src={`data:image/png;base64,${pic}`} />
-
                 // <img src="data:image/png;base64,{pic}" />   // Doesn't seem to work. 
-
                 // <img src="decodedPic" /> 
                 // <img src={"data:image/png;base64," + buff} />
-
                 // https://stackoverflow.com/questions/25869017/how-to-convert-binary-data-and-mime-to-image-in-javascript
             )
         }
@@ -122,171 +288,6 @@ class TelevisionScreen extends Component {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    returnScreenImageBackUpImages = () =>{
-        // let pic = this.props.channelNumber % 1 ? "tv.jpg" : "TvStaticAnimated.gif";
-        let pic
-
-        // NEED TO REFACTOR THIS TO USE IMAGE FROM MULTIDIMENSION ARRAY PROP. 
-        switch (this.props.channelNumber){
-            case 0 :
-                pic = "TvStaticAnimated.gif"
-                break;
-            case 1 : 
-                pic = "tv.jpg"
-                break;
-            case 2 : 
-                pic = "TvStaticBW.jpg"
-                break;
-            default: 
-                pic = "TvStaticAnimated.gif"
-        }
-        console.log( "pic RvSCreen is BACKUP pic -- : ", pic)
-        return pic;
-    }
-
-
-    screen600x900 = ()  => {
-        console.log("Tv SCreen - this.props.channelNumber", this.props.channelNumber)
-        let pic = this.returnScreenImage()
-
-        return pic;
-
-
-        return(
-            // <div className="screen-shape-600-900">
-                    <img 
-                        className = "screen-shape-600-900"
-                        src={this.returnScreenImage()}
-                        alt="Photo of an old television"
-                        // height="600"
-                        // width="900" 
-                    >
-                    </img>
-            // </div>
-        )
-    }   
-
-
-    oldScreen600x900 = ()  => {
-        console.log("Tv SCreen this.props.channelNumber", this.props.channelNumber)
-
-
-        return(
-            // <div className="screen-shape-600-900">
-                    <img 
-                        className = "screen-shape-600-900"
-                        src={this.returnScreenImage()}
-                        alt="Photo of an old television"
-                        // height="600"
-                        // width="900" 
-                    >
-                    </img>
-            // </div>
-        )
-    }    
-
-    screen400x600 = ()  => {
-        return(
-            <div className="screen-shape-400-600">
-            </div>
-        )
-    }    
-
-
-
-
-
-
-
-    returnScreenSizeForDisplayBreakpoint = () => {
-        let screen;
-        switch (this.props.size){
-            case "600x900":
-                screen = this.screen600x900();
-                break;
-            case "400x600": 
-                screen = this.screen400x600();
-                break;
-        }
-        
-        return screen;
-
-    }
-
-
-
-
-
-
-    returnResponsiveScreenImage = () =>{
-        console.log("TvSCreen this.props", this.props)
-        let tvScreenImagesArray = this.props.tvScreenImagesArray;
-        let pic = (this.props.channelNumber || this.props.channelNumber==0) ? tvScreenImagesArray[this.props.bottomButtonChannel] : "backup image" // ZERO is FaLSEY !!!! 
-        console.log("Type of pic is: ", typeof pic)
-
-        if ( pic === "backup image"){
-            return (
-                <img 
-                    className = "screen-responsive"
-                    src="TvStaticAnimated.gif"
-                    alt="Photo of an old television"
-                />
-            )
-        } else {
-                let buff = new Buffer(pic, 'binary');
-                console.log("TvScreen - buff is: ", buff)           // Uint8Array(1429265) [137, 80, ... 
-                var blob = new Blob([buff], {'type': 'image/png'});
-                var url = URL.createObjectURL(blob); //possibly `webkitURL` or another vendor prefix for old browsers.
-            return(
-                <img 
-                    src={url}
-                    className = "screen-responsive"
-                /> 
-            )
-        }
-    }
-
-
-
-
-    render(){
-        // console.log("props in TVSCreen:", this.props)
-
-        // Was used for 1 breakpoint @ 800px : 
-        // let screen = this.returnScreenSizeForDisplayBreakpoint();
-        // return screen
-
-        let responsiveScreen = this.returnResponsiveScreenImage();
-        return responsiveScreen
-
-
-        // returnScreenSizeForDisplayBreakpoint  CALLS screen600x900  
-        // CALLS  returnScreenImage  RETURNS backupImage if channel # false (undefined)
-        // channel No comes from props, and when props change, this should re-run
-        //  are Channel No 
-
-    }
 
 } 
 

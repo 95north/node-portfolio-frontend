@@ -14,82 +14,6 @@ var Buffer = require('buffer/').Buffer  // note: the trailing slash is important
 
 const MONGO_URL = "http://localhost:7555"
 
-// let backupProjectData;   --- MOVE THIS TO A DIFFERENT FILE & IMPORT 
-let backupProjectData = [   // hideous to have here but getting undefined on projects.lenght in processProjectData()
-    {
-        "languages": [
-          "React",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Node",
-          
-        ],
-        "libraries": [
-          "Mongoose"
-        ],
-        "name": "Portfolio - this is backup data! ",
-        "description": "My personal website -- this is backup data! ",
-        "link": "None yet",
-        "year": 2019,
-        "image": "TvStaticAnimated.gif",
-        "updated": "2020-03-23T02:35:55.215Z",
-        "__v": 0
-      },
-      {
-        "languages": [
-          "React",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Ruby",
-          "Ruby on Rails"
-        ],
-        "libraries": [
-          "fake entry"
-        ],
-        "_id": "5e78208b4e66d48520780b0f",
-        "name": "DIY Or Don't - Project at array index 1",
-        "description": "Research, read, & leave reviews of home improvement projects, add projects to your list, manage your toolbox and shopping list, have your shopping list texted to you.",
-        "link": "http://diy-or-dont-frontend.herokuapp.com/login",
-        "year": 2019,
-        "image": "TvStaticAnimated.gif",
-        "updated": "2020-03-23T02:35:55.215Z",
-        "__v": 0
-      },
-      {
-        "languages": [
-          "React",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Ruby",
-          "Ruby on Rails"
-        ],
-        "libraries": [
-          "Mapbox"
-        ],
-        "_id": "5e78208b4e66d48520780b10",
-        "name": "Bodega Review App",
-        "description": "Locate the best bodega by map as rated for its coffee, cat, etc.",
-        "year": 2019,
-        "image": "TvStaticAnimated.gif",
-        "updated": "2020-03-23T02:35:55.227Z",
-        "__v": 0
-      }
-    ]
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class Portfolio extends Component {
@@ -98,13 +22,6 @@ class Portfolio extends Component {
         projects: null,
         screenContents: null
     }
-
-
-
-
-
-
-
 
 
     componentDidMount = () => {
@@ -148,13 +65,12 @@ class Portfolio extends Component {
         .then(projects => {
             console.log("Portfolio Scene --- projects is : ", projects); // works. 
             this.setState({ projectDataUploadRaw: projects });
-            // this.setState({ projects: this.processProjectData(projects) });
         });        
 
     }   // ends componentDidMount
 
 
-    // componentDidMount =()=> {         // gets only ONE project
+    // componentDidMount =()=> {         // to get only ONE project
     //     fetch(`${MONGO_URL}/p`, {     // even  one object returned comes back as readable stream 
     //         method: 'GET',
     //         headers: {}
@@ -187,7 +103,6 @@ class Portfolio extends Component {
                 //     /// BACKUP IMAGE !
                 // }
                 
-                
                 let sideContentObj= {
                     header: null,       // title
                     anchor: null,       // URL to project demo
@@ -215,16 +130,19 @@ class Portfolio extends Component {
             console.log("I hit the ELSE in Portfolio scene processProjectData")
             let backupTvContentObjs = [
                 {
-                    header: "I failed",       // title
-                    anchor: "failure",       // URL to project demo
-                    p: "bad API",             // description
-                    listHeader: "API in :",
-                    listItems: ["Portfolio scene"],    // languages libraries
-                    ListHeader2: "But :",
-                    listItems2: ["why?"], 
+                    header: "Loading",         // title
+                    image: "backup image", //"TvStaticAnimated.gif",
+                    anchor: null,          // URL to project demo
+                    p: null,              // description.   was "bad API", 
+                    listHeader: null,
+                    listItems: null,            // languages libraries .  ["Portfolio scene"], as list on 
+                    ListHeader2: null,
+                    listItems2: null,           // was ["why?"], 
                 }
             ]
-            return ({"tvContentObjs" : backupTvContentObjs, "tvScreenContentImages" : ["TvStaticAnimated.gif"]});
+
+            return ({"tvContentObjs" : backupTvContentObjs, "tvScreenContentImages" : ["backup image"]});
+            // return ({"tvContentObjs" : backupTvContentObjs, "tvScreenContentImages" : ["TvStaticAnimated.gif"]});
 
         }
     }
@@ -240,10 +158,10 @@ class Portfolio extends Component {
         let projects = this.state.projectDataUploadRaw
         let numberOfChannels = (  (projects === "Meaningless initial value" ? false : projects["projectsArray"].length)     ? projects["projectsArray"].length : 0); 
         console.log("In Portfolio scene, numberOfChannels  is; ", numberOfChannels)   // NaN
-        let splitData = this.processProjectData(this.state.projectDataUploadRaw)
+        // BELOW -  REFACTOR TO DESTRUCTURED?? 
+        let splitData = this.processProjectData(projects)
         let processedProjectsData = splitData["tvContentObjs"];
         let tvScreenImagesArrayOfArrays = splitData["tvScreenContentImages"];
-
 
 
         return(
@@ -252,7 +170,6 @@ class Portfolio extends Component {
                 {/* <div className="portfolio"> */}
                     <Header></Header>
                     <NavBar></NavBar>
-
                     <Television 
                         tvScreenContents={this.state.screenContents}   // CURRENTLY JUST USES DEFAULT IMAGES!!!!!  NULL IS PASSED DOWN! 
                         // channelNumber ={channelNumber}
@@ -261,23 +178,6 @@ class Portfolio extends Component {
                         tvExplanatoryAsideText= {processedProjectsData}
                         // tvExplanatoryAsideText= {this.state.projects}        // fixing so completed API call triggers re-render
                         tvScreenImagesArrayOfArrays = {tvScreenImagesArrayOfArrays}
-                    ></Television>
-                {/* </div> */}
-            </div>
-        )
-
-
-
-        return(                                     // passes down state as props. 
-            <div className="portfolio">
-                {/* <p>Portfolio Scene</p> */}
-                {/* <div className="portfolio"> */}
-                    <Header></Header>
-                    <NavBar></NavBar>
-
-                    <Television 
-                        tvScreenContents={this.state.screenContents}
-                        tvExplanatoryAsideText= {this.state.projects}
                     ></Television>
                 {/* </div> */}
             </div>

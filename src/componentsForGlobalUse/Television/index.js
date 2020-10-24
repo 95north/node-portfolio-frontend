@@ -14,11 +14,6 @@ class Television extends Component {
     }
 
     changeChannel = (buttonRotationsCount) => {
-        // this.setState({channel: this.state.channel += 1})  // OLD
-        
-        // let nextChannel = this.generateNextChannelNumber(); 
-        // this.setState({channel: nextChannel + 1})  
-
         this.setState({
             channel: this.generateNextChannelNumber(buttonRotationsCount),
             bottomButtonChannel : 0    // reset to 0. 
@@ -33,47 +28,87 @@ class Television extends Component {
         //  console.log("numberOf top uChannels in Television is : ", numberOfChannels)
         let channelNumber = this.state.channel;  // why state? 
 
-        // console.log("Portfolio  ", this.props.channelNumber)
-
         if (channelNumber + 1 < numberOfChannels ){
-            // console.log("Works fine ~~~~~ ?  ", this.state.channel += 1)
             channelNumber+= 1;  // the array INDEX #. 
         } else {
             // need to use ROTATION COUNTER, not channelNumber's modulus. 
             channelNumber = (buttonRotationsCount % (numberOfChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
         }
-        console.log("else stmt in Portfolio scene Channel Numbers, POST CALCULATION !! channelNumber is : ", channelNumber)
+        // console.log("else stmt in Portfolio scene Channel Numbers, POST CALCULATION !! channelNumber is : ", channelNumber)
         return channelNumber;
     }
 
 
     rotateBottomButtonChangeChannel = (buttonRotationsCount) => {  // image # to display for given project
         let numberOfBottomButtonChannels =  this.props.tvScreenImagesArrayOfArrays[this.state.channel].length;        // ie. # of images for ea. project. 
-        console.log("numberOfImages in Television is : ", numberOfBottomButtonChannels)
+        // console.log("numberOfImages in Television is : ", numberOfBottomButtonChannels)
         let bottomButtonChannelNumber = this.state.bottomButtonChannel;
 
         // console.log("Portfolio  ", this.props.bottomButtonChannelNumber)
 
         if (bottomButtonChannelNumber + 1 < numberOfBottomButtonChannels ){
-           console.log("Works fine ~~~~~ bottom button channel is ?  ", this.state.bottomButtonChannel += 1)
            bottomButtonChannelNumber+= 1;  // the array INDEX #. 
         } else {
            // need to use ROTATION COUNTER, not bottomButtonChannelNumber's modulus. 
            bottomButtonChannelNumber = (buttonRotationsCount % (numberOfBottomButtonChannels) );   //  2%2 = 0     3 % 2 =1   & 4 % 2 =0 ......
-           console.log("Portfolio scene Channel Numbers, POST CALCULATION !!! props-bottomButtonChanelNumber is : ", bottomButtonChannelNumber)
         }
         // return bottomButtonChannelNumber;
         this.setState({bottomButtonChannel: bottomButtonChannelNumber})  
     }
 
 
+    tvResponsive = () => {
+        // console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
+        // console.log("Tv Component  this.state.channel ", this.state.channel)
+        console.log("this.props.tvScreenImagesArrayOfArrays[this.state.channel]", this.props.tvScreenImagesArrayOfArrays[this.state.channel])
+
+        return(
+            <div>
+                <div className="tv-responsiveness">
+                    <img 
+                        src="TvWithoutButtons.svg" 
+                        alt="image of television, used as frame"
+                        height="600"
+                        width="900" 
+                    >
+                    </img>
+                    <div className="screen-placement-responsive">  
+                    {/* Refactor above to be className within TelevisionScreen? */}
+                        <TelevisionScreen 
+                            size="600x900" 
+                            channelNumber={this.state.channel}   // OLD WAY USING STATE
+                            // tvScreenImagesArrayOfArrays = 
+                            bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
+                            tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
+                        />  
+                    </div>
+                    <TelevisionButtonTop 
+                        changeChannel={this.changeChannel}
+                    />
+                    <TelevisionButtonBottom 
+                        // size="hardcoded"   // was"600x900" 
+                        rotateBottomButtonChangeChannel = {this.rotateBottomButtonChangeChannel}
+                    />
+                </div>
+                <TelevisionLeftSideTextArea                 
+                    tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
+                    channelNumber={this.state.channel}     // IS *NOT* DEADCODE !!! OLD WAY USING STATE
+                >
+                </TelevisionLeftSideTextArea>
+            </div>
+        )
+    }
+
+
+    render(){
+        // let tv600x900px = this.tv600x900();         // for 1 breakpoint @ 800px view. 
+        return( this.tvResponsive() );
+    }
 
 
 
 
-
-
-    tv400x600 = () => {                     //  SMALL SCREEN, NOT USING ATM
+    DEADCODEtv400x600 = () => {                     //  SMALL SCREEN, NOT USING ATM
         console.log(" ___ ")
         return(
             <div>
@@ -116,56 +151,8 @@ class Television extends Component {
         )
     }
 
-
-
-
-
-
-
-    tvResponsive = () => {
-        console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
-        console.log("Tv Component  this.state.channel ", this.state.channel)
-
-        return(
-            <div>
-                <div className="tv-responsiveness">
-                    <img 
-                        src="TvWithoutButtons.svg" 
-                        alt="image of television, used as frame"
-                        height="600"
-                        width="900" 
-                    >
-                    </img>
-                    <div className="screen-placement-responsive">
-                        <TelevisionScreen 
-                            size="600x900" 
-                            channelNumber={this.state.channel}   // OLD WAY USING STATE
-                            bottomButtonChannel = {this.state.bottomButtonChannel}   // Need to know image # to display. 
-                            tvScreenImagesArray = {this.props.tvScreenImagesArrayOfArrays[this.state.channel]}     //Change to only pass down array for one project! 
-                        />  
-                    </div>
-                    <TelevisionButtonTop 
-                        size="hardcoded" 
-                        changeChannel={this.changeChannel}
-                    />
-                    <TelevisionButtonBottom 
-                        size="hardcoded"   // was"600x900" 
-                        rotateBottomButtonChangeChannel = {this.rotateBottomButtonChangeChannel}
-                    />
-                </div>
-                <TelevisionLeftSideTextArea                 
-                    tvExplanatoryAsideText= {this.props.tvExplanatoryAsideText} // comes from Portfolio Scene API call
-                    channelNumber={this.state.channel}     // OLD WAY USING STATE
-                >
-                </TelevisionLeftSideTextArea>
-            </div>
-        )
-
-    }
-
-
-    
-    tv600x900 = () => {                         // HARD CODED TO USE ATM 
+     
+    DEADCODEtv600x900 = () => {                         // HARD CODED TO USE ATM 
         console.log("Tv Component  this.props.channelNumber ", this.props.channelNumber)  // IS UNDEFINED ! 
         console.log("Tv Component  this.state.channel ", this.state.channel)
 
@@ -215,16 +202,6 @@ class Television extends Component {
     } 
 
 
-    render(){
-        // let tv600x900px = this.tv600x900();         // for 1 breakpoint @ 800px view. 
-        let tvResponsive = this.tvResponsive();         // for 2 breakpoint, 3 tier view. 
-
-
-        return(
-            // tv600x900px
-            tvResponsive
-        );
-    }
 
 } 
 

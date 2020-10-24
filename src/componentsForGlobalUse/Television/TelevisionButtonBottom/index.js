@@ -62,41 +62,9 @@ class TelevisionButtonBottom extends Component {
                 return null;
           }
     }
-
-
-    bottomButton600x900 = ()  => {
-
-        return(
-            <div 
-                className="bottom-button-600-900"
-                onClick = {this.triggerRotation}
-            >
-                <div className="rotate">  
-                    <div className={this.state.cssClass} >
-                        <img 
-                            src="TvButton2.svg" 
-                            alt="Round TV Button"
-                            height="155"
-                            width="155" 
-                        />
-                    </div>
-                </div>
-            </div>
-        )
-    }    
-
-    bottomButton400x600 = ()  => {
-        return(
-            <div 
-                className="bottom-button-400-600"
-                onClick = {this.triggerRotation}
-            >
-            </div>
-        )
-    }   
+ 
 
     bottomButtonResponsive = ()  => {   // initially  = top(bottom)Button600x900
-
         return(
             <div 
                 className="bottom-button-responsive"
@@ -118,12 +86,6 @@ class TelevisionButtonBottom extends Component {
 
 
 
-
-
-
-
-
-
     render(){
         let bottomButton = this.bottomButtonResponsive();
         return bottomButton;
@@ -131,18 +93,15 @@ class TelevisionButtonBottom extends Component {
     //         case "600x900":
     //             // bottomButton = this.bottomButton600x900();  // FOR OLD 1 BREAKPT @ 800px
     //             bottomButton = this.bottomButtonResponsive();
-
     //             break;
     //         case "400x600": 
     //             bottomButton = this.bottomButton400x600();
     //             break;
     //     }
-        
     //     return(
     //         bottomButton
     //     )
     //    }
-
     }
 } 
 
