@@ -12,7 +12,9 @@ const BSON = require('bson');
 const { EJSON } = require('bson');
 var Buffer = require('buffer/').Buffer  // note: the trailing slash is important!
 
-const MONGO_URL = "http://localhost:7555"
+const MONGO_URL = "http://localhost:27017"
+// const MONGO_URL = "http://localhost:7555"
+
 
 
 
@@ -24,14 +26,19 @@ class Portfolio extends Component {
     }
 
 
-    componentDidMount = () => {
-        fetch(`${MONGO_URL}/allprojects`, {
+    componentDidMount = () => {             // ADD ERROR HANDLING!!!  this Fetch never completes. 
+        fetch(`${MONGO_URL}/project/allprojects`, {
             method: 'GET',
+            // mode: 'cors', // no-cors, *cors, same-origin  DOESNT SEEM TO MAKE DIFFERENCE
             headers: {
+
             // 'Content-Type': 'application/json',      // This breaks it bc you gettin BSON !!!
             // Accepts: 'application/json'
             // Authorization: `${token}`
             }
+        })
+        .catch(err => {
+            console.log("Error in Fetch request: ", err)
         })
         .then(resp => {
             // All this bc hitting undefined URL path and got back a "readable stream"... 
@@ -59,11 +66,11 @@ class Portfolio extends Component {
             // let r = BSON.deserializeStream(resp.body, 0, 2, output, 0 );                 // Must use either Buffer or Uint8Array
             // let r = BSON.deserializeStream(Buffer.from(resp.body), 0, 2, output, 0 );    // The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type object
             // let r = Buffer.from(resp.body);       // first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type object
-
+            console.log("ALL PROJECTS FETCH REQUEST RESPONSE is: ", resp)
             return resp.json();
         })
         .then(projects => {
-            console.log("Portfolio Scene --- projects is : ", projects); // works. 
+            console.log("Portfolio Scene --- data served from  Fetch() REQ : ", projects); // works. 
             this.setState({ projectDataUploadRaw: projects });
         });        
 
@@ -91,11 +98,13 @@ class Portfolio extends Component {
         let projects = this.state.projectDataUploadRaw.projectsArray; //  ? this.state.projects : backupProjectData;
         let tvContentObjs = [];
         let tvScreenContentImages = [];
+        console.log("Projects in Portfolio Scene processProjectData is: ", this.state);  //GOOD 
 
     
 
         if (this.state.projectDataUploadRaw !== "Meaningless initial value") {                         // projects coming up null
-            console.log("Projects in Portfolio Scene is: ", projects);  //GOOD 
+            // console.log("Projects in Portfolio Scene processProjectData is: ", projects);  //GOOD 
+            
             projects.forEach(project => {
                 // if (project["image"]){
                 //     screenContentArray.push(project["image"])
