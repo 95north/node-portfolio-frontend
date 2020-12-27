@@ -24,6 +24,7 @@ class Routes extends React.Component {
     }
 
 
+    // CURRENTLY TRYING MOVING THIS TO APP FOR STATE REASONS. 
     login = (e, loginInfo) => {
         // let user = await LoginService.logInSubmit(e, loginInfo);
         // this.setState({ 
@@ -33,69 +34,143 @@ class Routes extends React.Component {
         // })
 
         LoginService.logInSubmit(e, loginInfo).then( user => {
-            this.setState({ 
+            this.props.setHighLevelStateForUser({
                 user_token: user.token,
                 user_name: user.username,
                 user_id: user.id
             })
+            this.props.history.push('/entry'); 
+            // REFACTOR TO MOVE USER INFO STATE HIGHER UP IN APP COMPOSITE CLASS STRUCTURE. 
+            // this.setState({ 
+            //     user_token: user.token,
+            //     user_name: user.username,
+            //     user_id: user.id
+            // })
         })
     }
 
 
 
     // export default[
+    // render () {
+    //     return (
+    //         [
+    //         <Route
+    //             key="projects"
+    //             path="/projects"
+    //             component={Portfolio}
+    //         />,
+    //         <Route
+    //             key="meta"
+    //             path="/meta"
+    //             component={Meta}
+    //         />,
+    //         <Route
+    //             key="contact"
+    //             path="/contact"
+    //             component={Contact}
+    //         />,
+
+
+    //         <Route
+    //             key="login"
+    //             path="/login"
+    //             component={Login}
+    //             // login = {this.login}
+    //         />,
+    //         <Route
+    //             key="entry"
+    //             path="/entry"
+    //             component={Entry}
+    //             // user = {this.state}
+    //         />,
+    //         <Route
+    //             key="entries"
+    //             path="/entries"
+    //             component={Entries}
+    //         />,
+
+
+    //         <Route                  // Must put more general path @ end or routing issues
+    //             key="about"
+    //             path="/"
+    //             component={About}
+    //         />,
+    //         <Route
+    //             key="home"
+    //             path="/"
+    //             component={About}
+    //         />,
+    //         ]
+    //     )
+    // }
+
+
+
+
+
     render () {
         return (
-            [
+            <>
             <Route
                 key="projects"
                 path="/projects"
                 component={Portfolio}
-            />,
+            />
             <Route
                 key="meta"
                 path="/meta"
                 component={Meta}
-            />,
-            <Route
+            />
+            {/* <Route
                 key="contact"
                 path="/contact"
                 component={Contact}
-            />,
+            /> */}
 
 
             <Route
                 key="login"
                 path="/login"
                 component={Login}
+                // login = {this.login}
+                login = {this.props.setHighLevelStateForUser}
+                
+            />
+            {/* <Route
+                key="login"
+                path="/login"
+                component={Login}
                 login = {this.login}
-            />,
+            />
+setHighLevelStateForUser */}
             <Route
                 key="entry"
                 path="/entry"
                 component={Entry}
-                user = {this.state}
-            />,
+                user = {this.props.user}
+                // user = {this.state}
+            />
             <Route
                 key="entries"
                 path="/entries"
                 component={Entries}
-            />,
+            />
 
 
             <Route                  // Must put more general path @ end or routing issues
                 key="about"
                 path="/"
                 component={About}
-            />,
+            />
             <Route
                 key="home"
                 path="/"
                 component={About}
-            />,
-            ]
+            />
+            </>
         )
     }
 
 }
-export default Routes;
+export default withRouter(Routes);

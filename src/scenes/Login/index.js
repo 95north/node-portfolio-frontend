@@ -5,6 +5,8 @@ import styles from './index.css';
 import Header from  '../../componentsForGlobalUse/Header/index.js';
 import NavBar from  '../../componentsForGlobalUse/NavBar/index.js';
 import LoginService from  '../../servicesForGlobalUse/Login/index.js';
+// import { useCount } from "./use-count";
+var loginServiceInstance = new LoginService();
 
 
 class Login extends Component {
@@ -20,15 +22,34 @@ class Login extends Component {
         )
     }
 
+    submitHandler = (e) => {
+        e.preventDefault();
+        console.log("Hit submit handler!")
+        console.log("LoginService is: ", loginServiceInstance)
+        // REFACTOR ATTEMPT, Dec 27 :   Not triggering a re-render when submit so it's fine... 
+        // loginServiceInstance.loginSubmit(e, e.target.value);
+        loginServiceInstance.loginSubmit(e, this.state);
+    }
+
+    submitHandlerNewUser = (e) => {
+        e.preventDefault();
+        console.log("Hit New user submit handler!")
+        loginServiceInstance.createUser(e, this.state);
+    }
+
 
     render(){
 // logInSubmit is in  servicesForGlobalUse > Login
         return(
+            <>
             <div className="login">
-                <Header></Header>
-                <NavBar></NavBar>
+            <br/>
+            <br/>
+            <br/>
+                {/* <Header></Header>
+                <NavBar></NavBar> */}
                 <p>Login Scene</p>
-                <form onSubmit={e => LoginService.logInSubmit(e, this.state)} >
+                <form onSubmit={e => this.submitHandler(e)} >
                     <input 
                         type = "text" 
                         name = "username"
@@ -45,8 +66,35 @@ class Login extends Component {
                     />
                     <button>Login</button>
                 </form>
-
             </div>
+
+            <div>
+            <br/>
+            <br/>
+            <br/>
+                <p>Create a New User</p>
+                <form onSubmit={e => this.submitHandlerNewUser(e)} >
+                    <input 
+                        type = "text" 
+                        name = "username"
+                        placeholder="Username for New User" 
+                        value={this.state.username} 
+                        onChange={this.changeHandler}
+                    />    
+                    <input 
+                        type = "password"
+                        name = "password"
+                        placeholder="Password for New User" 
+                        value={this.state.password} 
+                        onChange={this.changeHandler}
+                    />
+                    <button>Create User</button>
+                </form>
+            <br/>
+            <br/>
+            <br/>
+            </div>
+            </>
         )
     }
 

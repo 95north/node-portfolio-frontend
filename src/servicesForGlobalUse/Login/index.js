@@ -1,18 +1,35 @@
 
 import React, { Component } from 'react';
+import App from  '../../App.js';  // I'm in src > scenes > routes
+
+
+// const MONGO_URL = "http://localhost:27017";
+const SQL_DB_URL = "http://localhost:7555"
 
 class LoginServices extends Component {
 // function LoginServices(props) {    
-    
+
+
+
+
+
+
+
+
+
+
     loginSubmit= (e, user) =>  {
+        console.log("in loginSubmit User is : ", user)
         e.preventDefault();
-        if (true) {
-        fetch(`${URL}/login`, {
+
+        fetch(`${SQL_DB_URL}/api/login/processlogin`, {
             method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin  DOESNT SEEM TO MAKE DIFFERENCE
             headers: {
                 'Content-Type': 'application/json',
-                Accepts: 'application/json'
+                // Accepts: 'application/json'  // RUINS THIS CODE. 
             },
+            Accepts: 'application/json',
             body: JSON.stringify({
                 user: {
                     username: user.username,
@@ -20,24 +37,42 @@ class LoginServices extends Component {
                 }
             })
         })
+        .catch(err => {
+            console.log("Error in Login Post request: ", err)
+        })
         .then(resp => {
-            return resp.json() 
+            console.log("loginSubmit  resp is: ", resp)
+            return resp.json()
         })
         .then(user => {
-            localStorage.setItem('token', user.token); 
-            this.props.login(e, user);   
-            // this.setState({ 
-            //     user_token: user.token,
-            //     user_name: user.username,
-            //     user_id: user.id
-            // });
-            this.props.history.push('/entry'); 
+            if (user){
+
+                console.log("user returned info is: ", user)
+                console.log("user BODY returned info is: ", user.body)
+
+                localStorage.setItem('token', user.token); 
+
+                
+                // To add token & userinfo to state.  
+                // Wauit - Routes, which calls this, calls function it rcvs as prop from App to set state.. 
+                // this.props.login(e, user);   
+                // console.log("App is: ", App)
+                // App.setHighLevelStateForUser(user);
+                
+                // this.setState({ 
+                //     user_token: user.token,
+                //     user_name: user.username,
+                //     user_id: user.id
+                // });
+                
+                // get error: 
+                // this.props.history.push('/entry'); 
+            } else {
+                console.log("user not found! / user returned info is: ", user)
+            }
             return user; 
-        });  
-        }
+        });   
     }
-
-
 
 
     logOut = (e, user) =>{
@@ -49,12 +84,52 @@ class LoginServices extends Component {
     }
 
 
+    createUser= (e, user) =>  {
+        console.log("in createUser User is : ", user)
+        e.preventDefault();
+
+        fetch(`${SQL_DB_URL}/api/user/createUser`, {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin  DOESNT SEEM TO MAKE DIFFERENCE
+            headers: {
+                'Content-Type': 'application/json',
+                // Accepts: 'application/json'  // RUINS THIS CODE. 
+            },
+            body: JSON.stringify({
+                user: {
+                    username: user.username,
+                    password:  user.password 
+                }
+            })
+        })
+        .catch(err => {
+            console.log("Error in Create User Post request: ", err)
+        })
+        .then(resp => {
+            console.log("resp is: ", resp)
+            return resp
+        })
+        // .then(user => {
+        //     console.log("user returned info is: ", user)
+        //     localStorage.setItem('token', user.token); 
+        //     this.props.login(e, user);   
+        //     // this.setState({ 
+        //     //     user_token: user.token,
+        //     //     user_name: user.username,
+        //     //     user_id: user.id
+        //     // });
+        //     this.props.history.push('/entry'); 
+        //     return user; 
+        // });   
+    }
+
 
     render(){
         return (
             {
                 loginSubmit : this.loginSubmit,
-                logOut : this.logOut
+                logOut : this.logOut,
+                createUser: this.createUser
             }  
         )
     }
