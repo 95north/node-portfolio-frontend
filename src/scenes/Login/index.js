@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Switch, withRouter, BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';  // need for redirect to work. 
 
 // import CSSModules from 'react-css-modules';
 

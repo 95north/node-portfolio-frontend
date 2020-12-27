@@ -70,7 +70,6 @@ class LoginServices extends Component {
             } else {
                 console.log("user not found! / user returned info is: ", user)
             }
-
             return user; 
         });
         console.log("d is: ", d)

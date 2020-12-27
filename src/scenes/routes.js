@@ -23,11 +23,7 @@ class Routes extends React.Component {
         console.log("scenes>Login>props", this.props)
         return (
             <>
-            <Route
-                key="projects"
-                path="/projects"
-                component={Portfolio}
-            />
+
             <Route
                 key="meta"
                 path="/meta"
@@ -61,16 +57,24 @@ class Routes extends React.Component {
             />
 
 
-            <Route                  // Must put more general path @ end or routing issues
+            <Route
+                key="projects"
+                path="/projects"
+                component={Portfolio}
+            />
+
+            {/* <Route                  // Must put more general path @ end or routing issues
                 key="about"
                 path="/"
                 component={About}
-            />
-            <Route
+            /> */}
+
+            {/* <Route              // change this to redirect to about or something?  How make not display everywhere?
                 key="home"
                 path="/"
                 component={About}
-            />
+            /> */}
+
             </>
         )
     }

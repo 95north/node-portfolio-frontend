@@ -26,6 +26,7 @@ class Entry extends Component {
             <form onSubmit={e => this.postNewEntry(e, this.state)} >
 
                 Entry Subject:
+                <br/>
                 <input 
                     type="text" 
                     // data-id={index} 
@@ -37,6 +38,7 @@ class Entry extends Component {
                     onChange={this.changeHandler}
                 /> <br/>
                 Entry Text: 
+                <br/>
                 <input 
                     type="text" 
                     // data-id={index} 
@@ -47,16 +49,17 @@ class Entry extends Component {
                     placeholder="What did you learn today?"
                     onChange={this.changeHandler}
                 /> <br/>
+                <br/>
                 <button>Create Entry</button>
             </form>
         )  
     }
 
 
-    postNewEntry = (e) => {
+    postNewEntry = (e, entry) => {
         e.preventDefault();
-        if (this.props.user.user_id === undefined || this.props.user.user_id === "undefined" ){
-            alert("Posting new entry!")
+        if (this.props.user.user_id === undefined || this.props.user.user_id === ""  ){
+            alert("You must be logged in to do that!")
         } else {
             fetch(`${MONGO_URL}/entry/entry`, {
                 method: 'POST',
@@ -66,8 +69,11 @@ class Entry extends Component {
                 body: JSON.stringify(
                     this.state
                 )
+            }).catch(err => {
+                console.log("Error in Fetch request: ", err)
             }).then(res => res.json() )
             .then(postResp => {
+                console.log("In Entry Scene, postResp is: ", postResp)
             })
         }
 
@@ -83,8 +89,10 @@ class Entry extends Component {
             {/* // <div className="entry">  */}
                 <Header></Header>
                 <NavBar></NavBar>
-                <p>Entry Scene</p>
+                <br/>
 
+                <p>Entry Scene</p>
+                <br/>
 
                 {form}
 
