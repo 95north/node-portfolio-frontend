@@ -10,6 +10,7 @@ class LoginServices extends Component {
 // function LoginServices(props) {    
 
 
+    userData = "";
 
 
 
@@ -17,12 +18,12 @@ class LoginServices extends Component {
 
 
 
-
-    loginSubmit= (e, user) =>  {
+    loginSubmit= async (e, user) =>  {
         console.log("in loginSubmit User is : ", user)
         e.preventDefault();
+        // let userData;
 
-        fetch(`${SQL_DB_URL}/api/login/processlogin`, {
+        let d = await fetch(`${SQL_DB_URL}/api/login/processlogin`, {
             method: 'POST',
             mode: 'cors', // no-cors, *cors, same-origin  DOESNT SEEM TO MAKE DIFFERENCE
             headers: {
@@ -46,12 +47,11 @@ class LoginServices extends Component {
         })
         .then(user => {
             if (user){
-
                 console.log("user returned info is: ", user)
                 console.log("user BODY returned info is: ", user.body)
 
-                localStorage.setItem('token', user.token); 
-
+                localStorage.setItem('token', user.body.token); 
+                this.userData = user;
                 
                 // To add token & userinfo to state.  
                 // Wauit - Routes, which calls this, calls function it rcvs as prop from App to set state.. 
@@ -70,8 +70,11 @@ class LoginServices extends Component {
             } else {
                 console.log("user not found! / user returned info is: ", user)
             }
+
             return user; 
-        });   
+        });
+        console.log("d is: ", d)
+        return this.userData   
     }
 
 

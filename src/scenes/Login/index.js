@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+// import { Route, Switch, withRouter, BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+
 // import CSSModules from 'react-css-modules';
 
 import styles from './index.css';
@@ -22,13 +25,14 @@ class Login extends Component {
         )
     }
 
-    submitHandler = (e) => {
+    submitHandler = async (e) => {
         e.preventDefault();
-        console.log("Hit submit handler!")
-        console.log("LoginService is: ", loginServiceInstance)
-        // REFACTOR ATTEMPT, Dec 27 :   Not triggering a re-render when submit so it's fine... 
-        // loginServiceInstance.loginSubmit(e, e.target.value);
-        loginServiceInstance.loginSubmit(e, this.state);
+        // console.log("LoginService is: ", loginServiceInstance)   
+        let userData = await loginServiceInstance.loginSubmit(e, this.state);
+        // console.log("in Login, userdata :", userData)  // WORKS 
+        console.log("Login's props are:", this.props)
+        let highLevelStateSet = await this.props.setHighLevelStateForUser(userData.body);   // set userdata to high level component state.
+        this.props.history.push('/entry'); 
     }
 
     submitHandlerNewUser = (e) => {
@@ -100,4 +104,4 @@ class Login extends Component {
 
 } 
 
-export default Login; 
+export default withRouter(Login); 
