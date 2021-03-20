@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import CSSModules from 'react-css-modules';
 
-import styles from './index.css';
+import styles from './index.scss';
 import Header from  '../../componentsForGlobalUse/Header/index.js';
 import NavBar from  '../../componentsForGlobalUse/NavBar/index.js';
 const MONGO_URL = "http://localhost:27017"
@@ -42,8 +42,9 @@ class Entries extends Component {
         if(this.state.entriesDataUploadRaw){
             let entriesCopy = this.state.entriesDataUploadRaw;
             entriesCopy.forEach( entry =>{    
+                let date = entry.date ? entry.date : "2020"
                 // entryArr.push(<li className="rounded" style={{opacity: "1"}}><b> {entry.subject} </b></li>)
-                entryArr.push(<div><b>{entry.topic} : {entry.detail} </b></div>)
+                entryArr.push(<div className="entry"><b>{entry.topic} :</b><span className="date">{date}</span><br/> {entry.detail} </div>)
             })
             return entryArr
         } else {
@@ -61,7 +62,9 @@ class Entries extends Component {
                 <Header></Header>
                 <NavBar></NavBar>
                 <p>Entries Scene</p>  <br/>
-                {entries}
+                <div className="entry-container">
+                    {entries}
+                </div>
             </div>
         )
     }

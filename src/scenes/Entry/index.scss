@@ -1,0 +1,43 @@
+$background-color: #000000;
+$font-stack: "Open Sans", sans-serif;
+$font-size-standard: 22px;
+$background-color: #000000;
+$font-stack: "verdana";
+$font-size-standard: 22px;
+$font-color: goldenrod;
+// $font-color: #f2e243;  // TV speaker yellow
+
+$tv-yellow: #f2e243;  // TV speaker yellow
+$tv-brown-speaker: #bdba9d;  // TV speaker gradient brown
+$tv-brown-frame-light: #877e23;  // TV frame top brown
+$tv-brown-frame-dark: #59443e;  // TV frame bottom brown
+$tv-brown-button-panel: #6c6518;
+
+
+.entries-header{
+    font-size: 50px; // == non-responsive 50px;
+    letter-spacing: 0.65vw;
+    font-family: 'VT323', cursive;
+    font-weight: bolder;
+    // position: -webkit-sticky; /* Safari */
+    // position: sticky;
+    padding-left: 3.4vw; //10px;
+    top: 0px;
+    color:#e3b36d;
+    z-index: 4; 
+    // -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    // -webkit-animation-duration: ease 6s; /* Safari 4.0 - 8.0 */
+    // animation-name: example;
+    // animation-duration: ease 6s;
+    // animation-iteration-count: 10;
+    background-color: $background-color;   
+}
+
+// .theme-button{
+//     margin-top: 8px; 
+//     max-height: 15px;
+//     font-size: 9px;
+//     background-color: #e3b36d;
+//     color: $tv-brown-frame-dark;
+
+// }

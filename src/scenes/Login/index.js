@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';  // need for redirect to work.
 
 // import CSSModules from 'react-css-modules';
 
-import styles from './index.css';
+import styles from './index.scss';
 import Header from  '../../componentsForGlobalUse/Header/index.js';
 import NavBar from  '../../componentsForGlobalUse/NavBar/index.js';
 import LoginService from  '../../servicesForGlobalUse/Login/index.js';
@@ -27,12 +27,16 @@ class Login extends Component {
 
     submitHandler = async (e) => {
         e.preventDefault();
-        // console.log("LoginService is: ", loginServiceInstance)   
-        let userData = await loginServiceInstance.loginSubmit(e, this.state);
-        // console.log("in Login, userdata :", userData)  // WORKS 
-        console.log("Login's props are:", this.props)
-        let highLevelStateSet = await this.props.setHighLevelStateForUser(userData.body);   // set userdata to high level component state.
-        this.props.history.push('/entry'); 
+        try {
+            // console.log("LoginService is: ", loginServiceInstance)   
+            let userData = await loginServiceInstance.loginSubmit(e, this.state);
+            // console.log("in Login, userdata :", userData)  // WORKS 
+            console.log("Login's props are:", this.props)
+            let highLevelStateSet = await this.props.setHighLevelStateForUser(userData.body);   // set userdata to high level component state.
+            this.props.history.push('/entry'); 
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     submitHandlerNewUser = (e) => {
@@ -46,13 +50,13 @@ class Login extends Component {
 // logInSubmit is in  servicesForGlobalUse > Login
         return(
             <>
-            <div className="login">
+            <Header/>
             <br/>
             <br/>
+            <span className="login-header"> Login </span>
+            <div className="login-container">
             <br/>
-                {/* <Header></Header>
-                <NavBar></NavBar> */}
-                <p>Login Scene</p>
+
                 <form onSubmit={e => this.submitHandler(e)} >
                     <input 
                         type = "text" 
@@ -68,7 +72,7 @@ class Login extends Component {
                         value={this.state.password} 
                         onChange={this.changeHandler}
                     />
-                    <button>Login</button>
+                    <button className="theme-button">Login</button>
                 </form>
             </div>
 
@@ -76,7 +80,8 @@ class Login extends Component {
             <br/>
             <br/>
             <br/>
-                <p>Create a New User</p>
+                {/* <p>Create a New User</p> */}
+                <span className="login-header"> Create a New User </span>
                 <form onSubmit={e => this.submitHandlerNewUser(e)} >
                     <input 
                         type = "text" 
@@ -92,7 +97,7 @@ class Login extends Component {
                         value={this.state.password} 
                         onChange={this.changeHandler}
                     />
-                    <button>Create User</button>
+                    <button className="theme-button">Create User</button>
                 </form>
             <br/>
             <br/>

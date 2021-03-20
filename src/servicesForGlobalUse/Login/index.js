@@ -8,14 +8,7 @@ const SQL_DB_URL = "http://localhost:7555"
 
 class LoginServices extends Component {
 // function LoginServices(props) {    
-
-
     userData = "";
-
-
-
-
-
 
 
     loginSubmit= async (e, user) =>  {
@@ -136,8 +129,8 @@ class LoginServices extends Component {
         )
     }
 
-  }
-  
+    
+  }  
   export default LoginServices;
 
 
