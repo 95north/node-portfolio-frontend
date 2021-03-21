@@ -38,14 +38,19 @@ class ProjectForm extends Component{
           callback(reader.result);
         }
       
-        reader.readAsText(file);   /// SB Diff READ AS function ??? 
+        // reader.readAsText(file);   /// SB Diff READ AS function ???  this DOES DO something, confirmed.  
+        reader.readAsDataURL(file);  // Failed to execute 'readAsDataURL' on 'FileReader': parameter 1 is not of type 'Blob'.
+
+
         // content = fr.readAsDataURL(img);    // is one of the 4 load methods fileReader offers. 
     }
 
 
     callBack = (readerResult) => {
         // console.log("Callback called!, reader.result: ", readerResult)  // WORKS!!!!   is a PNG as TEXT TEXT TEXT 
-        console.log("Callback called!, typeof reader.result: ", typeof readerResult)  // WORKS!!!! 
+        console.log("Callback called!, typeof reader.result: ", typeof readerResult)  // string WORKS!!!! 
+        console.log("Callback called!, length of  reader.result: ", readerResult.length)  // 72,886  reasonable.
+        // "data:image/png;base64,iVBORw0KGgoAAAANSUhEU...yuiy=="
 
         this.setState(              // is this async?  maybe file is there, just a race issue vs c.log ?
             // {"images": [...this.state.images, fr]}  // is calling 'this' within 'this' an issue? I should know. 
@@ -63,40 +68,24 @@ class ProjectForm extends Component{
     // It cannot be used to read a file by pathname from the user's file system. 
     // To read files on the client's file system by pathname, use the File System Access API.
 
+        // fileReaderInstance.result - This property is only valid after the read operation is complete, 
+        // and the format of the data depends on which of the methods was used to initiate the read operation.
+        // consumes a File or Blob and generates a base64 encoded data string
+        // can be used to display the thumbnail preview in web and mobile browsers locally.
+        // fr.onerror = this.errorHandler;
+
     // moving FileReader to img upload, versus calling once on all images. 
     addImageHandler = async (file) => {   // add Image to State.  POST button adds images to FileReader instance.  
         console.log(" addImageHandler file is: ", file);
         console.log(" addImageHandler file.target.files is: ", file.target.files);  // the file list! 
         console.log(" addImageHandler file.target.files.fileList is: ", file.target.files[0] );  // returns a file. 
 
-        let img = file.target.files[0]
+        let img = file.target.files[0];
         let content = "DEFAULT VAL";
-        // COMMENTED OUT 12:28 AM  - March 21 Sun. 
-        // let fr = await new FileReader();   //   use await ??  need FileReader bc sending >1 file, not FormData(); 
-        // fr.result - This property is only valid after the read operation is complete, 
-        // and the format of the data depends on which of the methods was used to initiate the read operation.
+        content = await this.read(img, this.callBack);  // IS USED. 
+        console.log ("addImageHandler -- Content is : ", content);   // undefined
 
-
-        content = await this.read(img, this.callBack)  // NOT USED! 
-            console.log ("addImageHandler -- Content is : ", content)   // undefined
-            // console.log ("addImageHandler -- fr is : ", fr) //  null 
-            // console.log ("addImageHandler -- fr is : ", fr.result)  //  a PNG as text. 
-        // consumes a File or Blob and generates a base64 encoded data string
-        // can be used to display the thumbnail preview in web and mobile browsers locally.
-        // fr.onerror = this.errorHandler;
-
-        // COMMENTED OUT 12:28 AM  - March 21 Sun. 
-        // this.setState(              // is this async?  maybe file is there, just a race issue vs c.log ?
-        //     // {"images": [...this.state.images, fr]}  // is calling 'this' within 'this' an issue? I should know. 
-        //     {"images": [...this.state.images, fr.result]}  // is calling 'this' within 'this' an issue? I should know. 
-
-        // , () => console.log("this.state.images is: ", this.state.images) )
     }
-
-
-
-    // processFile = (file) => {
-    // }
 
 
 
@@ -121,6 +110,9 @@ class ProjectForm extends Component{
             },
             // body: this.state.images
             body: JSON.stringify(this.state.images)
+        })
+        .then( (result)=> {
+            console.log("New Project fetch result: ", result)
         })
     }
 
