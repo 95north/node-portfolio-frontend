@@ -28,6 +28,7 @@ class Entry extends Component {
 
                 {/*  ProjectForm:  Objects are not valid as a React child (found: [object Promise]). */}
                 <div className="entry-form-container">
+                    {/* ^^^^!!  Need to rename this class!! Confusing */}
                     <ProjectForm user={this.props.user ? this.props.user : null}/>   
                 </div>
                 
