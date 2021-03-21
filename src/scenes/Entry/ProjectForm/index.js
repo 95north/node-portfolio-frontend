@@ -31,7 +31,93 @@ class ProjectForm extends Component{
 
 
 
-    addImageHandler = (file) => {   // add Image to State.  POST button adds images to FileReader instance.  
+    read = (file, callback) => {
+        // var file = fileInput.files.item(0);
+        // var file = img;
+        var reader = new FileReader();
+
+        reader.onload = function() {
+          callback(reader.result);
+        }
+      
+        reader.readAsText(file);
+    }
+
+    callBack = (readerResult) => {
+        console.log("Callback called!, reader.result: ", readerResult)  // WORKS!!!! 
+    }
+
+
+
+
+    // moving FileReader to img upload, versus calling once on all images. 
+    addImageHandler = async (file) => {   // add Image to State.  POST button adds images to FileReader instance.  
+        console.log(" addImageHandler file is: ", file);
+        console.log(" addImageHandler file.target.files is: ", file.target.files);  // the file list! 
+        console.log(" addImageHandler file.target.files.fileList is: ", file.target.files[0] );  // returns a file. 
+
+        let img = file.target.files[0]
+        let content = "DEFAULT VAL";
+        let fr = new FileReader();   // need FileReader bc sending >1 file, not FormData();
+        
+        
+        // fr.result - This property is only valid after the read operation is complete, 
+        // and the format of the data depends on which of the methods was used to initiate the read operation.
+        content = await this.read(img, this.callBack)
+
+
+        
+        // content = fr.readAsDataURL(img);    // is one of the 4 load methods fileReader offers. 
+            console.log ("addImageHandler -- Content is : ", content)
+            console.log ("addImageHandler -- fr is : ", fr)
+            console.log ("addImageHandler -- fr is : ", fr.result)
+
+
+        // fr.onload = async function (e){
+        //     fr.readAsDataURL(img);    // is one of the 4 load methods fileReader offers. 
+
+        //     content = await fr.result;
+        //     console.log ("addImageHandler -- Content is : ", content)
+        // }()
+        
+        // fr.readAsDataURL(img);    // is one of the 4 load methods fileReader offers. 
+
+        // console.log("addImageHandler - Fr RESULT is: ", fr["result"])
+        // console.log("addImageHandler - Fr 0 is: ", fr[0])
+        // console.log("typeof fr is: ", typeof fr)
+
+        // consumes a File or Blob and generates a base64 encoded data string
+        // can be used to display the thumbnail preview in web and mobile browsers locally.
+        fr.onerror = this.errorHandler;
+
+
+
+
+        // if (window.File && window.FileReader && window.FileList && window.Blob) {
+        //     function showFile() {
+        //        var demoImage = document.querySelector('img');
+        //        var file = document.querySelector('input[type=file]').files[0];
+        //        var reader = new FileReader();
+        //        reader.onload = function (event) {
+        //           demoImage.src = reader.result;   // Display Img after it loads, dont need. 
+        //        }
+        //        reader.readAsDataURL(file);
+        //        console.log(file)
+        //     //    console.log("Fr RESULT is: ", fr["result"])
+        //     }
+        //  } else {
+        //     alert("Your browser is too old to support HTML5 File API");
+        //  }
+
+
+        this.setState(              // is this async?  maybe file is there, just a race issue vs c.log ?
+            // {"images": [...this.state.images, fr]}  // is calling 'this' within 'this' an issue? I should know. 
+            {"images": [...this.state.images, content]}  // is calling 'this' within 'this' an issue? I should know. 
+
+        , () => console.log("this.state.images is: ", this.state.images) )
+    }
+
+    OLD_addImageHandler = (file) => { 
         console.log(" addImageHandler file is: ", file);
         console.log(" addImageHandler file.target.files is: ", file.target.files);  // the file list! 
         console.log(" addImageHandler file.target.files.fileList is: ", file.target.files[0] );  // returns a file. 
@@ -47,18 +133,116 @@ class ProjectForm extends Component{
 
 
 
+
+
+        // <body>
+         // <input type='file' id='input'>    !!!!!! 
+        // <progress value="0" max="100" id="progress-bar"></progress>
+        // <div id="status"></div>
+        // <script>
+
+    //
+
+    // vanillaJS = () => {
+    //     document.getElementById('input').addEventListener('change', (e) => {
+    //         const file = document.getElementById('input').files[0];
+    //         if (file) {
+    //             processFile(file);
+    //         }
+    //     })
+    // }
+
+    processFile = (file) => {
+        // we define fr as a new instance of FileReader
+        // const fr = new FileReader();            // a FileList object is generated & contains all the selected files within the FileList object
+
+        // fr.readAsDataURL(file);    // is one of the 4 load methods fileReader offers. 
+        // // consumes a File or Blob and generates a base64 encoded data string
+        // // can be used to display the thumbnail preview in web and mobile browsers locally.
+
+        // // Handle progress, success, and errors
+        // // fr.onprogress = updateProgress;
+        // fr.onerror = errorHandler;
+        // fr.onabort = () => changeStatus('Start Loading');
+        // fr.onloadstart =   () => changeStatus('Start Loading');
+        // fr.onload = ()=> {changeStatus('Loaded')};
+        // fr.onloadend = () => loaded;
+        // // Here you can perform some operations on the data asynchronously
+        // fr.onprogress = setProgress;
+    }
+
+    // // Updates the value of the progress bar
+    // setProgress = (e) => {
+    //     // The target is the file reader
+    //     const fr = e.target;
+    //     const loadingPercentage =  100 * e.loaded / e.total;
+    //     document.getElementById('progress-bar').value = loadingPercentage;
+    // }
+    
+    
+    // changeStatus = (status) => {
+    //     document.getElementById('status').innerHTML = status
+    // }
+
+    // loaded = (e) => {
+    //     changeStatus('Load ended!');
+    //     const fr = e.target
+    //     var result = fr.result;
+    //     console.log('result:')
+    //     console.log(result)
+    //     // Here we can send the result to a server for example
+    // }
+
+    errorHandler = (e) => {
+        console.log("Error: " + e.target.error.name)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // FileReader can only access the contents of files that the user has expl\icitly selected, 
+    // either using an HTML <input type="file"> element or by drag and drop.  I AM USING INPUT TYPE=FILE
+    // It cannot be used to read a file by pathname from the user's file system. 
+    // To read files on the client's file system by pathname, use the File System Access API.
     processStateImagesToFileReader = () => {
-        let data = new FileReader();   // need FileReader bc sending >1 file, not FormData();
+        let fr = new FileReader();   // need FileReader bc sending >1 file, not FormData();
+
+
         this.state.images.forEach( (img, index) => {
             console.log("In Post New Project - img is: ", img)  // a File obj (subclass of Blob),  should work with .append().... 
-            data.append(`file${index+1}`, img, `fileName${index+1}.jpg`)  // ?? CAN I use name option w FileReader() ?  // Appends a new value onto an existing key inside a FormData object, or adds the key if it does not already exist.
+            // data.append(`file${index+1}`, img, `fileName${index+1}.jpg`)  // ?? CAN I use name option w FileReader() ?  // Appends a new value onto an existing key inside a FormData object, or adds the key if it does not already exist.
+            // data.append(`file${index+1}`, img)  // ?? CAN I use name option w FileReader() ?  // Appends a new value onto an existing key inside a FormData object, or adds the key if it does not already exist.
+            fr.readAsDataURL(img);    // is one of the 4 load methods fileReader offers. 
+            // consumes a File or Blob and generates a base64 encoded data string
+            // can be used to display the thumbnail preview in web and mobile browsers locally.
+    
+            
+            // Handle progress, success, and errors
+            // fr.onprogress = updateProgress;
+            fr.onerror = this.errorHandler;
+            // fr.onabort = () => changeStatus('Start Loading');
+            // fr.onloadstart =   () => changeStatus('Start Loading');
+            // fr.onload = ()=> {changeStatus('Loaded')};
+            // fr.onloadend = () => loaded;
+            // Here you can perform some operations on the data asynchronously
+            // fr.onprogress = setProgress;
         })
+        console.log("Fr is: ", fr)
+        console.log("Fr RESULT is: ", fr["result"])
 
-        for (var key of data.entries()) {
-            console.log(key[0] + ', ' + key[1]);
-        }
+        // for (var key of fr.entries()) {
+        //     console.log(key[0] + ', ' + key[1]);
+        // }
 
-        return data
+        return fr;
     } 
 
 
@@ -67,11 +251,19 @@ class ProjectForm extends Component{
     // The only case where you need an additional API is if you want to upload one or more files, where you use the FileReader API.
     postNewProject = async (e) =>{
         e.preventDefault();
-        let data = await this.processStateImagesToFileReader();
+        // let data = await this.processStateImagesToFileReader();
 
         fetch(`${MONGO_URL}/project/project`, {
             method: "POST",
-            body: data
+            mode: 'cors', 
+            headers: { 
+                'Content-Type': 'application/json',  // including this will break it.  single or double quotes breaks..
+                "Authorization":this.props.user.user_token
+            },
+            // body: data
+            body: JSON.stringify(this.state.images)
+            // body: this.state.images
+
         })
     }
 
@@ -218,7 +410,7 @@ class ProjectForm extends Component{
 
 
 
-    
+
 
 
     _DEADCODE_postNewProject_FORM_DATA_Attempt3 = async (e) =>{
@@ -438,3 +630,45 @@ class ProjectForm extends Component{
 }
 
 export default ProjectForm;
+
+
+
+
+// For myFile.txt,  whose contents are "File content!"  I need what to do for img.. 
+//     // In many browsers, Files have Blob properties/functions. These functions allows us to read the file.
+//     transformFileReturnsText = async (file) => {                    // file not in params of orig. 
+//         // .text() transforms the file into a stream and then into a string
+//         const fileContent = await file.text();
+//         console.log(fileContent);
+//         // logs "File content!"
+
+//         // .stream() returns a ReadableStream
+//         const fileContentStream = await file.stream();
+//         console.log(await this.streamToText(fileContentStream));
+//         // logs "File content!"
+
+//         const buffer = await file.arrayBuffer();
+//         console.log(this.bufferToText(buffer))
+//         // logs "File content!"
+
+//         // .slice() allows you to get slices of the file here we take a slice of the entire file
+//         const fileSliceBlob = file.slice(0, file.length);
+//         // we convert to blob to a stream
+//         const fileSliceBlobStream = await fileSliceBlob.stream();
+//         console.log(await this.streamToText(fileSliceBlobStream));
+//         // logs "File content!"
+//     } //()
+
+//     // We just use this function to convert streams to text
+//    streamToText = async (blob) => {
+//         const readableStream = await blob.getReader();
+//         const chunk = await readableStream.read();
+//         return new TextDecoder('utf-8').decode(chunk.value);
+//     }
+
+//     // Not the best way to get text from a file!
+//     bufferToText = (buffer) => {
+//         const bufferByteLength = buffer.byteLength;
+//         const bufferUint8Array = new Uint8Array(buffer, 0, bufferByteLength);
+//         return new TextDecoder().decode(bufferUint8Array);
+//     }
